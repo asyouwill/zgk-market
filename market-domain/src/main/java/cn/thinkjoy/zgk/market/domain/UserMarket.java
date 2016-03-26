@@ -7,15 +7,13 @@
 
 
 
-package cn.thinkjoy.zgk.domain;
+package cn.thinkjoy.zgk.market.domain;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import cn.thinkjoy.common.domain.CreateBaseDomain;
-
-import java.util.*;
 
 public class UserMarket extends CreateBaseDomain{
     private Integer accountId;

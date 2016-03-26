@@ -2,12 +2,12 @@
  * Copyright (c) 2013-2014, thinkjoy Inc. All Rights Reserved.
  *
  * Project Name: market
- * $Id:  Order.java 2016-03-26 13:36:17 $
+ * $Id:  OrderStatements.java 2016-03-26 13:36:18 $
  */
 
 
 
-package cn.thinkjoy.zgk.domain;
+package cn.thinkjoy.zgk.market.domain;
 
 import cn.thinkjoy.common.domain.BaseDomain;
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -15,35 +15,18 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
-public class Order extends BaseDomain{
-    private Integer userId;
-    private Long productId;
+public class OrderStatements extends BaseDomain{
     private String orderNo;
-    private Integer channle;
-    private Integer status;
+    private String statementNo;
     private Long createDate;
     private Long updateDate;
+    private Long createrId;
+    private Integer status;
     private String state;
     private Double amount;
-    private Integer productNumber;
-    private Double productPrice;
 
-	public Order(){
+	public OrderStatements(){
 	}
-    public void setUserId(Integer value) {
-        this.userId = value;
-    }
-
-    public Integer getUserId() {
-        return this.userId;
-    }
-    public void setProductId(Long value) {
-        this.productId = value;
-    }
-
-    public Long getProductId() {
-        return this.productId;
-    }
     public void setOrderNo(String value) {
         this.orderNo = value;
     }
@@ -51,12 +34,12 @@ public class Order extends BaseDomain{
     public String getOrderNo() {
         return this.orderNo;
     }
-    public void setChannle(Integer value) {
-        this.channle = value;
+    public void setStatementNo(String value) {
+        this.statementNo = value;
     }
 
-    public Integer getChannle() {
-        return this.channle;
+    public String getStatementNo() {
+        return this.statementNo;
     }
     public void setCreateDate(Long value) {
         this.createDate = value;
@@ -72,6 +55,13 @@ public class Order extends BaseDomain{
     public Long getUpdateDate() {
         return this.updateDate;
     }
+    public void setCreaterId(Long value) {
+        this.createrId = value;
+    }
+
+    public Long getCreaterId() {
+        return this.createrId;
+    }
     public void setState(String value) {
         this.state = value;
     }
@@ -83,24 +73,6 @@ public class Order extends BaseDomain{
         this.amount = value;
     }
 
-    public Double getAmount() {
-        return this.amount;
-    }
-    public void setProductNumber(Integer value) {
-        this.productNumber = value;
-    }
-
-    public Integer getProductNumber() {
-        return this.productNumber;
-    }
-    public void setProductPrice(Double value) {
-        this.productPrice = value;
-    }
-
-    public Double getProductPrice() {
-        return this.productPrice;
-    }
-
     public Integer getStatus() {
         return status;
     }
@@ -109,20 +81,21 @@ public class Order extends BaseDomain{
         this.status = status;
     }
 
-    public String toString() {
+    public Double getAmount() {
+        return this.amount;
+    }
+
+	public String toString() {
 		return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
 			.append("Id",getId())
-			.append("UserId",getUserId())
-			.append("ProductId",getProductId())
-			.append("Status",getStatus())
 			.append("OrderNo",getOrderNo())
-			.append("Channle",getChannle())
+			.append("StatementNo",getStatementNo())
+			.append("Status",getStatus())
 			.append("CreateDate",getCreateDate())
 			.append("UpdateDate",getUpdateDate())
+			.append("CreaterId",getCreaterId())
 			.append("State",getState())
 			.append("Amount",getAmount())
-			.append("ProductNumber",getProductNumber())
-			.append("ProductPrice",getProductPrice())
 			.toString();
 	}
 	
@@ -133,9 +106,9 @@ public class Order extends BaseDomain{
 	}
 	
 	public boolean equals(Object obj) {
-		if(obj instanceof Order == false) return false;
+		if(obj instanceof OrderStatements == false) return false;
 		if(this == obj) return true;
-		Order other = (Order)obj;
+		OrderStatements other = (OrderStatements)obj;
 		return new EqualsBuilder()
 			.append(getId(),other.getId())
 			.isEquals();

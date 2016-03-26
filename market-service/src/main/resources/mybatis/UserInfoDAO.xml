@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.thinkjoy.zgk.market.dao.IUserInfoDAO">
+<!--
+insert
+update
+updateNull
+deleteById
+deleteByCondition
+deleteByProperty
+fetch
+findOne
+findList
+findAll
+queryPage
+like
+queryList
+queryOne
+count
+selectMaxId
+updateOrSave
+selectOne
+selectList
+-->
+    <sql id="Base_Column_List">
+        id,
+        token,
+        name,
+        icon,
+        provinceId,
+        cityId,
+        countyId,
+        schoolName,
+        birthdayDate,
+        sex,
+        subjectType,
+        mail,
+        qq
+    </sql>
+    <insert id="insert" parameterType="UserInfo">
+        INSERT INTO zgk_user_info (
+        token,
+        name,
+        icon,
+        provinceId,
+        cityId,
+        countyId,
+        schoolName,
+        birthdayDate,
+        sex,
+        subjectType,
+        mail,
+        qq
+        ) VALUES (
+        #{token},
+        #{name},
+        #{icon},
+        #{provinceId},
+        #{cityId},
+        #{countyId},
+        #{schoolName},
+        #{birthdayDate},
+        #{sex},
+        #{subjectType},
+        #{mail},
+        #{qq}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="UserInfo">
+        UPDATE zgk_user_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="token!=null">
+                token = #{token},
+            </if>
+            <if test="name!=null">
+                name = #{name},
+            </if>
+            <if test="icon!=null">
+                icon = #{icon},
+            </if>
+            <if test="provinceId!=null">
+                provinceId = #{provinceId},
+            </if>
+            <if test="cityId!=null">
+                cityId = #{cityId},
+            </if>
+            <if test="countyId!=null">
+                countyId = #{countyId},
+            </if>
+            <if test="schoolName!=null">
+                schoolName = #{schoolName},
+            </if>
+            <if test="birthdayDate!=null">
+                birthdayDate = #{birthdayDate},
+            </if>
+            <if test="sex!=null">
+                sex = #{sex},
+            </if>
+            <if test="subjectType!=null">
+                subjectType = #{subjectType},
+            </if>
+            <if test="mail!=null">
+                mail = #{mail},
+            </if>
+            <if test="qq!=null">
+                qq = #{qq},
+            </if>
+        </trim>
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateMap">
+        UPDATE zgk_user_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="map.token!=null">
+                token = #{map.token},
+            </if>
+            <if test="map.name!=null">
+                name = #{map.name},
+            </if>
+            <if test="map.icon!=null">
+                icon = #{map.icon},
+            </if>
+            <if test="map.provinceId!=null">
+                provinceId = #{map.provinceId},
+            </if>
+            <if test="map.cityId!=null">
+                cityId = #{map.cityId},
+            </if>
+            <if test="map.countyId!=null">
+                countyId = #{map.countyId},
+            </if>
+            <if test="map.schoolName!=null">
+                schoolName = #{map.schoolName},
+            </if>
+            <if test="map.birthdayDate!=null">
+                birthdayDate = #{map.birthdayDate},
+            </if>
+            <if test="map.sex!=null">
+                sex = #{map.sex},
+            </if>
+            <if test="map.subjectType!=null">
+                subjectType = #{map.subjectType},
+            </if>
+            <if test="map.mail!=null">
+                mail = #{map.mail},
+            </if>
+            <if test="map.qq!=null">
+                qq = #{map.qq},
+            </if>
+        </trim>
+        WHERE
+        id = #{map.id}
+    </update>
+
+    <update id="updateByCondition">
+        UPDATE zgk_user_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="update.token!=null">
+                token = #{update.token},
+            </if>
+            <if test="update.name!=null">
+                name = #{update.name},
+            </if>
+            <if test="update.icon!=null">
+                icon = #{update.icon},
+            </if>
+            <if test="update.provinceId!=null">
+                provinceId = #{update.provinceId},
+            </if>
+            <if test="update.cityId!=null">
+                cityId = #{update.cityId},
+            </if>
+            <if test="update.countyId!=null">
+                countyId = #{update.countyId},
+            </if>
+            <if test="update.schoolName!=null">
+                schoolName = #{update.schoolName},
+            </if>
+            <if test="update.birthdayDate!=null">
+                birthdayDate = #{update.birthdayDate},
+            </if>
+            <if test="update.sex!=null">
+                sex = #{update.sex},
+            </if>
+            <if test="update.subjectType!=null">
+                subjectType = #{update.subjectType},
+            </if>
+            <if test="update.mail!=null">
+                mail = #{update.mail},
+            </if>
+            <if test="update.qq!=null">
+                qq = #{update.qq},
+            </if>
+        </trim>
+
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.token!=null">
+                AND token = #{condition.token}
+            </if>
+            <if test="condition.name!=null">
+                AND name = #{condition.name}
+            </if>
+            <if test="condition.icon!=null">
+                AND icon = #{condition.icon}
+            </if>
+            <if test="condition.provinceId!=null">
+                AND provinceId = #{condition.provinceId}
+            </if>
+            <if test="condition.cityId!=null">
+                AND cityId = #{condition.cityId}
+            </if>
+            <if test="condition.countyId!=null">
+                AND countyId = #{condition.countyId}
+            </if>
+            <if test="condition.schoolName!=null">
+                AND schoolName = #{condition.schoolName}
+            </if>
+            <if test="condition.birthdayDate!=null">
+                AND birthdayDate = #{condition.birthdayDate}
+            </if>
+            <if test="condition.sex!=null">
+                AND sex = #{condition.sex}
+            </if>
+            <if test="condition.subjectType!=null">
+                AND subjectType = #{condition.subjectType}
+            </if>
+            <if test="condition.mail!=null">
+                AND mail = #{condition.mail}
+            </if>
+            <if test="condition.qq!=null">
+                AND qq = #{condition.qq}
+            </if>
+        </trim>
+    </update>
+
+    <insert id="insertMap" >
+        INSERT INTO zgk_user_info (
+                token,
+                name,
+                icon,
+                provinceId,
+                cityId,
+                countyId,
+                schoolName,
+                birthdayDate,
+                sex,
+                subjectType,
+                mail,
+                qq
+        ) VALUES (
+                    #{map.token},
+                    #{map.name},
+                    #{map.icon},
+                    #{map.provinceId},
+                    #{map.cityId},
+                    #{map.countyId},
+                    #{map.schoolName},
+                    #{map.birthdayDate},
+                    #{map.sex},
+                    #{map.subjectType},
+                    #{map.mail},
+                    #{map.qq}
+        )
+    </insert>
+
+
+    <update id="updateNull" parameterType="UserInfo">
+        UPDATE zgk_user_info
+        <trim prefix="SET" suffixOverrides=",">
+            token = #{token},
+            name = #{name},
+            icon = #{icon},
+            provinceId = #{provinceId},
+            cityId = #{cityId},
+            countyId = #{countyId},
+            schoolName = #{schoolName},
+            birthdayDate = #{birthdayDate},
+            sex = #{sex},
+            subjectType = #{subjectType},
+            mail = #{mail},
+            qq = #{qq},
+        </trim>
+        WHERE
+        id = #{id} 
+    </update>
+
+    <!-- 按Id删除 -->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM zgk_user_info
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </delete>
+
+
+    <delete id="deleteByCondition" parameterType="java.util.Map">
+        DELETE FROM zgk_user_info
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="token!=null">
+                AND token = #{token}
+            </if>
+            <if test="name!=null">
+                AND name = #{name}
+            </if>
+            <if test="icon!=null">
+                AND icon = #{icon}
+            </if>
+            <if test="provinceId!=null">
+                AND provinceId = #{provinceId}
+            </if>
+            <if test="cityId!=null">
+                AND cityId = #{cityId}
+            </if>
+            <if test="countyId!=null">
+                AND countyId = #{countyId}
+            </if>
+            <if test="schoolName!=null">
+                AND schoolName = #{schoolName}
+            </if>
+            <if test="birthdayDate!=null">
+                AND birthdayDate = #{birthdayDate}
+            </if>
+            <if test="sex!=null">
+                AND sex = #{sex}
+            </if>
+            <if test="subjectType!=null">
+                AND subjectType = #{subjectType}
+            </if>
+            <if test="mail!=null">
+                AND mail = #{mail}
+            </if>
+            <if test="qq!=null">
+                AND qq = #{qq}
+            </if>
+        </trim>
+    </delete>
+
+    <delete id="deleteByProperty" parameterType="java.util.Map">
+        DELETE FROM zgk_user_info WHERE
+        ${property} = #{value}
+    </delete>
+
+    <select id="fetch" parameterType="java.lang.Long" resultType="UserInfo">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_info
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findOne" parameterType="java.util.Map" resultType="UserInfo">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_info WHERE
+        ${property} = #{value}
+        LIMIT 0,1
+    </select>
+
+    <select id="findList" parameterType="java.util.Map" resultType="UserInfo">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_info WHERE
+        ${property} = #{value}
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findAll" resultType="UserInfo">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_info
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryPage" resultType="UserInfo">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_info
+        <where>
+
+            <if test="condition.whereSql != null">
+                and id in (#{condition.whereSql})
+            </if>
+
+            <if test="condition.id!=null">
+                ${condition.groupOp}   id  ${condition.id.op}  #{condition.id.data}
+            </if>
+            <if test="condition.token!=null">
+                ${condition.groupOp}   token  ${condition.token.op}  #{condition.token.data}
+            </if>
+            <if test="condition.name!=null">
+                ${condition.groupOp}   name  ${condition.name.op}  #{condition.name.data}
+            </if>
+            <if test="condition.icon!=null">
+                ${condition.groupOp}   icon  ${condition.icon.op}  #{condition.icon.data}
+            </if>
+            <if test="condition.provinceId!=null">
+                ${condition.groupOp}   provinceId  ${condition.provinceId.op}  #{condition.provinceId.data}
+            </if>
+            <if test="condition.cityId!=null">
+                ${condition.groupOp}   cityId  ${condition.cityId.op}  #{condition.cityId.data}
+            </if>
+            <if test="condition.countyId!=null">
+                ${condition.groupOp}   countyId  ${condition.countyId.op}  #{condition.countyId.data}
+            </if>
+            <if test="condition.schoolName!=null">
+                ${condition.groupOp}   schoolName  ${condition.schoolName.op}  #{condition.schoolName.data}
+            </if>
+            <if test="condition.birthdayDate!=null">
+                ${condition.groupOp}   birthdayDate  ${condition.birthdayDate.op}  #{condition.birthdayDate.data}
+            </if>
+            <if test="condition.sex!=null">
+                ${condition.groupOp}   sex  ${condition.sex.op}  #{condition.sex.data}
+            </if>
+            <if test="condition.subjectType!=null">
+                ${condition.groupOp}   subjectType  ${condition.subjectType.op}  #{condition.subjectType.data}
+            </if>
+            <if test="condition.mail!=null">
+                ${condition.groupOp}   mail  ${condition.mail.op}  #{condition.mail.data}
+            </if>
+            <if test="condition.qq!=null">
+                ${condition.groupOp}   qq  ${condition.qq.op}  #{condition.qq.data}
+            </if>
+
+
+    </where>
+
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+        <if test="offset != null">
+            limit ${offset}, ${rows}
+        </if>
+    </select>
+
+    <select id="like" parameterType="java.util.Map" resultType="UserInfo">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_info
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id like CONCAT('%', #{id} , '%')
+            </if>
+            <if test="token!=null">
+                AND token like CONCAT('%', #{token} , '%')
+            </if>
+            <if test="name!=null">
+                AND name like CONCAT('%', #{name} , '%')
+            </if>
+            <if test="icon!=null">
+                AND icon like CONCAT('%', #{icon} , '%')
+            </if>
+            <if test="provinceId!=null">
+                AND provinceId like CONCAT('%', #{provinceId} , '%')
+            </if>
+            <if test="cityId!=null">
+                AND cityId like CONCAT('%', #{cityId} , '%')
+            </if>
+            <if test="countyId!=null">
+                AND countyId like CONCAT('%', #{countyId} , '%')
+            </if>
+            <if test="schoolName!=null">
+                AND schoolName like CONCAT('%', #{schoolName} , '%')
+            </if>
+            <if test="birthdayDate!=null">
+                AND birthdayDate like CONCAT('%', #{birthdayDate} , '%')
+            </if>
+            <if test="sex!=null">
+                AND sex like CONCAT('%', #{sex} , '%')
+            </if>
+            <if test="subjectType!=null">
+                AND subjectType like CONCAT('%', #{subjectType} , '%')
+            </if>
+            <if test="mail!=null">
+                AND mail like CONCAT('%', #{mail} , '%')
+            </if>
+            <if test="qq!=null">
+                AND qq like CONCAT('%', #{qq} , '%')
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+
+    <select id="queryList" parameterType="java.util.Map" resultType="UserInfo">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_info
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.token!=null">
+                AND token = #{condition.token}
+            </if>
+            <if test="condition.name!=null">
+                AND name = #{condition.name}
+            </if>
+            <if test="condition.icon!=null">
+                AND icon = #{condition.icon}
+            </if>
+            <if test="condition.provinceId!=null">
+                AND provinceId = #{condition.provinceId}
+            </if>
+            <if test="condition.cityId!=null">
+                AND cityId = #{condition.cityId}
+            </if>
+            <if test="condition.countyId!=null">
+                AND countyId = #{condition.countyId}
+            </if>
+            <if test="condition.schoolName!=null">
+                AND schoolName = #{condition.schoolName}
+            </if>
+            <if test="condition.birthdayDate!=null">
+                AND birthdayDate = #{condition.birthdayDate}
+            </if>
+            <if test="condition.sex!=null">
+                AND sex = #{condition.sex}
+            </if>
+            <if test="condition.subjectType!=null">
+                AND subjectType = #{condition.subjectType}
+            </if>
+            <if test="condition.mail!=null">
+                AND mail = #{condition.mail}
+            </if>
+            <if test="condition.qq!=null">
+                AND qq = #{condition.qq}
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryOne" parameterType="java.util.Map" resultType="UserInfo">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_info
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.token!=null">
+                AND token = #{condition.token}
+            </if>
+            <if test="condition.name!=null">
+                AND name = #{condition.name}
+            </if>
+            <if test="condition.icon!=null">
+                AND icon = #{condition.icon}
+            </if>
+            <if test="condition.provinceId!=null">
+                AND provinceId = #{condition.provinceId}
+            </if>
+            <if test="condition.cityId!=null">
+                AND cityId = #{condition.cityId}
+            </if>
+            <if test="condition.countyId!=null">
+                AND countyId = #{condition.countyId}
+            </if>
+            <if test="condition.schoolName!=null">
+                AND schoolName = #{condition.schoolName}
+            </if>
+            <if test="condition.birthdayDate!=null">
+                AND birthdayDate = #{condition.birthdayDate}
+            </if>
+            <if test="condition.sex!=null">
+                AND sex = #{condition.sex}
+            </if>
+            <if test="condition.subjectType!=null">
+                AND subjectType = #{condition.subjectType}
+            </if>
+            <if test="condition.mail!=null">
+                AND mail = #{condition.mail}
+            </if>
+            <if test="condition.qq!=null">
+                AND qq = #{condition.qq}
+            </if>
+        </trim>
+        limit 0,1
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(id) FROM zgk_user_info
+       <where>
+           <if test="id!=null">
+               ${groupOp} id ${id.op}  #{id.data}
+           </if>
+           <if test="token!=null">
+               ${groupOp} token ${token.op}  #{token.data}
+           </if>
+           <if test="name!=null">
+               ${groupOp} name ${name.op}  #{name.data}
+           </if>
+           <if test="icon!=null">
+               ${groupOp} icon ${icon.op}  #{icon.data}
+           </if>
+           <if test="provinceId!=null">
+               ${groupOp} provinceId ${provinceId.op}  #{provinceId.data}
+           </if>
+           <if test="cityId!=null">
+               ${groupOp} cityId ${cityId.op}  #{cityId.data}
+           </if>
+           <if test="countyId!=null">
+               ${groupOp} countyId ${countyId.op}  #{countyId.data}
+           </if>
+           <if test="schoolName!=null">
+               ${groupOp} schoolName ${schoolName.op}  #{schoolName.data}
+           </if>
+           <if test="birthdayDate!=null">
+               ${groupOp} birthdayDate ${birthdayDate.op}  #{birthdayDate.data}
+           </if>
+           <if test="sex!=null">
+               ${groupOp} sex ${sex.op}  #{sex.data}
+           </if>
+           <if test="subjectType!=null">
+               ${groupOp} subjectType ${subjectType.op}  #{subjectType.data}
+           </if>
+           <if test="mail!=null">
+               ${groupOp} mail ${mail.op}  #{mail.data}
+           </if>
+           <if test="qq!=null">
+               ${groupOp} qq ${qq.op}  #{qq.data}
+           </if>
+
+       </where>
+    <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+    </if>
+    </select>
+
+    <select id="selectMaxId" resultType="java.lang.Long">
+        SELECT
+        MAX(id)
+        FROM zgk_user_info
+    </select>
+
+</mapper>
+

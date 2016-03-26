@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.thinkjoy.zgk.market.dao.IUserMarketDAO">
+<!--
+insert
+update
+updateNull
+deleteById
+deleteByCondition
+deleteByProperty
+fetch
+findOne
+findList
+findAll
+queryPage
+like
+queryList
+queryOne
+count
+selectMaxId
+updateOrSave
+selectOne
+selectList
+-->
+    <sql id="Base_Column_List">
+        id,
+        accountId,
+        parentId,
+        qrcodeUrl,
+        agentLevel,
+        createDate,
+        updateDate,
+        creator,
+        modifier
+    </sql>
+    <insert id="insert" parameterType="UserMarket">
+        INSERT INTO zgk_user_market (
+        accountId,
+        parentId,
+        qrcodeUrl,
+        agentLevel,
+        createDate,
+        updateDate,
+        creator,
+        modifier
+        ) VALUES (
+        #{accountId},
+        #{parentId},
+        #{qrcodeUrl},
+        #{agentLevel},
+        #{createDate},
+        #{updateDate},
+        #{creator},
+        #{modifier}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="UserMarket">
+        UPDATE zgk_user_market
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="accountId!=null">
+                accountId = #{accountId},
+            </if>
+            <if test="parentId!=null">
+                parentId = #{parentId},
+            </if>
+            <if test="qrcodeUrl!=null">
+                qrcodeUrl = #{qrcodeUrl},
+            </if>
+            <if test="agentLevel!=null">
+                agentLevel = #{agentLevel},
+            </if>
+            <if test="createDate!=null">
+                createDate = #{createDate},
+            </if>
+            <if test="updateDate!=null">
+                updateDate = #{updateDate},
+            </if>
+            <if test="creator!=null">
+                creator = #{creator},
+            </if>
+            <if test="modifier!=null">
+                modifier = #{modifier},
+            </if>
+        </trim>
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateMap">
+        UPDATE zgk_user_market
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="map.accountId!=null">
+                accountId = #{map.accountId},
+            </if>
+            <if test="map.parentId!=null">
+                parentId = #{map.parentId},
+            </if>
+            <if test="map.qrcodeUrl!=null">
+                qrcodeUrl = #{map.qrcodeUrl},
+            </if>
+            <if test="map.agentLevel!=null">
+                agentLevel = #{map.agentLevel},
+            </if>
+            <if test="map.createDate!=null">
+                createDate = #{map.createDate},
+            </if>
+            <if test="map.updateDate!=null">
+                updateDate = #{map.updateDate},
+            </if>
+            <if test="map.creator!=null">
+                creator = #{map.creator},
+            </if>
+            <if test="map.modifier!=null">
+                modifier = #{map.modifier},
+            </if>
+        </trim>
+        WHERE
+        id = #{map.id}
+    </update>
+
+    <update id="updateByCondition">
+        UPDATE zgk_user_market
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="update.accountId!=null">
+                accountId = #{update.accountId},
+            </if>
+            <if test="update.parentId!=null">
+                parentId = #{update.parentId},
+            </if>
+            <if test="update.qrcodeUrl!=null">
+                qrcodeUrl = #{update.qrcodeUrl},
+            </if>
+            <if test="update.agentLevel!=null">
+                agentLevel = #{update.agentLevel},
+            </if>
+            <if test="update.createDate!=null">
+                createDate = #{update.createDate},
+            </if>
+            <if test="update.updateDate!=null">
+                updateDate = #{update.updateDate},
+            </if>
+            <if test="update.creator!=null">
+                creator = #{update.creator},
+            </if>
+            <if test="update.modifier!=null">
+                modifier = #{update.modifier},
+            </if>
+        </trim>
+
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.accountId!=null">
+                AND accountId = #{condition.accountId}
+            </if>
+            <if test="condition.parentId!=null">
+                AND parentId = #{condition.parentId}
+            </if>
+            <if test="condition.qrcodeUrl!=null">
+                AND qrcodeUrl = #{condition.qrcodeUrl}
+            </if>
+            <if test="condition.agentLevel!=null">
+                AND agentLevel = #{condition.agentLevel}
+            </if>
+            <if test="condition.createDate!=null">
+                AND createDate = #{condition.createDate}
+            </if>
+            <if test="condition.updateDate!=null">
+                AND updateDate = #{condition.updateDate}
+            </if>
+            <if test="condition.creator!=null">
+                AND creator = #{condition.creator}
+            </if>
+            <if test="condition.modifier!=null">
+                AND modifier = #{condition.modifier}
+            </if>
+        </trim>
+    </update>
+
+    <insert id="insertMap" >
+        INSERT INTO zgk_user_market (
+                accountId,
+                parentId,
+                qrcodeUrl,
+                agentLevel,
+                createDate,
+                updateDate,
+                creator,
+                modifier
+        ) VALUES (
+                    #{map.accountId},
+                    #{map.parentId},
+                    #{map.qrcodeUrl},
+                    #{map.agentLevel},
+                    #{map.createDate},
+                    #{map.updateDate},
+                    #{map.creator},
+                    #{map.modifier}
+        )
+    </insert>
+
+
+    <update id="updateNull" parameterType="UserMarket">
+        UPDATE zgk_user_market
+        <trim prefix="SET" suffixOverrides=",">
+            accountId = #{accountId},
+            parentId = #{parentId},
+            qrcodeUrl = #{qrcodeUrl},
+            agentLevel = #{agentLevel},
+            createDate = #{createDate},
+            updateDate = #{updateDate},
+            creator = #{creator},
+            modifier = #{modifier},
+        </trim>
+        WHERE
+        id = #{id} 
+    </update>
+
+    <!-- 按Id删除 -->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM zgk_user_market
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </delete>
+
+
+    <delete id="deleteByCondition" parameterType="java.util.Map">
+        DELETE FROM zgk_user_market
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="accountId!=null">
+                AND accountId = #{accountId}
+            </if>
+            <if test="parentId!=null">
+                AND parentId = #{parentId}
+            </if>
+            <if test="qrcodeUrl!=null">
+                AND qrcodeUrl = #{qrcodeUrl}
+            </if>
+            <if test="agentLevel!=null">
+                AND agentLevel = #{agentLevel}
+            </if>
+            <if test="createDate!=null">
+                AND createDate = #{createDate}
+            </if>
+            <if test="updateDate!=null">
+                AND updateDate = #{updateDate}
+            </if>
+            <if test="creator!=null">
+                AND creator = #{creator}
+            </if>
+            <if test="modifier!=null">
+                AND modifier = #{modifier}
+            </if>
+        </trim>
+    </delete>
+
+    <delete id="deleteByProperty" parameterType="java.util.Map">
+        DELETE FROM zgk_user_market WHERE
+        ${property} = #{value}
+    </delete>
+
+    <select id="fetch" parameterType="java.lang.Integer" resultType="UserMarket">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_market
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findOne" parameterType="java.util.Map" resultType="UserMarket">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_market WHERE
+        ${property} = #{value}
+        LIMIT 0,1
+    </select>
+
+    <select id="findList" parameterType="java.util.Map" resultType="UserMarket">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_market WHERE
+        ${property} = #{value}
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findAll" resultType="UserMarket">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_market
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryPage" resultType="UserMarket">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_market
+        <where>
+
+            <if test="condition.whereSql != null">
+                and id in (#{condition.whereSql})
+            </if>
+
+            <if test="condition.id!=null">
+                ${condition.groupOp}   id  ${condition.id.op}  #{condition.id.data}
+            </if>
+            <if test="condition.accountId!=null">
+                ${condition.groupOp}   accountId  ${condition.accountId.op}  #{condition.accountId.data}
+            </if>
+            <if test="condition.parentId!=null">
+                ${condition.groupOp}   parentId  ${condition.parentId.op}  #{condition.parentId.data}
+            </if>
+            <if test="condition.qrcodeUrl!=null">
+                ${condition.groupOp}   qrcodeUrl  ${condition.qrcodeUrl.op}  #{condition.qrcodeUrl.data}
+            </if>
+            <if test="condition.agentLevel!=null">
+                ${condition.groupOp}   agentLevel  ${condition.agentLevel.op}  #{condition.agentLevel.data}
+            </if>
+            <if test="condition.createDate!=null">
+                ${condition.groupOp}   createDate  ${condition.createDate.op}  #{condition.createDate.data}
+            </if>
+            <if test="condition.updateDate!=null">
+                ${condition.groupOp}   updateDate  ${condition.updateDate.op}  #{condition.updateDate.data}
+            </if>
+            <if test="condition.creator!=null">
+                ${condition.groupOp}   creator  ${condition.creator.op}  #{condition.creator.data}
+            </if>
+            <if test="condition.modifier!=null">
+                ${condition.groupOp}   modifier  ${condition.modifier.op}  #{condition.modifier.data}
+            </if>
+
+
+    </where>
+
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+        <if test="offset != null">
+            limit ${offset}, ${rows}
+        </if>
+    </select>
+
+    <select id="like" parameterType="java.util.Map" resultType="UserMarket">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_market
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id like CONCAT('%', #{id} , '%')
+            </if>
+            <if test="accountId!=null">
+                AND accountId like CONCAT('%', #{accountId} , '%')
+            </if>
+            <if test="parentId!=null">
+                AND parentId like CONCAT('%', #{parentId} , '%')
+            </if>
+            <if test="qrcodeUrl!=null">
+                AND qrcodeUrl like CONCAT('%', #{qrcodeUrl} , '%')
+            </if>
+            <if test="agentLevel!=null">
+                AND agentLevel like CONCAT('%', #{agentLevel} , '%')
+            </if>
+            <if test="createDate!=null">
+                AND createDate like CONCAT('%', #{createDate} , '%')
+            </if>
+            <if test="updateDate!=null">
+                AND updateDate like CONCAT('%', #{updateDate} , '%')
+            </if>
+            <if test="creator!=null">
+                AND creator like CONCAT('%', #{creator} , '%')
+            </if>
+            <if test="modifier!=null">
+                AND modifier like CONCAT('%', #{modifier} , '%')
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+
+    <select id="queryList" parameterType="java.util.Map" resultType="UserMarket">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_market
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.accountId!=null">
+                AND accountId = #{condition.accountId}
+            </if>
+            <if test="condition.parentId!=null">
+                AND parentId = #{condition.parentId}
+            </if>
+            <if test="condition.qrcodeUrl!=null">
+                AND qrcodeUrl = #{condition.qrcodeUrl}
+            </if>
+            <if test="condition.agentLevel!=null">
+                AND agentLevel = #{condition.agentLevel}
+            </if>
+            <if test="condition.createDate!=null">
+                AND createDate = #{condition.createDate}
+            </if>
+            <if test="condition.updateDate!=null">
+                AND updateDate = #{condition.updateDate}
+            </if>
+            <if test="condition.creator!=null">
+                AND creator = #{condition.creator}
+            </if>
+            <if test="condition.modifier!=null">
+                AND modifier = #{condition.modifier}
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryOne" parameterType="java.util.Map" resultType="UserMarket">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_market
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.accountId!=null">
+                AND accountId = #{condition.accountId}
+            </if>
+            <if test="condition.parentId!=null">
+                AND parentId = #{condition.parentId}
+            </if>
+            <if test="condition.qrcodeUrl!=null">
+                AND qrcodeUrl = #{condition.qrcodeUrl}
+            </if>
+            <if test="condition.agentLevel!=null">
+                AND agentLevel = #{condition.agentLevel}
+            </if>
+            <if test="condition.createDate!=null">
+                AND createDate = #{condition.createDate}
+            </if>
+            <if test="condition.updateDate!=null">
+                AND updateDate = #{condition.updateDate}
+            </if>
+            <if test="condition.creator!=null">
+                AND creator = #{condition.creator}
+            </if>
+            <if test="condition.modifier!=null">
+                AND modifier = #{condition.modifier}
+            </if>
+        </trim>
+        limit 0,1
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(id) FROM zgk_user_market
+       <where>
+           <if test="id!=null">
+               ${groupOp} id ${id.op}  #{id.data}
+           </if>
+           <if test="accountId!=null">
+               ${groupOp} accountId ${accountId.op}  #{accountId.data}
+           </if>
+           <if test="parentId!=null">
+               ${groupOp} parentId ${parentId.op}  #{parentId.data}
+           </if>
+           <if test="qrcodeUrl!=null">
+               ${groupOp} qrcodeUrl ${qrcodeUrl.op}  #{qrcodeUrl.data}
+           </if>
+           <if test="agentLevel!=null">
+               ${groupOp} agentLevel ${agentLevel.op}  #{agentLevel.data}
+           </if>
+           <if test="createDate!=null">
+               ${groupOp} createDate ${createDate.op}  #{createDate.data}
+           </if>
+           <if test="updateDate!=null">
+               ${groupOp} updateDate ${updateDate.op}  #{updateDate.data}
+           </if>
+           <if test="creator!=null">
+               ${groupOp} creator ${creator.op}  #{creator.data}
+           </if>
+           <if test="modifier!=null">
+               ${groupOp} modifier ${modifier.op}  #{modifier.data}
+           </if>
+
+       </where>
+    <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+    </if>
+    </select>
+
+    <select id="selectMaxId" resultType="java.lang.Integer">
+        SELECT
+        MAX(id)
+        FROM zgk_user_market
+    </select>
+
+</mapper>
+

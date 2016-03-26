@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.thinkjoy.zgk.market.dao.IUserAccountDAO">
+<!--
+insert
+update
+updateNull
+deleteById
+deleteByCondition
+deleteByProperty
+fetch
+findOne
+findList
+findAll
+queryPage
+like
+queryList
+queryOne
+count
+selectMaxId
+updateOrSave
+selectOne
+selectList
+-->
+    <sql id="Base_Column_List">
+        id,
+        status,
+        createDate,
+        account,
+        lastModDate,
+        password,
+        userType,
+        areaId,
+        canTargetSchool
+    </sql>
+    <insert id="insert" parameterType="UserAccount">
+        INSERT INTO zgk_user_account (
+        status,
+        createDate,
+        account,
+        lastModDate,
+        password,
+        userType,
+        areaId,
+        canTargetSchool
+        ) VALUES (
+        #{status},
+        #{createDate},
+        #{account},
+        #{lastModDate},
+        #{password},
+        #{userType},
+        #{areaId},
+        #{canTargetSchool}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="UserAccount">
+        UPDATE zgk_user_account
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="status!=null">
+                status = #{status},
+            </if>
+            <if test="createDate!=null">
+                createDate = #{createDate},
+            </if>
+            <if test="account!=null">
+                account = #{account},
+            </if>
+            <if test="lastModDate!=null">
+                lastModDate = #{lastModDate},
+            </if>
+            <if test="password!=null">
+                password = #{password},
+            </if>
+            <if test="userType!=null">
+                userType = #{userType},
+            </if>
+            <if test="areaId!=null">
+                areaId = #{areaId},
+            </if>
+            <if test="canTargetSchool!=null">
+                canTargetSchool = #{canTargetSchool},
+            </if>
+        </trim>
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateMap">
+        UPDATE zgk_user_account
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="map.status!=null">
+                status = #{map.status},
+            </if>
+            <if test="map.createDate!=null">
+                createDate = #{map.createDate},
+            </if>
+            <if test="map.account!=null">
+                account = #{map.account},
+            </if>
+            <if test="map.lastModDate!=null">
+                lastModDate = #{map.lastModDate},
+            </if>
+            <if test="map.password!=null">
+                password = #{map.password},
+            </if>
+            <if test="map.userType!=null">
+                userType = #{map.userType},
+            </if>
+            <if test="map.areaId!=null">
+                areaId = #{map.areaId},
+            </if>
+            <if test="map.canTargetSchool!=null">
+                canTargetSchool = #{map.canTargetSchool},
+            </if>
+        </trim>
+        WHERE
+        id = #{map.id}
+    </update>
+
+    <update id="updateByCondition">
+        UPDATE zgk_user_account
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="update.status!=null">
+                status = #{update.status},
+            </if>
+            <if test="update.createDate!=null">
+                createDate = #{update.createDate},
+            </if>
+            <if test="update.account!=null">
+                account = #{update.account},
+            </if>
+            <if test="update.lastModDate!=null">
+                lastModDate = #{update.lastModDate},
+            </if>
+            <if test="update.password!=null">
+                password = #{update.password},
+            </if>
+            <if test="update.userType!=null">
+                userType = #{update.userType},
+            </if>
+            <if test="update.areaId!=null">
+                areaId = #{update.areaId},
+            </if>
+            <if test="update.canTargetSchool!=null">
+                canTargetSchool = #{update.canTargetSchool},
+            </if>
+        </trim>
+
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.status!=null">
+                AND status = #{condition.status}
+            </if>
+            <if test="condition.createDate!=null">
+                AND createDate = #{condition.createDate}
+            </if>
+            <if test="condition.account!=null">
+                AND account = #{condition.account}
+            </if>
+            <if test="condition.lastModDate!=null">
+                AND lastModDate = #{condition.lastModDate}
+            </if>
+            <if test="condition.password!=null">
+                AND password = #{condition.password}
+            </if>
+            <if test="condition.userType!=null">
+                AND userType = #{condition.userType}
+            </if>
+            <if test="condition.areaId!=null">
+                AND areaId = #{condition.areaId}
+            </if>
+            <if test="condition.canTargetSchool!=null">
+                AND canTargetSchool = #{condition.canTargetSchool}
+            </if>
+        </trim>
+    </update>
+
+    <insert id="insertMap" >
+        INSERT INTO zgk_user_account (
+                status,
+                createDate,
+                account,
+                lastModDate,
+                password,
+                userType,
+                areaId,
+                canTargetSchool
+        ) VALUES (
+                    #{map.status},
+                    #{map.createDate},
+                    #{map.account},
+                    #{map.lastModDate},
+                    #{map.password},
+                    #{map.userType},
+                    #{map.areaId},
+                    #{map.canTargetSchool}
+        )
+    </insert>
+
+
+    <update id="updateNull" parameterType="UserAccount">
+        UPDATE zgk_user_account
+        <trim prefix="SET" suffixOverrides=",">
+            status = #{status},
+            createDate = #{createDate},
+            account = #{account},
+            lastModDate = #{lastModDate},
+            password = #{password},
+            userType = #{userType},
+            areaId = #{areaId},
+            canTargetSchool = #{canTargetSchool},
+        </trim>
+        WHERE
+        id = #{id} 
+    </update>
+
+    <!-- 按Id删除 -->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM zgk_user_account
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </delete>
+
+
+    <delete id="deleteByCondition" parameterType="java.util.Map">
+        DELETE FROM zgk_user_account
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="status!=null">
+                AND status = #{status}
+            </if>
+            <if test="createDate!=null">
+                AND createDate = #{createDate}
+            </if>
+            <if test="account!=null">
+                AND account = #{account}
+            </if>
+            <if test="lastModDate!=null">
+                AND lastModDate = #{lastModDate}
+            </if>
+            <if test="password!=null">
+                AND password = #{password}
+            </if>
+            <if test="userType!=null">
+                AND userType = #{userType}
+            </if>
+            <if test="areaId!=null">
+                AND areaId = #{areaId}
+            </if>
+            <if test="canTargetSchool!=null">
+                AND canTargetSchool = #{canTargetSchool}
+            </if>
+        </trim>
+    </delete>
+
+    <delete id="deleteByProperty" parameterType="java.util.Map">
+        DELETE FROM zgk_user_account WHERE
+        ${property} = #{value}
+    </delete>
+
+    <select id="fetch" parameterType="java.lang.Long" resultType="UserAccount">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_account
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findOne" parameterType="java.util.Map" resultType="UserAccount">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_account WHERE
+        ${property} = #{value}
+        LIMIT 0,1
+    </select>
+
+    <select id="findList" parameterType="java.util.Map" resultType="UserAccount">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_account WHERE
+        ${property} = #{value}
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findAll" resultType="UserAccount">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_account
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryPage" resultType="UserAccount">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_account
+        <where>
+
+            <if test="condition.whereSql != null">
+                and id in (#{condition.whereSql})
+            </if>
+
+            <if test="condition.id!=null">
+                ${condition.groupOp}   id  ${condition.id.op}  #{condition.id.data}
+            </if>
+            <if test="condition.status!=null">
+                ${condition.groupOp}   status  ${condition.status.op}  #{condition.status.data}
+            </if>
+            <if test="condition.createDate!=null">
+                ${condition.groupOp}   createDate  ${condition.createDate.op}  #{condition.createDate.data}
+            </if>
+            <if test="condition.account!=null">
+                ${condition.groupOp}   account  ${condition.account.op}  #{condition.account.data}
+            </if>
+            <if test="condition.lastModDate!=null">
+                ${condition.groupOp}   lastModDate  ${condition.lastModDate.op}  #{condition.lastModDate.data}
+            </if>
+            <if test="condition.password!=null">
+                ${condition.groupOp}   password  ${condition.password.op}  #{condition.password.data}
+            </if>
+            <if test="condition.userType!=null">
+                ${condition.groupOp}   userType  ${condition.userType.op}  #{condition.userType.data}
+            </if>
+            <if test="condition.areaId!=null">
+                ${condition.groupOp}   areaId  ${condition.areaId.op}  #{condition.areaId.data}
+            </if>
+            <if test="condition.canTargetSchool!=null">
+                ${condition.groupOp}   canTargetSchool  ${condition.canTargetSchool.op}  #{condition.canTargetSchool.data}
+            </if>
+
+
+    </where>
+
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+        <if test="offset != null">
+            limit ${offset}, ${rows}
+        </if>
+    </select>
+
+    <select id="like" parameterType="java.util.Map" resultType="UserAccount">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_account
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id like CONCAT('%', #{id} , '%')
+            </if>
+            <if test="status!=null">
+                AND status like CONCAT('%', #{status} , '%')
+            </if>
+            <if test="createDate!=null">
+                AND createDate like CONCAT('%', #{createDate} , '%')
+            </if>
+            <if test="account!=null">
+                AND account like CONCAT('%', #{account} , '%')
+            </if>
+            <if test="lastModDate!=null">
+                AND lastModDate like CONCAT('%', #{lastModDate} , '%')
+            </if>
+            <if test="password!=null">
+                AND password like CONCAT('%', #{password} , '%')
+            </if>
+            <if test="userType!=null">
+                AND userType like CONCAT('%', #{userType} , '%')
+            </if>
+            <if test="areaId!=null">
+                AND areaId like CONCAT('%', #{areaId} , '%')
+            </if>
+            <if test="canTargetSchool!=null">
+                AND canTargetSchool like CONCAT('%', #{canTargetSchool} , '%')
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+
+    <select id="queryList" parameterType="java.util.Map" resultType="UserAccount">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_account
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.status!=null">
+                AND status = #{condition.status}
+            </if>
+            <if test="condition.createDate!=null">
+                AND createDate = #{condition.createDate}
+            </if>
+            <if test="condition.account!=null">
+                AND account = #{condition.account}
+            </if>
+            <if test="condition.lastModDate!=null">
+                AND lastModDate = #{condition.lastModDate}
+            </if>
+            <if test="condition.password!=null">
+                AND password = #{condition.password}
+            </if>
+            <if test="condition.userType!=null">
+                AND userType = #{condition.userType}
+            </if>
+            <if test="condition.areaId!=null">
+                AND areaId = #{condition.areaId}
+            </if>
+            <if test="condition.canTargetSchool!=null">
+                AND canTargetSchool = #{condition.canTargetSchool}
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryOne" parameterType="java.util.Map" resultType="UserAccount">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_account
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.status!=null">
+                AND status = #{condition.status}
+            </if>
+            <if test="condition.createDate!=null">
+                AND createDate = #{condition.createDate}
+            </if>
+            <if test="condition.account!=null">
+                AND account = #{condition.account}
+            </if>
+            <if test="condition.lastModDate!=null">
+                AND lastModDate = #{condition.lastModDate}
+            </if>
+            <if test="condition.password!=null">
+                AND password = #{condition.password}
+            </if>
+            <if test="condition.userType!=null">
+                AND userType = #{condition.userType}
+            </if>
+            <if test="condition.areaId!=null">
+                AND areaId = #{condition.areaId}
+            </if>
+            <if test="condition.canTargetSchool!=null">
+                AND canTargetSchool = #{condition.canTargetSchool}
+            </if>
+        </trim>
+        limit 0,1
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(id) FROM zgk_user_account
+       <where>
+           <if test="id!=null">
+               ${groupOp} id ${id.op}  #{id.data}
+           </if>
+           <if test="status!=null">
+               ${groupOp} status ${status.op}  #{status.data}
+           </if>
+           <if test="createDate!=null">
+               ${groupOp} createDate ${createDate.op}  #{createDate.data}
+           </if>
+           <if test="account!=null">
+               ${groupOp} account ${account.op}  #{account.data}
+           </if>
+           <if test="lastModDate!=null">
+               ${groupOp} lastModDate ${lastModDate.op}  #{lastModDate.data}
+           </if>
+           <if test="password!=null">
+               ${groupOp} password ${password.op}  #{password.data}
+           </if>
+           <if test="userType!=null">
+               ${groupOp} userType ${userType.op}  #{userType.data}
+           </if>
+           <if test="areaId!=null">
+               ${groupOp} areaId ${areaId.op}  #{areaId.data}
+           </if>
+           <if test="canTargetSchool!=null">
+               ${groupOp} canTargetSchool ${canTargetSchool.op}  #{canTargetSchool.data}
+           </if>
+
+       </where>
+    <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+    </if>
+    </select>
+
+    <select id="selectMaxId" resultType="java.lang.Long">
+        SELECT
+        MAX(id)
+        FROM zgk_user_account
+    </select>
+
+</mapper>
+

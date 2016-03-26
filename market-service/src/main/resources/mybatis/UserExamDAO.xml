@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.thinkjoy.zgk.market.dao.IUserExamDAO">
+<!--
+insert
+update
+updateNull
+deleteById
+deleteByCondition
+deleteByProperty
+fetch
+findOne
+findList
+findAll
+queryPage
+like
+queryList
+queryOne
+count
+selectMaxId
+updateOrSave
+selectOne
+selectList
+-->
+    <sql id="Base_Column_List">
+        id,
+        scores,
+        ranking,
+        isSurvey,
+        isReported
+    </sql>
+    <insert id="insert" parameterType="UserExam">
+        INSERT INTO zgk_user_exam (
+        scores,
+        ranking,
+        isSurvey,
+        isReported
+        ) VALUES (
+        #{scores},
+        #{ranking},
+        #{isSurvey},
+        #{isReported}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="UserExam">
+        UPDATE zgk_user_exam
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="scores!=null">
+                scores = #{scores},
+            </if>
+            <if test="ranking!=null">
+                ranking = #{ranking},
+            </if>
+            <if test="isSurvey!=null">
+                isSurvey = #{isSurvey},
+            </if>
+            <if test="isReported!=null">
+                isReported = #{isReported},
+            </if>
+        </trim>
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateMap">
+        UPDATE zgk_user_exam
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="map.scores!=null">
+                scores = #{map.scores},
+            </if>
+            <if test="map.ranking!=null">
+                ranking = #{map.ranking},
+            </if>
+            <if test="map.isSurvey!=null">
+                isSurvey = #{map.isSurvey},
+            </if>
+            <if test="map.isReported!=null">
+                isReported = #{map.isReported},
+            </if>
+        </trim>
+        WHERE
+        id = #{map.id}
+    </update>
+
+    <update id="updateByCondition">
+        UPDATE zgk_user_exam
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="update.scores!=null">
+                scores = #{update.scores},
+            </if>
+            <if test="update.ranking!=null">
+                ranking = #{update.ranking},
+            </if>
+            <if test="update.isSurvey!=null">
+                isSurvey = #{update.isSurvey},
+            </if>
+            <if test="update.isReported!=null">
+                isReported = #{update.isReported},
+            </if>
+        </trim>
+
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.scores!=null">
+                AND scores = #{condition.scores}
+            </if>
+            <if test="condition.ranking!=null">
+                AND ranking = #{condition.ranking}
+            </if>
+            <if test="condition.isSurvey!=null">
+                AND isSurvey = #{condition.isSurvey}
+            </if>
+            <if test="condition.isReported!=null">
+                AND isReported = #{condition.isReported}
+            </if>
+        </trim>
+    </update>
+
+    <insert id="insertMap" >
+        INSERT INTO zgk_user_exam (
+                scores,
+                ranking,
+                isSurvey,
+                isReported
+        ) VALUES (
+                    #{map.scores},
+                    #{map.ranking},
+                    #{map.isSurvey},
+                    #{map.isReported}
+        )
+    </insert>
+
+
+    <update id="updateNull" parameterType="UserExam">
+        UPDATE zgk_user_exam
+        <trim prefix="SET" suffixOverrides=",">
+            scores = #{scores},
+            ranking = #{ranking},
+            isSurvey = #{isSurvey},
+            isReported = #{isReported},
+        </trim>
+        WHERE
+        id = #{id} 
+    </update>
+
+    <!-- 按Id删除 -->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM zgk_user_exam
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </delete>
+
+
+    <delete id="deleteByCondition" parameterType="java.util.Map">
+        DELETE FROM zgk_user_exam
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="scores!=null">
+                AND scores = #{scores}
+            </if>
+            <if test="ranking!=null">
+                AND ranking = #{ranking}
+            </if>
+            <if test="isSurvey!=null">
+                AND isSurvey = #{isSurvey}
+            </if>
+            <if test="isReported!=null">
+                AND isReported = #{isReported}
+            </if>
+        </trim>
+    </delete>
+
+    <delete id="deleteByProperty" parameterType="java.util.Map">
+        DELETE FROM zgk_user_exam WHERE
+        ${property} = #{value}
+    </delete>
+
+    <select id="fetch" parameterType="java.lang.Long" resultType="UserExam">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_exam
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findOne" parameterType="java.util.Map" resultType="UserExam">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_exam WHERE
+        ${property} = #{value}
+        LIMIT 0,1
+    </select>
+
+    <select id="findList" parameterType="java.util.Map" resultType="UserExam">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_exam WHERE
+        ${property} = #{value}
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findAll" resultType="UserExam">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_exam
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryPage" resultType="UserExam">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_exam
+        <where>
+
+            <if test="condition.whereSql != null">
+                and id in (#{condition.whereSql})
+            </if>
+
+            <if test="condition.id!=null">
+                ${condition.groupOp}   id  ${condition.id.op}  #{condition.id.data}
+            </if>
+            <if test="condition.scores!=null">
+                ${condition.groupOp}   scores  ${condition.scores.op}  #{condition.scores.data}
+            </if>
+            <if test="condition.ranking!=null">
+                ${condition.groupOp}   ranking  ${condition.ranking.op}  #{condition.ranking.data}
+            </if>
+            <if test="condition.isSurvey!=null">
+                ${condition.groupOp}   isSurvey  ${condition.isSurvey.op}  #{condition.isSurvey.data}
+            </if>
+            <if test="condition.isReported!=null">
+                ${condition.groupOp}   isReported  ${condition.isReported.op}  #{condition.isReported.data}
+            </if>
+
+
+    </where>
+
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+        <if test="offset != null">
+            limit ${offset}, ${rows}
+        </if>
+    </select>
+
+    <select id="like" parameterType="java.util.Map" resultType="UserExam">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_exam
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id like CONCAT('%', #{id} , '%')
+            </if>
+            <if test="scores!=null">
+                AND scores like CONCAT('%', #{scores} , '%')
+            </if>
+            <if test="ranking!=null">
+                AND ranking like CONCAT('%', #{ranking} , '%')
+            </if>
+            <if test="isSurvey!=null">
+                AND isSurvey like CONCAT('%', #{isSurvey} , '%')
+            </if>
+            <if test="isReported!=null">
+                AND isReported like CONCAT('%', #{isReported} , '%')
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+
+    <select id="queryList" parameterType="java.util.Map" resultType="UserExam">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_exam
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.scores!=null">
+                AND scores = #{condition.scores}
+            </if>
+            <if test="condition.ranking!=null">
+                AND ranking = #{condition.ranking}
+            </if>
+            <if test="condition.isSurvey!=null">
+                AND isSurvey = #{condition.isSurvey}
+            </if>
+            <if test="condition.isReported!=null">
+                AND isReported = #{condition.isReported}
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryOne" parameterType="java.util.Map" resultType="UserExam">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_user_exam
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.scores!=null">
+                AND scores = #{condition.scores}
+            </if>
+            <if test="condition.ranking!=null">
+                AND ranking = #{condition.ranking}
+            </if>
+            <if test="condition.isSurvey!=null">
+                AND isSurvey = #{condition.isSurvey}
+            </if>
+            <if test="condition.isReported!=null">
+                AND isReported = #{condition.isReported}
+            </if>
+        </trim>
+        limit 0,1
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(id) FROM zgk_user_exam
+       <where>
+           <if test="id!=null">
+               ${groupOp} id ${id.op}  #{id.data}
+           </if>
+           <if test="scores!=null">
+               ${groupOp} scores ${scores.op}  #{scores.data}
+           </if>
+           <if test="ranking!=null">
+               ${groupOp} ranking ${ranking.op}  #{ranking.data}
+           </if>
+           <if test="isSurvey!=null">
+               ${groupOp} isSurvey ${isSurvey.op}  #{isSurvey.data}
+           </if>
+           <if test="isReported!=null">
+               ${groupOp} isReported ${isReported.op}  #{isReported.data}
+           </if>
+
+       </where>
+    <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+    </if>
+    </select>
+
+    <select id="selectMaxId" resultType="java.lang.Long">
+        SELECT
+        MAX(id)
+        FROM zgk_user_exam
+    </select>
+
+</mapper>
+

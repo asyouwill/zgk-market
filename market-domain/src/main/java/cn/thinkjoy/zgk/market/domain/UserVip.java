@@ -7,7 +7,7 @@
 
 
 
-package cn.thinkjoy.zgk.domain;
+package cn.thinkjoy.zgk.market.domain;
 
 import cn.thinkjoy.common.domain.CreateBaseDomain;
 import org.apache.commons.lang.builder.EqualsBuilder;

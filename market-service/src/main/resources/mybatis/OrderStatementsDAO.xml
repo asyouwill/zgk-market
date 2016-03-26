@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.thinkjoy.zgk.market.dao.IOrderStatementsDAO">
+<!--
+insert
+update
+updateNull
+deleteById
+deleteByCondition
+deleteByProperty
+fetch
+findOne
+findList
+findAll
+queryPage
+like
+queryList
+queryOne
+count
+selectMaxId
+updateOrSave
+selectOne
+selectList
+-->
+    <sql id="Base_Column_List">
+        id,
+        order_no,
+        statement_no,
+        status,
+        create_date,
+        update_date,
+        creater_id,
+        state,
+        amount
+    </sql>
+    <insert id="insert" parameterType="OrderStatements">
+        INSERT INTO zgk_order_statements (
+        order_no,
+        statement_no,
+        status,
+        create_date,
+        update_date,
+        creater_id,
+        state,
+        amount
+        ) VALUES (
+        #{orderNo},
+        #{statementNo},
+        #{status},
+        #{createDate},
+        #{updateDate},
+        #{createrId},
+        #{state},
+        #{amount}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="OrderStatements">
+        UPDATE zgk_order_statements
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="orderNo!=null">
+                order_no = #{orderNo},
+            </if>
+            <if test="statementNo!=null">
+                statement_no = #{statementNo},
+            </if>
+            <if test="status!=null">
+                status = #{status},
+            </if>
+            <if test="createDate!=null">
+                create_date = #{createDate},
+            </if>
+            <if test="updateDate!=null">
+                update_date = #{updateDate},
+            </if>
+            <if test="createrId!=null">
+                creater_id = #{createrId},
+            </if>
+            <if test="state!=null">
+                state = #{state},
+            </if>
+            <if test="amount!=null">
+                amount = #{amount},
+            </if>
+        </trim>
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateMap">
+        UPDATE zgk_order_statements
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="map.orderNo!=null">
+                order_no = #{map.orderNo},
+            </if>
+            <if test="map.statementNo!=null">
+                statement_no = #{map.statementNo},
+            </if>
+            <if test="map.status!=null">
+                status = #{map.status},
+            </if>
+            <if test="map.createDate!=null">
+                create_date = #{map.createDate},
+            </if>
+            <if test="map.updateDate!=null">
+                update_date = #{map.updateDate},
+            </if>
+            <if test="map.createrId!=null">
+                creater_id = #{map.createrId},
+            </if>
+            <if test="map.state!=null">
+                state = #{map.state},
+            </if>
+            <if test="map.amount!=null">
+                amount = #{map.amount},
+            </if>
+        </trim>
+        WHERE
+        id = #{map.id}
+    </update>
+
+    <update id="updateByCondition">
+        UPDATE zgk_order_statements
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="update.orderNo!=null">
+                order_no = #{update.orderNo},
+            </if>
+            <if test="update.statementNo!=null">
+                statement_no = #{update.statementNo},
+            </if>
+            <if test="update.status!=null">
+                status = #{update.status},
+            </if>
+            <if test="update.createDate!=null">
+                create_date = #{update.createDate},
+            </if>
+            <if test="update.updateDate!=null">
+                update_date = #{update.updateDate},
+            </if>
+            <if test="update.createrId!=null">
+                creater_id = #{update.createrId},
+            </if>
+            <if test="update.state!=null">
+                state = #{update.state},
+            </if>
+            <if test="update.amount!=null">
+                amount = #{update.amount},
+            </if>
+        </trim>
+
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.orderNo!=null">
+                AND order_no = #{condition.orderNo}
+            </if>
+            <if test="condition.statementNo!=null">
+                AND statement_no = #{condition.statementNo}
+            </if>
+            <if test="condition.status!=null">
+                AND status = #{condition.status}
+            </if>
+            <if test="condition.createDate!=null">
+                AND create_date = #{condition.createDate}
+            </if>
+            <if test="condition.updateDate!=null">
+                AND update_date = #{condition.updateDate}
+            </if>
+            <if test="condition.createrId!=null">
+                AND creater_id = #{condition.createrId}
+            </if>
+            <if test="condition.state!=null">
+                AND state = #{condition.state}
+            </if>
+            <if test="condition.amount!=null">
+                AND amount = #{condition.amount}
+            </if>
+        </trim>
+    </update>
+
+    <insert id="insertMap" >
+        INSERT INTO zgk_order_statements (
+                order_no,
+                statement_no,
+                status,
+                create_date,
+                update_date,
+                creater_id,
+                state,
+                amount
+        ) VALUES (
+                    #{map.orderNo},
+                    #{map.statementNo},
+                    #{map.status},
+                    #{map.createDate},
+                    #{map.updateDate},
+                    #{map.createrId},
+                    #{map.state},
+                    #{map.amount}
+        )
+    </insert>
+
+
+    <update id="updateNull" parameterType="OrderStatements">
+        UPDATE zgk_order_statements
+        <trim prefix="SET" suffixOverrides=",">
+            order_no = #{orderNo},
+            statement_no = #{statementNo},
+            status = #{status},
+            create_date = #{createDate},
+            update_date = #{updateDate},
+            creater_id = #{createrId},
+            state = #{state},
+            amount = #{amount},
+        </trim>
+        WHERE
+        id = #{id} 
+    </update>
+
+    <!-- 按Id删除 -->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM zgk_order_statements
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </delete>
+
+
+    <delete id="deleteByCondition" parameterType="java.util.Map">
+        DELETE FROM zgk_order_statements
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="orderNo!=null">
+                AND order_no = #{orderNo}
+            </if>
+            <if test="statementNo!=null">
+                AND statement_no = #{statementNo}
+            </if>
+            <if test="status!=null">
+                AND status = #{status}
+            </if>
+            <if test="createDate!=null">
+                AND create_date = #{createDate}
+            </if>
+            <if test="updateDate!=null">
+                AND update_date = #{updateDate}
+            </if>
+            <if test="createrId!=null">
+                AND creater_id = #{createrId}
+            </if>
+            <if test="state!=null">
+                AND state = #{state}
+            </if>
+            <if test="amount!=null">
+                AND amount = #{amount}
+            </if>
+        </trim>
+    </delete>
+
+    <delete id="deleteByProperty" parameterType="java.util.Map">
+        DELETE FROM zgk_order_statements WHERE
+        ${property} = #{value}
+    </delete>
+
+    <select id="fetch" parameterType="java.lang.Integer" resultType="OrderStatements">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order_statements
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findOne" parameterType="java.util.Map" resultType="OrderStatements">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order_statements WHERE
+        ${property} = #{value}
+        LIMIT 0,1
+    </select>
+
+    <select id="findList" parameterType="java.util.Map" resultType="OrderStatements">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order_statements WHERE
+        ${property} = #{value}
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findAll" resultType="OrderStatements">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order_statements
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryPage" resultType="OrderStatements">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order_statements
+        <where>
+
+            <if test="condition.whereSql != null">
+                and id in (#{condition.whereSql})
+            </if>
+
+            <if test="condition.id!=null">
+                ${condition.groupOp}   id  ${condition.id.op}  #{condition.id.data}
+            </if>
+            <if test="condition.orderNo!=null">
+                ${condition.groupOp}   order_no  ${condition.order_no.op}  #{condition.order_no.data}
+            </if>
+            <if test="condition.statementNo!=null">
+                ${condition.groupOp}   statement_no  ${condition.statement_no.op}  #{condition.statement_no.data}
+            </if>
+            <if test="condition.status!=null">
+                ${condition.groupOp}   status  ${condition.status.op}  #{condition.status.data}
+            </if>
+            <if test="condition.createDate!=null">
+                ${condition.groupOp}   create_date  ${condition.create_date.op}  #{condition.create_date.data}
+            </if>
+            <if test="condition.updateDate!=null">
+                ${condition.groupOp}   update_date  ${condition.update_date.op}  #{condition.update_date.data}
+            </if>
+            <if test="condition.createrId!=null">
+                ${condition.groupOp}   creater_id  ${condition.creater_id.op}  #{condition.creater_id.data}
+            </if>
+            <if test="condition.state!=null">
+                ${condition.groupOp}   state  ${condition.state.op}  #{condition.state.data}
+            </if>
+            <if test="condition.amount!=null">
+                ${condition.groupOp}   amount  ${condition.amount.op}  #{condition.amount.data}
+            </if>
+
+
+    </where>
+
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+        <if test="offset != null">
+            limit ${offset}, ${rows}
+        </if>
+    </select>
+
+    <select id="like" parameterType="java.util.Map" resultType="OrderStatements">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order_statements
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id like CONCAT('%', #{id} , '%')
+            </if>
+            <if test="orderNo!=null">
+                AND order_no like CONCAT('%', #{orderNo} , '%')
+            </if>
+            <if test="statementNo!=null">
+                AND statement_no like CONCAT('%', #{statementNo} , '%')
+            </if>
+            <if test="status!=null">
+                AND status like CONCAT('%', #{status} , '%')
+            </if>
+            <if test="createDate!=null">
+                AND create_date like CONCAT('%', #{createDate} , '%')
+            </if>
+            <if test="updateDate!=null">
+                AND update_date like CONCAT('%', #{updateDate} , '%')
+            </if>
+            <if test="createrId!=null">
+                AND creater_id like CONCAT('%', #{createrId} , '%')
+            </if>
+            <if test="state!=null">
+                AND state like CONCAT('%', #{state} , '%')
+            </if>
+            <if test="amount!=null">
+                AND amount like CONCAT('%', #{amount} , '%')
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+
+    <select id="queryList" parameterType="java.util.Map" resultType="OrderStatements">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order_statements
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.orderNo!=null">
+                AND order_no = #{condition.orderNo}
+            </if>
+            <if test="condition.statementNo!=null">
+                AND statement_no = #{condition.statementNo}
+            </if>
+            <if test="condition.status!=null">
+                AND status = #{condition.status}
+            </if>
+            <if test="condition.createDate!=null">
+                AND create_date = #{condition.createDate}
+            </if>
+            <if test="condition.updateDate!=null">
+                AND update_date = #{condition.updateDate}
+            </if>
+            <if test="condition.createrId!=null">
+                AND creater_id = #{condition.createrId}
+            </if>
+            <if test="condition.state!=null">
+                AND state = #{condition.state}
+            </if>
+            <if test="condition.amount!=null">
+                AND amount = #{condition.amount}
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryOne" parameterType="java.util.Map" resultType="OrderStatements">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order_statements
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.orderNo!=null">
+                AND order_no = #{condition.orderNo}
+            </if>
+            <if test="condition.statementNo!=null">
+                AND statement_no = #{condition.statementNo}
+            </if>
+            <if test="condition.status!=null">
+                AND status = #{condition.status}
+            </if>
+            <if test="condition.createDate!=null">
+                AND create_date = #{condition.createDate}
+            </if>
+            <if test="condition.updateDate!=null">
+                AND update_date = #{condition.updateDate}
+            </if>
+            <if test="condition.createrId!=null">
+                AND creater_id = #{condition.createrId}
+            </if>
+            <if test="condition.state!=null">
+                AND state = #{condition.state}
+            </if>
+            <if test="condition.amount!=null">
+                AND amount = #{condition.amount}
+            </if>
+        </trim>
+        limit 0,1
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(id) FROM zgk_order_statements
+       <where>
+           <if test="id!=null">
+               ${groupOp} id ${id.op}  #{id.data}
+           </if>
+           <if test="orderNo!=null">
+               ${groupOp} order_no ${order_no.op}  #{order_no.data}
+           </if>
+           <if test="statementNo!=null">
+               ${groupOp} statement_no ${statement_no.op}  #{statement_no.data}
+           </if>
+           <if test="status!=null">
+               ${groupOp} status ${status.op}  #{status.data}
+           </if>
+           <if test="createDate!=null">
+               ${groupOp} create_date ${create_date.op}  #{create_date.data}
+           </if>
+           <if test="updateDate!=null">
+               ${groupOp} update_date ${update_date.op}  #{update_date.data}
+           </if>
+           <if test="createrId!=null">
+               ${groupOp} creater_id ${creater_id.op}  #{creater_id.data}
+           </if>
+           <if test="state!=null">
+               ${groupOp} state ${state.op}  #{state.data}
+           </if>
+           <if test="amount!=null">
+               ${groupOp} amount ${amount.op}  #{amount.data}
+           </if>
+
+       </where>
+    <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+    </if>
+    </select>
+
+    <select id="selectMaxId" resultType="java.lang.Integer">
+        SELECT
+        MAX(id)
+        FROM zgk_order_statements
+    </select>
+
+</mapper>
+

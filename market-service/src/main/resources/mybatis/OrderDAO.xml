@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.thinkjoy.zgk.market.dao.IOrderDAO">
+<!--
+insert
+update
+updateNull
+deleteById
+deleteByCondition
+deleteByProperty
+fetch
+findOne
+findList
+findAll
+queryPage
+like
+queryList
+queryOne
+count
+selectMaxId
+updateOrSave
+selectOne
+selectList
+-->
+    <sql id="Base_Column_List">
+        id,
+        user_id,
+        product_id,
+        status,
+        order_no,
+        channle,
+        create_date,
+        update_date,
+        state,
+        amount,
+        product_number,
+        product_price
+    </sql>
+    <insert id="insert" parameterType="Order">
+        INSERT INTO zgk_order (
+        user_id,
+        product_id,
+        status,
+        order_no,
+        channle,
+        create_date,
+        update_date,
+        state,
+        amount,
+        product_number,
+        product_price
+        ) VALUES (
+        #{userId},
+        #{productId},
+        #{status},
+        #{orderNo},
+        #{channle},
+        #{createDate},
+        #{updateDate},
+        #{state},
+        #{amount},
+        #{productNumber},
+        #{productPrice}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="Order">
+        UPDATE zgk_order
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId!=null">
+                user_id = #{userId},
+            </if>
+            <if test="productId!=null">
+                product_id = #{productId},
+            </if>
+            <if test="status!=null">
+                status = #{status},
+            </if>
+            <if test="orderNo!=null">
+                order_no = #{orderNo},
+            </if>
+            <if test="channle!=null">
+                channle = #{channle},
+            </if>
+            <if test="createDate!=null">
+                create_date = #{createDate},
+            </if>
+            <if test="updateDate!=null">
+                update_date = #{updateDate},
+            </if>
+            <if test="state!=null">
+                state = #{state},
+            </if>
+            <if test="amount!=null">
+                amount = #{amount},
+            </if>
+            <if test="productNumber!=null">
+                product_number = #{productNumber},
+            </if>
+            <if test="productPrice!=null">
+                product_price = #{productPrice},
+            </if>
+        </trim>
+        WHERE
+        id = #{id}
+    </update>
+
+    <update id="updateMap">
+        UPDATE zgk_order
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="map.userId!=null">
+                user_id = #{map.userId},
+            </if>
+            <if test="map.productId!=null">
+                product_id = #{map.productId},
+            </if>
+            <if test="map.status!=null">
+                status = #{map.status},
+            </if>
+            <if test="map.orderNo!=null">
+                order_no = #{map.orderNo},
+            </if>
+            <if test="map.channle!=null">
+                channle = #{map.channle},
+            </if>
+            <if test="map.createDate!=null">
+                create_date = #{map.createDate},
+            </if>
+            <if test="map.updateDate!=null">
+                update_date = #{map.updateDate},
+            </if>
+            <if test="map.state!=null">
+                state = #{map.state},
+            </if>
+            <if test="map.amount!=null">
+                amount = #{map.amount},
+            </if>
+            <if test="map.productNumber!=null">
+                product_number = #{map.productNumber},
+            </if>
+            <if test="map.productPrice!=null">
+                product_price = #{map.productPrice},
+            </if>
+        </trim>
+        WHERE
+        id = #{map.id}
+    </update>
+
+    <update id="updateByCondition">
+        UPDATE zgk_order
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="update.userId!=null">
+                user_id = #{update.userId},
+            </if>
+            <if test="update.productId!=null">
+                product_id = #{update.productId},
+            </if>
+            <if test="update.status!=null">
+                status = #{update.status},
+            </if>
+            <if test="update.orderNo!=null">
+                order_no = #{update.orderNo},
+            </if>
+            <if test="update.channle!=null">
+                channle = #{update.channle},
+            </if>
+            <if test="update.createDate!=null">
+                create_date = #{update.createDate},
+            </if>
+            <if test="update.updateDate!=null">
+                update_date = #{update.updateDate},
+            </if>
+            <if test="update.state!=null">
+                state = #{update.state},
+            </if>
+            <if test="update.amount!=null">
+                amount = #{update.amount},
+            </if>
+            <if test="update.productNumber!=null">
+                product_number = #{update.productNumber},
+            </if>
+            <if test="update.productPrice!=null">
+                product_price = #{update.productPrice},
+            </if>
+        </trim>
+
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.userId!=null">
+                AND user_id = #{condition.userId}
+            </if>
+            <if test="condition.productId!=null">
+                AND product_id = #{condition.productId}
+            </if>
+            <if test="condition.status!=null">
+                AND status = #{condition.status}
+            </if>
+            <if test="condition.orderNo!=null">
+                AND order_no = #{condition.orderNo}
+            </if>
+            <if test="condition.channle!=null">
+                AND channle = #{condition.channle}
+            </if>
+            <if test="condition.createDate!=null">
+                AND create_date = #{condition.createDate}
+            </if>
+            <if test="condition.updateDate!=null">
+                AND update_date = #{condition.updateDate}
+            </if>
+            <if test="condition.state!=null">
+                AND state = #{condition.state}
+            </if>
+            <if test="condition.amount!=null">
+                AND amount = #{condition.amount}
+            </if>
+            <if test="condition.productNumber!=null">
+                AND product_number = #{condition.productNumber}
+            </if>
+            <if test="condition.productPrice!=null">
+                AND product_price = #{condition.productPrice}
+            </if>
+        </trim>
+    </update>
+
+    <insert id="insertMap" >
+        INSERT INTO zgk_order (
+                user_id,
+                product_id,
+                status,
+                order_no,
+                channle,
+                create_date,
+                update_date,
+                state,
+                amount,
+                product_number,
+                product_price
+        ) VALUES (
+                    #{map.userId},
+                    #{map.productId},
+                    #{map.status},
+                    #{map.orderNo},
+                    #{map.channle},
+                    #{map.createDate},
+                    #{map.updateDate},
+                    #{map.state},
+                    #{map.amount},
+                    #{map.productNumber},
+                    #{map.productPrice}
+        )
+    </insert>
+
+
+    <update id="updateNull" parameterType="Order">
+        UPDATE zgk_order
+        <trim prefix="SET" suffixOverrides=",">
+            user_id = #{userId},
+            product_id = #{productId},
+            status = #{status},
+            order_no = #{orderNo},
+            channle = #{channle},
+            create_date = #{createDate},
+            update_date = #{updateDate},
+            state = #{state},
+            amount = #{amount},
+            product_number = #{productNumber},
+            product_price = #{productPrice},
+        </trim>
+        WHERE
+        id = #{id} 
+    </update>
+
+    <!-- 按Id删除 -->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM zgk_order
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+    </delete>
+
+
+    <delete id="deleteByCondition" parameterType="java.util.Map">
+        DELETE FROM zgk_order
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id = #{id}
+            </if>
+            <if test="userId!=null">
+                AND user_id = #{userId}
+            </if>
+            <if test="productId!=null">
+                AND product_id = #{productId}
+            </if>
+            <if test="status!=null">
+                AND status = #{status}
+            </if>
+            <if test="orderNo!=null">
+                AND order_no = #{orderNo}
+            </if>
+            <if test="channle!=null">
+                AND channle = #{channle}
+            </if>
+            <if test="createDate!=null">
+                AND create_date = #{createDate}
+            </if>
+            <if test="updateDate!=null">
+                AND update_date = #{updateDate}
+            </if>
+            <if test="state!=null">
+                AND state = #{state}
+            </if>
+            <if test="amount!=null">
+                AND amount = #{amount}
+            </if>
+            <if test="productNumber!=null">
+                AND product_number = #{productNumber}
+            </if>
+            <if test="productPrice!=null">
+                AND product_price = #{productPrice}
+            </if>
+        </trim>
+    </delete>
+
+    <delete id="deleteByProperty" parameterType="java.util.Map">
+        DELETE FROM zgk_order WHERE
+        ${property} = #{value}
+    </delete>
+
+    <select id="fetch" parameterType="java.lang.Long" resultType="Order">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            AND id = #{id}
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findOne" parameterType="java.util.Map" resultType="Order">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order WHERE
+        ${property} = #{value}
+        LIMIT 0,1
+    </select>
+
+    <select id="findList" parameterType="java.util.Map" resultType="Order">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order WHERE
+        ${property} = #{value}
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="findAll" resultType="Order">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryPage" resultType="Order">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order
+        <where>
+
+            <if test="condition.whereSql != null">
+                and id in (#{condition.whereSql})
+            </if>
+
+            <if test="condition.id!=null">
+                ${condition.groupOp}   id  ${condition.id.op}  #{condition.id.data}
+            </if>
+            <if test="condition.userId!=null">
+                ${condition.groupOp}   user_id  ${condition.user_id.op}  #{condition.user_id.data}
+            </if>
+            <if test="condition.productId!=null">
+                ${condition.groupOp}   product_id  ${condition.product_id.op}  #{condition.product_id.data}
+            </if>
+            <if test="condition.status!=null">
+                ${condition.groupOp}   status  ${condition.status.op}  #{condition.status.data}
+            </if>
+            <if test="condition.orderNo!=null">
+                ${condition.groupOp}   order_no  ${condition.order_no.op}  #{condition.order_no.data}
+            </if>
+            <if test="condition.channle!=null">
+                ${condition.groupOp}   channle  ${condition.channle.op}  #{condition.channle.data}
+            </if>
+            <if test="condition.createDate!=null">
+                ${condition.groupOp}   create_date  ${condition.create_date.op}  #{condition.create_date.data}
+            </if>
+            <if test="condition.updateDate!=null">
+                ${condition.groupOp}   update_date  ${condition.update_date.op}  #{condition.update_date.data}
+            </if>
+            <if test="condition.state!=null">
+                ${condition.groupOp}   state  ${condition.state.op}  #{condition.state.data}
+            </if>
+            <if test="condition.amount!=null">
+                ${condition.groupOp}   amount  ${condition.amount.op}  #{condition.amount.data}
+            </if>
+            <if test="condition.productNumber!=null">
+                ${condition.groupOp}   product_number  ${condition.product_number.op}  #{condition.product_number.data}
+            </if>
+            <if test="condition.productPrice!=null">
+                ${condition.groupOp}   product_price  ${condition.product_price.op}  #{condition.product_price.data}
+            </if>
+
+
+    </where>
+
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+        <if test="offset != null">
+            limit ${offset}, ${rows}
+        </if>
+    </select>
+
+    <select id="like" parameterType="java.util.Map" resultType="Order">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="id!=null">
+                AND id like CONCAT('%', #{id} , '%')
+            </if>
+            <if test="userId!=null">
+                AND user_id like CONCAT('%', #{userId} , '%')
+            </if>
+            <if test="productId!=null">
+                AND product_id like CONCAT('%', #{productId} , '%')
+            </if>
+            <if test="status!=null">
+                AND status like CONCAT('%', #{status} , '%')
+            </if>
+            <if test="orderNo!=null">
+                AND order_no like CONCAT('%', #{orderNo} , '%')
+            </if>
+            <if test="channle!=null">
+                AND channle like CONCAT('%', #{channle} , '%')
+            </if>
+            <if test="createDate!=null">
+                AND create_date like CONCAT('%', #{createDate} , '%')
+            </if>
+            <if test="updateDate!=null">
+                AND update_date like CONCAT('%', #{updateDate} , '%')
+            </if>
+            <if test="state!=null">
+                AND state like CONCAT('%', #{state} , '%')
+            </if>
+            <if test="amount!=null">
+                AND amount like CONCAT('%', #{amount} , '%')
+            </if>
+            <if test="productNumber!=null">
+                AND product_number like CONCAT('%', #{productNumber} , '%')
+            </if>
+            <if test="productPrice!=null">
+                AND product_price like CONCAT('%', #{productPrice} , '%')
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+
+    <select id="queryList" parameterType="java.util.Map" resultType="Order">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.userId!=null">
+                AND user_id = #{condition.userId}
+            </if>
+            <if test="condition.productId!=null">
+                AND product_id = #{condition.productId}
+            </if>
+            <if test="condition.status!=null">
+                AND status = #{condition.status}
+            </if>
+            <if test="condition.orderNo!=null">
+                AND order_no = #{condition.orderNo}
+            </if>
+            <if test="condition.channle!=null">
+                AND channle = #{condition.channle}
+            </if>
+            <if test="condition.createDate!=null">
+                AND create_date = #{condition.createDate}
+            </if>
+            <if test="condition.updateDate!=null">
+                AND update_date = #{condition.updateDate}
+            </if>
+            <if test="condition.state!=null">
+                AND state = #{condition.state}
+            </if>
+            <if test="condition.amount!=null">
+                AND amount = #{condition.amount}
+            </if>
+            <if test="condition.productNumber!=null">
+                AND product_number = #{condition.productNumber}
+            </if>
+            <if test="condition.productPrice!=null">
+                AND product_price = #{condition.productPrice}
+            </if>
+        </trim>
+        <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+        </if>
+    </select>
+
+    <select id="queryOne" parameterType="java.util.Map" resultType="Order">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM zgk_order
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="condition.id!=null">
+                AND id = #{condition.id}
+            </if>
+            <if test="condition.userId!=null">
+                AND user_id = #{condition.userId}
+            </if>
+            <if test="condition.productId!=null">
+                AND product_id = #{condition.productId}
+            </if>
+            <if test="condition.status!=null">
+                AND status = #{condition.status}
+            </if>
+            <if test="condition.orderNo!=null">
+                AND order_no = #{condition.orderNo}
+            </if>
+            <if test="condition.channle!=null">
+                AND channle = #{condition.channle}
+            </if>
+            <if test="condition.createDate!=null">
+                AND create_date = #{condition.createDate}
+            </if>
+            <if test="condition.updateDate!=null">
+                AND update_date = #{condition.updateDate}
+            </if>
+            <if test="condition.state!=null">
+                AND state = #{condition.state}
+            </if>
+            <if test="condition.amount!=null">
+                AND amount = #{condition.amount}
+            </if>
+            <if test="condition.productNumber!=null">
+                AND product_number = #{condition.productNumber}
+            </if>
+            <if test="condition.productPrice!=null">
+                AND product_price = #{condition.productPrice}
+            </if>
+        </trim>
+        limit 0,1
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(id) FROM zgk_order
+       <where>
+           <if test="id!=null">
+               ${groupOp} id ${id.op}  #{id.data}
+           </if>
+           <if test="userId!=null">
+               ${groupOp} user_id ${user_id.op}  #{user_id.data}
+           </if>
+           <if test="productId!=null">
+               ${groupOp} product_id ${product_id.op}  #{product_id.data}
+           </if>
+           <if test="status!=null">
+               ${groupOp} status ${status.op}  #{status.data}
+           </if>
+           <if test="orderNo!=null">
+               ${groupOp} order_no ${order_no.op}  #{order_no.data}
+           </if>
+           <if test="channle!=null">
+               ${groupOp} channle ${channle.op}  #{channle.data}
+           </if>
+           <if test="createDate!=null">
+               ${groupOp} create_date ${create_date.op}  #{create_date.data}
+           </if>
+           <if test="updateDate!=null">
+               ${groupOp} update_date ${update_date.op}  #{update_date.data}
+           </if>
+           <if test="state!=null">
+               ${groupOp} state ${state.op}  #{state.data}
+           </if>
+           <if test="amount!=null">
+               ${groupOp} amount ${amount.op}  #{amount.data}
+           </if>
+           <if test="productNumber!=null">
+               ${groupOp} product_number ${product_number.op}  #{product_number.data}
+           </if>
+           <if test="productPrice!=null">
+               ${groupOp} product_price ${product_price.op}  #{product_price.data}
+           </if>
+
+       </where>
+    <if test="orderBy!=null">
+        ORDER BY ${orderBy} ${sortBy}
+    </if>
+    </select>
+
+    <select id="selectMaxId" resultType="java.lang.Long">
+        SELECT
+        MAX(id)
+        FROM zgk_order
+    </select>
+
+</mapper>
+
