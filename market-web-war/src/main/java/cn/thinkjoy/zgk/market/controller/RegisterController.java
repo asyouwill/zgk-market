@@ -2,9 +2,9 @@ package cn.thinkjoy.zgk.market.controller;
 
 import cn.thinkjoy.cloudstack.dynconfig.DynConfigClientFactory;
 import cn.thinkjoy.common.exception.BizException;
-import cn.thinkjoy.gk.constant.CookieTimeConst;
-import cn.thinkjoy.gk.util.CookieUtil;
-import cn.thinkjoy.gk.util.RedisUtil;
+import cn.thinkjoy.zgk.market.constant.CookieTimeConst;
+import cn.thinkjoy.zgk.market.util.CookieUtil;
+import cn.thinkjoy.zgk.market.util.RedisUtil;
 import cn.thinkjoy.zgk.market.common.BaseController;
 import cn.thinkjoy.zgk.market.common.ERRORCODE;
 import cn.thinkjoy.zgk.market.constant.RedisConst;

@@ -1,10 +1,9 @@
 package cn.thinkjoy.zgk.market.common;
 
-import cn.thinkjoy.gk.common.BaseCommonController;
-import cn.thinkjoy.gk.constant.SessionConst;
-import cn.thinkjoy.gk.constant.UserRedisConst;
-import cn.thinkjoy.gk.util.AreaCookieUtil;
-import cn.thinkjoy.gk.util.RedisUtil;
+import cn.thinkjoy.zgk.market.constant.SessionConst;
+import cn.thinkjoy.zgk.market.constant.UserRedisConst;
+import cn.thinkjoy.zgk.market.util.AreaCookieUtil;
+import cn.thinkjoy.zgk.market.util.RedisUtil;
 import cn.thinkjoy.zgk.market.pojo.UserAccountPojo;
 import cn.thinkjoy.zgk.market.service.IUserAccountExService;
 import com.alibaba.fastjson.JSON;

@@ -2,13 +2,12 @@ package cn.thinkjoy.zgk.market.controller;
 
 import cn.thinkjoy.cloudstack.dynconfig.DynConfigClientFactory;
 import cn.thinkjoy.common.exception.BizException;
-import cn.thinkjoy.gk.constant.CookieTimeConst;
-import cn.thinkjoy.gk.constant.SpringMVCConst;
-import cn.thinkjoy.gk.util.CookieUtil;
 import cn.thinkjoy.zgk.market.common.BaseController;
 import cn.thinkjoy.zgk.market.common.ERRORCODE;
+import cn.thinkjoy.zgk.market.constant.CookieTimeConst;
 import cn.thinkjoy.zgk.market.pojo.UserAccountPojo;
 import cn.thinkjoy.zgk.market.service.IUserAccountExService;
+import cn.thinkjoy.zgk.market.util.CookieUtil;
 import com.jlusoft.microschool.core.utils.MD5Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@Scope(SpringMVCConst.SCOPE)
+@Scope("prototype")
 @RequestMapping("/login")
 public class LoginController extends BaseController {
 

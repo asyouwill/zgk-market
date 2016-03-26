@@ -11,5 +11,9 @@ dependencies {
     }
     compile "cn.thinkjoy.cloudstack:cs-spring-redis:$thinkjoyCloudstackVersion"
 
+    compile ("cn.thinkjoy.notify:notify-service:jx0.0.1-SNAPSHOT"){
+        exclude group: 'cn.thinkjoy.common', module: 'thinkjoy-mu-common'
+    }
+
     compile project(':market-api')
 }
