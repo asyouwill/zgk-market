@@ -1,0 +1,37 @@
+allprojects {
+
+    thinkjoyCommonVersion = "0.0.74-SNAPSHOT"
+
+    thinkjoyCloudstackVersion = "0.0.11-SNAPSHOT"
+
+    thinkjoyUCMVersion = "1.0.0-SNAPSHOT"
+
+    jxProcotolCommonVersion = "0.0.136-SNAPSHOT"
+
+    jxBackendAPI = "0.0.27-SNAPSHOT"
+
+    thinkjoyIMVersion = "0.0.21-SNAPSHOT"
+
+    freemarkerVersion = "2.3.20"
+
+    springVersion = "4.1.0.RELEASE"
+
+    jettyVersion = "6.1.26"
+
+    retrofitVersion = "1.9.0"
+
+    okhttpVersion = "2.1.0"
+
+    mockVersion = "1.0.3-SNAPSHOT"
+
+    jxOAuthVersion = "0.0.15-SNAPSHOT"
+
+    jxOAuthCommonVersion = "0.0.9-SNAPSHOT"
+
+    jxCallingVersion = "0.1.4-SNAPSHOT"
+
+    jxProtocolCommonVersion = "0.0.26-SNAPSHOT"
+
+    jxCommonVersion = "0.0.9-SNAPSHOT"
+
+}

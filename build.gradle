@@ -1,0 +1,160 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: "sonar-runner"
+
+apply from: 'dependencies.gradle'
+sourceCompatibility = 1.7
+
+//删除父目录下的test，避免test task执行失败
+delete "${buildDir}/classes/test"
+
+//sonarRunner {
+//    sonarProperties {
+//        property "sonar.host.url", "http://sonar.thinkjoy.local"
+//        property "sonar.jdbc.url", "jdbc:mysql://sonar.thinkjoy.local:3306/sonar?useUnicode=true&characterEncoding=utf8"
+//        property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
+//        property "sonar.jdbc.username", "sonar"
+//        property "sonar.jdbc.password", "sonar!@#\$%^&*()_+"
+//        property "sonar.branch", "develop"
+//        property "sonar.dynamicAnalysis", "reuseReports"
+////        properties["sonar.sources"] = android.sourceSets.main.java.srcDirs
+////        properties["sonar.tests"] = android.sourceSets.instrumentTest.java.srcDirs
+////        properties["sonar.binaries"] = file("build/classes/debug")
+//        property "sonar.junit.reportsPath","build/test-results/"
+//    }
+//}
+
+buildscript{
+    repositories { maven { url 'http://repo.thinkjoy.cn/content/groups/public/' } }
+
+    dependencies{
+        classpath 'cn.thinkjoy.gradle.plugins:gradle-gitflow-plugin:1.0.1+'
+        classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.4'
+        classpath 'org.hibernate.build.gradle:gradle-maven-publish-auth:2.0.1+'
+    }
+}
+
+tasks.withType(Compile) {
+    options.encoding = "UTF-8"
+}
+
+/** 此闭包内的声明子类皆可使用 */
+allprojects {
+    group = 'cn.thinkjoy.jx.calling'
+    version = '0.0.8-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'maven-publish'
+    apply plugin: 'maven-publish-auth'
+
+    repositories {
+        repositories { maven { url 'http://repo.thinkjoy.cn/content/groups/public/' } }
+        mavenLocal()
+        mavenCentral()
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) { from components.java }
+        }
+
+        repositories {
+            maven {
+                name = 'thinkjoy'
+                url "http://repo.thinkjoy.cn/content/repositories/${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}"
+            }
+        }
+    }
+}
+
+//拷贝根目录下的所有test到各自子module下
+task "copytest" <<{
+    def fromPath
+    def toPath
+    subprojects.each {
+        fromPath = "${project.buildDir}/classes/test/${it.name}"
+        toPath = "${it.buildDir}/classes/test"
+
+        copy {
+            from fromPath
+            into toPath
+        }
+
+    }
+}
+
+task createREADME(){
+    file("README.md").createNewFile()
+}
+
+subprojects{
+
+    task "createJavaProject" << {
+        sourceSets*.java.srcDirs*.each { it.mkdirs() }
+        sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+
+        /** 可选生成子文件夹 */
+        file("src/main/filters").mkdirs()
+        file("src/main/assembly").mkdirs()
+        file("src/main/config").mkdirs()
+        file("src/main/scripts").mkdirs()
+
+        /** 填充文件，便于git提交 */
+        file("src/main/java/cn/thinkjoy").mkdirs()
+        file("src/main/java/cn/thinkjoy/package-info.java").createNewFile()
+        file("src/main/resources").mkdirs()
+        file("src/main/resources/spring.xml").createNewFile()
+
+        file("src/test/java/cn/thinkjoy").mkdirs()
+        file("src/test/java/cn/thinkjoy/package-info.java").createNewFile()
+        file("src/test/resources/spring.xml").createNewFile()
+    }
+
+    /** 有时候会报错，但需要执行
+     task createREADME(){
+     file("README.md").createNewFile()
+     }
+     */
+    configurations {
+        provided
+        compile.extendsFrom provided
+
+        //排除 dubbo对spring的依赖
+        all*.exclude group: 'org.springframework', module: 'spring'
+        all*.exclude group: 'asm', module: 'asm'
+        //排除log4j桥接，只允许使用logback
+        all*.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    }
+
+    dependencies{
+        //都会依赖bizcommon
+        compile group: "cn.thinkjoy.common", name: "thinkjoy-domain-common", version: "$thinkjoyCommonVersion", changing: true
+    }
+}
+
+configure(subprojects.findAll{it.name.contains('-service')}){
+    task createServiceProject(dependsOn: 'createJavaProject') << {
+
+        /** 配置生成 */
+        file("src/main/resources/config").mkdirs()
+        file("src/main/resources/config/main-conf.properties").createNewFile()
+        file("src/main/resources/config/metadata.properties").createNewFile()
+    }
+
+}
+
+configure(subprojects.findAll{it.name.contains('war')}){
+    apply plugin: 'war'
+
+    task createWebProject(dependsOn: 'createJavaProject') << {
+        def webAppDir = file("$webAppDirName")
+        webAppDir.mkdirs()
+
+        file("src/main/resources/config").mkdirs()
+        file("src/main/resources/config/main-conf.properties").createNewFile()
+        file("src/main/resources/config/metadata.properties").createNewFile()
+    }
+
+}

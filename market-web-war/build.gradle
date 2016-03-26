@@ -1,0 +1,21 @@
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile "org.freemarker:freemarker:$freemarkerVersion"
+
+    compile 'org.springframework:spring-webmvc:4.0.6.RELEASE'
+    compile 'jstl:jstl:1.2'
+    providedCompile 'javax.servlet:servlet-api:2.5'
+
+
+    compile group: "cn.thinkjoy.common", name: "thinkjoy-web-common", version: "$thinkjoyCommonVersion", changing: true
+    compile "cn.thinkjoy.jx.protocol:jx-protocol-common:$jxProtocolCommonVersion"
+
+    compile "cn.thinkjoy.jx:jx-auth-common:$jxCommonVersion"
+    compile ("cn.thinkjoy.mock:mock-scan:$mockVersion"){
+        exclude group: 'cn.thinkjoy.common', module: 'thinkjoy-mu-common'
+        exclude group: 'cn.thinkjoy.common', module: 'thinkjoy-web-common'
+
+    }
+    compile project(':market-service')
+}

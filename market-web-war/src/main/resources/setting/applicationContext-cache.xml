@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:cache="http://www.springframework.org/schema/cache" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  	  http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/cache 
+      http://www.springframework.org/schema/cache/spring-cache.xsd">
+	<description>缓存配置</description>
+	<!-- 打开基于注解的缓存配置 -->
+	<cache:annotation-driven />
+	<!--&lt;!&ndash; Redis Template &ndash;&gt;-->
+	<!--<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">-->
+		<!--<property name="connectionFactory" ref="redisConnectionFactory" />-->
+	<!--</bean>-->
+
+	<!-- 缓存管理器 -->
+	<bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+		<constructor-arg ref="redisTemplate" />
+		<property name="usePrefix" value="true" />
+	</bean>
+
+    <!--<bean id="redisConnectionFactory"-->
+          <!--class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">-->
+        <!--<property name="hostName" value="${cache.local}" />-->
+        <!--<property name="port" value="${cache.port}" />-->
+    <!--</bean>-->
+
+
+</beans>
