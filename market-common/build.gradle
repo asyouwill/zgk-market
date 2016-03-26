@@ -1,0 +1,19 @@
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile group: "cn.thinkjoy.common", name: "thinkjoy-web-common", version: "$thinkjoyCommonVersion", changing: true
+
+    compile "org.mortbay.jetty:servlet-api:2.5-20081211"
+
+    compile "cn.thinkjoy.cloudstack:cs-spring-redis:$thinkjoyCloudstackVersion"
+    compile "org.apache.poi:poi-ooxml:3.9"
+    compile "org.apache.poi:poi:3.9"
+    compile "commons-io:commons-io:2.4"
+
+    compile ("cn.thinkjoy:microschool-core:1.4.7"){
+        exclude group: 'org.springframework'
+        exclude group: 'org.codehaus.jackson'
+        exclude group: 'net.sf.json-lib'
+    }
+    compile group: "org.apache.httpcomponents", name: "httpclient", version: "4.2.2"
+}
