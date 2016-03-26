@@ -84,6 +84,6 @@
 
 
 ##idea##
-/.idea/
+/.idea
 *.iml
 /classes/
