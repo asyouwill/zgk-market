@@ -1,5 +1,11 @@
+#######开放模式############
+
+###############
+#    folder   #
+###############
 /_souceInsight_/
 /build/
+/*/build/
 /MoDIS/
 /Doc/
 /mtk_lib/
@@ -26,13 +32,6 @@
 
 
 ###############
-#  view #
-###############
-.sass-cache
-
-
-
-###############
 #  fixed file #
 ###############
 *.exe
@@ -50,7 +49,7 @@
 *.o
 *.plg
 *.keep
-
+/.gradle/*
 
 ###############
 #  temp file  #
@@ -84,6 +83,5 @@
 
 
 ##idea##
-/.idea
+.idea/*
 *.iml
-/classes/
