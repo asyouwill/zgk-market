@@ -40,8 +40,8 @@ tasks.withType(Compile) {
 
 /** 此闭包内的声明子类皆可使用 */
 allprojects {
-    group = 'cn.thinkjoy.jx.calling'
-    version = '0.0.8-SNAPSHOT'
+    group = 'cn.thinkjoy.zgk.market'
+    version = '0.0.1-SNAPSHOT'
 
     apply plugin: 'java'
     apply plugin: 'idea'
