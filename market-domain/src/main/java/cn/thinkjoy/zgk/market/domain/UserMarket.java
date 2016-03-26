@@ -16,8 +16,8 @@ import org.apache.commons.lang.builder.ToStringStyle;
 import cn.thinkjoy.common.domain.CreateBaseDomain;
 
 public class UserMarket extends CreateBaseDomain{
-    private Integer accountId;
-    private Integer parentId;
+    private Long accountId;
+    private Long parentId;
     private String qrcodeUrl;
     private Integer agentLevel;
     private Long updateDate;
@@ -25,18 +25,18 @@ public class UserMarket extends CreateBaseDomain{
 
 	public UserMarket(){
 	}
-    public void setAccountId(Integer value) {
+    public void setAccountId(Long value) {
         this.accountId = value;
     }
 
-    public Integer getAccountId() {
+    public Long getAccountId() {
         return this.accountId;
     }
-    public void setParentId(Integer value) {
+    public void setParentId(Long value) {
         this.parentId = value;
     }
 
-    public Integer getParentId() {
+    public Long getParentId() {
         return this.parentId;
     }
     public void setQrcodeUrl(String value) {

@@ -59,30 +59,6 @@
                 <value>application/json; charset=utf-8</value>
             </list>
         </property>
-        <property name="iTypeReference" ref="typeReferenceMaps" />
     </bean>
 
-    <bean id="typeReferenceMaps" class="cn.thinkjoy.jx.calling.common.TypeReferenceMaps" init-method="init"/>
-
-
-    <mvc:interceptors >
-        <mvc:interceptor>
-            <mvc:mapping path="/deviceCalling/**"/>
-            <bean class="cn.thinkjoy.jx.calling.interceptor.AuthInterceptior"></bean>
-        </mvc:interceptor>
-
-        <mvc:interceptor>
-            <!-- 需拦截的地址 -->
-            <!-- 一级目录 -->
-            <mvc:mapping path="/*" />
-
-            <!-- 需排除拦截的地址 -->
-            <mvc:exclude-mapping path="/v1/*"/>
-            <mvc:exclude-mapping path="/*.js"/>
-            <mvc:exclude-mapping path="/*.css"/>
-            <mvc:exclude-mapping path="/static/*"/>
-            <mvc:exclude-mapping path="/web/login/*"/>
-            <bean class="cn.thinkjoy.jx.calling.interceptor.WebLoginInterceptior"></bean>
-        </mvc:interceptor>
-    </mvc:interceptors>
 </beans>
