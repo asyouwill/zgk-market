@@ -16,7 +16,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="market-domain" exported="" />
     <orderEntry type="library" exported="" name="Gradle: cn.thinkjoy.common:thinkjoy-domain-common:0.0.74-SNAPSHOT" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: cn.thinkjoy.jx.protocol:jx-calling-dto:0.1.4-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />

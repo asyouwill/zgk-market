@@ -26,7 +26,6 @@
           </element>
           <element id="library" level="project" name="Gradle: cn.thinkjoy.common:thinkjoy-domain-common:0.0.74-SNAPSHOT" />
           <element id="library" level="project" name="Gradle: commons-lang:commons-lang:2.6" />
-          <element id="library" level="project" name="Gradle: cn.thinkjoy.jx.protocol:jx-calling-dto:0.1.4-SNAPSHOT" />
           <element id="library" level="project" name="Gradle: cn.thinkjoy.common:thinkjoy-mus-common:0.0.74-SNAPSHOT" />
           <element id="library" level="project" name="Gradle: cn.thinkjoy.ucm:ucm-api:1.0.0-SNAPSHOT" />
           <element id="library" level="project" name="Gradle: cn.thinkjoy.cloudstack:cs-spring-redis:0.0.23-SNAPSHOT" />
