@@ -49,12 +49,12 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!-- 自动扫描domain目录, 省掉Configuration.xml里的手工配置 -->
-        <property name="typeAliasesPackage" value="cn.thinkjoy.common.managerui.domain,cn.thinkjoy.zgk.market.domain"/>
+        <property name="typeAliasesPackage" value="cn.thinkjoy.common.managerui.domain,cn.thinkjoy.zgk.market.domain,cn.thinkjoy.zgk.market.pojo"/>
         <!-- 显式指定Mapper文件位置 -->
-        <property name="mapperLocations" value="classpath:/mybatis/**/*.xml"/>
+        <property name="mapperLocations" value="classpath:/mybatis/*.xml"/>
     </bean>
     <!-- 扫描basePackage下接口 自动生成代理实现类 -->
-    <mybatis:scan base-package="cn.thinkjoy.common.managerui.dao,cn.thinkjoy.zgk.market.dao,cn.thinkjoy.zgk.market.dao.ex" factory-ref="sqlSessionFactory"/>
+    <mybatis:scan base-package="cn.thinkjoy.common.managerui.dao,cn.thinkjoy.zgk.market.dao" factory-ref="sqlSessionFactory"/>
 
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">

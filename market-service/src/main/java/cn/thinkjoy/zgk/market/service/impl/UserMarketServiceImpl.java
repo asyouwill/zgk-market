@@ -7,15 +7,16 @@
 package cn.thinkjoy.zgk.market.service.impl;
 
 import cn.thinkjoy.common.dao.IBaseDAO;
-import cn.thinkjoy.zgk.market.dao.IUserMarketDAO;
-import cn.thinkjoy.zgk.market.service.IUserMarketService;
 import cn.thinkjoy.common.service.impl.AbstractPageService;
+import cn.thinkjoy.zgk.market.dao.IUserMarketDAO;
+import cn.thinkjoy.zgk.market.domain.UserMarket;
+import cn.thinkjoy.zgk.market.service.IUserMarketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service("UserMarketServiceImpl")
-public class UserMarketServiceImpl extends AbstractPageService<IBaseDAO<UserMarket>, UserMarket> implements IUserMarketService<IBaseDAO<UserMarket>,UserMarket>{
+public class UserMarketServiceImpl extends AbstractPageService<IBaseDAO<UserMarket>, UserMarket> implements IUserMarketService<IBaseDAO<UserMarket>,UserMarket> {
     @Autowired
     private IUserMarketDAO userMarketDAO;
 
