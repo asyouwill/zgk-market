@@ -1,22 +1,18 @@
 package cn.thinkjoy.zgk.market.controller;
 
-import cn.thinkjoy.cloudstack.dynconfig.DynConfigClientFactory;
 import cn.thinkjoy.common.exception.BizException;
-import cn.thinkjoy.zgk.market.constant.CookieTimeConst;
-import cn.thinkjoy.zgk.market.util.CookieUtil;
-import cn.thinkjoy.zgk.market.util.RedisUtil;
 import cn.thinkjoy.zgk.market.common.BaseController;
 import cn.thinkjoy.zgk.market.common.ERRORCODE;
 import cn.thinkjoy.zgk.market.constant.RedisConst;
 import cn.thinkjoy.zgk.market.domain.UserAccount;
 import cn.thinkjoy.zgk.market.pojo.UserAccountPojo;
 import cn.thinkjoy.zgk.market.service.IUserAccountExService;
+import cn.thinkjoy.zgk.market.util.RedisUtil;
 import com.jlusoft.microschool.core.utils.MD5Util;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 注册
  */
 @Controller
-@Scope("prototype")
 @RequestMapping("/register")
 public class RegisterController extends BaseController {
 
@@ -50,10 +45,11 @@ public class RegisterController extends BaseController {
     @ResponseBody
     public String registerAccount(@RequestParam(value="account",required = false) String account,
                                   @RequestParam(value="captcha",required = false) String captcha,
-                                  @RequestParam(value="password",required = false) String password)
-            throws Exception{
-        long areaId=getAreaCookieValue();
-        try{
+                                  @RequestParam(value="password",required = false) String password,
+                                  @RequestParam(value = "areaId",required = false) Long areaId,
+                                  @RequestParam(value = "sharerId",required = false) Long sharerId,
+                                  @RequestParam(value = "shareType",required = false) Integer sharerType) {
+
             if (StringUtils.isEmpty(account)) {
                 throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "请输入账号!");
             }
@@ -80,8 +76,9 @@ public class RegisterController extends BaseController {
             userAccount.setUserType(0);
             userAccount.setStatus(0);
             userAccount.setAreaId(areaId);
+
             try{
-                boolean flag=userAccountExService.insertUserAccount(userAccount);
+                boolean flag=userAccountExService.insertUserAccount(userAccount,sharerId,sharerType);
                 if (!flag){
                     throw new BizException(ERRORCODE.PARAM_ERROR.getCode(),"账户注册失败");
                 }
@@ -89,21 +86,15 @@ public class RegisterController extends BaseController {
                 throw new BizException(ERRORCODE.PARAM_ERROR.getCode(),"账户注册失败");
             }
 
-            userAccountBean = userAccountExService.findUserAccountPojoByPhone(account,areaId);
+//            userAccountBean = userAccountExService.findUserAccountPojoByPhone(account,areaId);
 
-            long id = (long)userAccountBean.getId();
+//            long id = (long)userAccountBean.getId();
 
-            String domain = DynConfigClientFactory.getClient().getConfig("login", "domain");
-
-            response.addCookie(CookieUtil.addCookie(domain, getCookieName(), String.valueOf(id), CookieTimeConst.DEFAULT_COOKIE));
-
-            setUserAccountPojo(userAccountBean);
-
-        }catch (Exception e){
-            throw e;
-        }finally {
-
-        }
+//            String domain = DynConfigClientFactory.getClient().getConfig("login", "domain");
+//
+//            response.addCookie(CookieUtil.addCookie(domain, getCookieName(), String.valueOf(id), CookieTimeConst.DEFAULT_COOKIE));
+//
+//            setUserAccountPojo(userAccountBean);
         return "registerSuccess";
     }
     /**

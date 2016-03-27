@@ -8,7 +8,6 @@ package cn.thinkjoy.zgk.market.service.impl;
 
 import cn.thinkjoy.common.dao.IBaseDAO;
 import cn.thinkjoy.zgk.market.dao.IUserMarketDAO;
-import cn.thinkjoy.zgk.market.domain.UserMarket;
 import cn.thinkjoy.zgk.market.service.IUserMarketService;
 import cn.thinkjoy.common.service.impl.AbstractPageService;
 import org.springframework.beans.factory.annotation.Autowired;

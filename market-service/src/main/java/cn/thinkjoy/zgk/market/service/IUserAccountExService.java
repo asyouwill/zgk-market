@@ -21,7 +21,7 @@ public interface IUserAccountExService {
 
     int findUserAccountCountByPhone(String phone, long areaId);
 
-    boolean insertUserAccount(UserAccount userAccount);
+    boolean insertUserAccount(UserAccount userAccount,Long sharerId,Integer sharerType);
 
     boolean updateUserAccount(UserAccount userAccount);
 

@@ -26,9 +26,11 @@ selectList
     <sql id="Base_Column_List">
         id,
         accountId,
-        parentId,
+        sharerId,
+        sharerType,
         qrcodeUrl,
         agentLevel,
+        fromType,
         createDate,
         updateDate,
         creator,
@@ -37,18 +39,22 @@ selectList
     <insert id="insert" parameterType="UserMarket">
         INSERT INTO zgk_user_market (
         accountId,
-        parentId,
+        sharerId,
+        sharerType,
         qrcodeUrl,
         agentLevel,
+        fromType,
         createDate,
         updateDate,
         creator,
         modifier
         ) VALUES (
         #{accountId},
-        #{parentId},
+        #{sharerId},
+        #{sharerType},
         #{qrcodeUrl},
         #{agentLevel},
+        #{fromType},
         #{createDate},
         #{updateDate},
         #{creator},
@@ -66,14 +72,20 @@ selectList
             <if test="accountId!=null">
                 accountId = #{accountId},
             </if>
-            <if test="parentId!=null">
-                parentId = #{parentId},
+            <if test="sharerId!=null">
+                sharerId = #{sharerId},
+            </if>
+            <if test="sharerType!=null">
+                sharerType = #{sharerType},
             </if>
             <if test="qrcodeUrl!=null">
                 qrcodeUrl = #{qrcodeUrl},
             </if>
             <if test="agentLevel!=null">
                 agentLevel = #{agentLevel},
+            </if>
+            <if test="fromType!=null">
+                fromType = #{fromType},
             </if>
             <if test="createDate!=null">
                 createDate = #{createDate},
@@ -98,14 +110,20 @@ selectList
             <if test="map.accountId!=null">
                 accountId = #{map.accountId},
             </if>
-            <if test="map.parentId!=null">
-                parentId = #{map.parentId},
+            <if test="map.sharerId!=null">
+                sharerId = #{map.sharerId},
+            </if>
+            <if test="map.sharerType!=null">
+                sharerType = #{map.sharerType},
             </if>
             <if test="map.qrcodeUrl!=null">
                 qrcodeUrl = #{map.qrcodeUrl},
             </if>
             <if test="map.agentLevel!=null">
                 agentLevel = #{map.agentLevel},
+            </if>
+            <if test="map.fromType!=null">
+                fromType = #{map.fromType},
             </if>
             <if test="map.createDate!=null">
                 createDate = #{map.createDate},
@@ -130,14 +148,20 @@ selectList
             <if test="update.accountId!=null">
                 accountId = #{update.accountId},
             </if>
-            <if test="update.parentId!=null">
-                parentId = #{update.parentId},
+            <if test="update.sharerId!=null">
+                sharerId = #{update.sharerId},
+            </if>
+            <if test="update.sharerType!=null">
+                sharerType = #{update.sharerType},
             </if>
             <if test="update.qrcodeUrl!=null">
                 qrcodeUrl = #{update.qrcodeUrl},
             </if>
             <if test="update.agentLevel!=null">
                 agentLevel = #{update.agentLevel},
+            </if>
+            <if test="update.fromType!=null">
+                fromType = #{update.fromType},
             </if>
             <if test="update.createDate!=null">
                 createDate = #{update.createDate},
@@ -160,14 +184,20 @@ selectList
             <if test="condition.accountId!=null">
                 AND accountId = #{condition.accountId}
             </if>
-            <if test="condition.parentId!=null">
-                AND parentId = #{condition.parentId}
+            <if test="condition.sharerId!=null">
+                AND sharerId = #{condition.sharerId}
+            </if>
+            <if test="condition.sharerType!=null">
+                AND sharerType = #{condition.sharerType}
             </if>
             <if test="condition.qrcodeUrl!=null">
                 AND qrcodeUrl = #{condition.qrcodeUrl}
             </if>
             <if test="condition.agentLevel!=null">
                 AND agentLevel = #{condition.agentLevel}
+            </if>
+            <if test="condition.fromType!=null">
+                AND fromType = #{condition.fromType}
             </if>
             <if test="condition.createDate!=null">
                 AND createDate = #{condition.createDate}
@@ -187,18 +217,22 @@ selectList
     <insert id="insertMap" >
         INSERT INTO zgk_user_market (
                 accountId,
-                parentId,
+                sharerId,
+                sharerType,
                 qrcodeUrl,
                 agentLevel,
+                fromType,
                 createDate,
                 updateDate,
                 creator,
                 modifier
         ) VALUES (
                     #{map.accountId},
-                    #{map.parentId},
+                    #{map.sharerId},
+                    #{map.sharerType},
                     #{map.qrcodeUrl},
                     #{map.agentLevel},
+                    #{map.fromType},
                     #{map.createDate},
                     #{map.updateDate},
                     #{map.creator},
@@ -211,9 +245,11 @@ selectList
         UPDATE zgk_user_market
         <trim prefix="SET" suffixOverrides=",">
             accountId = #{accountId},
-            parentId = #{parentId},
+            sharerId = #{sharerId},
+            sharerType = #{sharerType},
             qrcodeUrl = #{qrcodeUrl},
             agentLevel = #{agentLevel},
+            fromType = #{fromType},
             createDate = #{createDate},
             updateDate = #{updateDate},
             creator = #{creator},
@@ -224,7 +260,7 @@ selectList
     </update>
 
     <!-- 按Id删除 -->
-    <delete id="deleteById" parameterType="java.lang.Integer">
+    <delete id="deleteById" parameterType="java.lang.Long">
         DELETE FROM zgk_user_market
         <trim prefix="WHERE" prefixOverrides="AND | OR">
             AND id = #{id}
@@ -241,14 +277,20 @@ selectList
             <if test="accountId!=null">
                 AND accountId = #{accountId}
             </if>
-            <if test="parentId!=null">
-                AND parentId = #{parentId}
+            <if test="sharerId!=null">
+                AND sharerId = #{sharerId}
+            </if>
+            <if test="sharerType!=null">
+                AND sharerType = #{sharerType}
             </if>
             <if test="qrcodeUrl!=null">
                 AND qrcodeUrl = #{qrcodeUrl}
             </if>
             <if test="agentLevel!=null">
                 AND agentLevel = #{agentLevel}
+            </if>
+            <if test="fromType!=null">
+                AND fromType = #{fromType}
             </if>
             <if test="createDate!=null">
                 AND createDate = #{createDate}
@@ -270,7 +312,7 @@ selectList
         ${property} = #{value}
     </delete>
 
-    <select id="fetch" parameterType="java.lang.Integer" resultType="UserMarket">
+    <select id="fetch" parameterType="java.lang.Long" resultType="UserMarket">
         SELECT
         <include refid="Base_Column_List" />
         FROM zgk_user_market
@@ -325,14 +367,20 @@ selectList
             <if test="condition.accountId!=null">
                 ${condition.groupOp}   accountId  ${condition.accountId.op}  #{condition.accountId.data}
             </if>
-            <if test="condition.parentId!=null">
-                ${condition.groupOp}   parentId  ${condition.parentId.op}  #{condition.parentId.data}
+            <if test="condition.sharerId!=null">
+                ${condition.groupOp}   sharerId  ${condition.sharerId.op}  #{condition.sharerId.data}
+            </if>
+            <if test="condition.sharerType!=null">
+                ${condition.groupOp}   sharerType  ${condition.sharerType.op}  #{condition.sharerType.data}
             </if>
             <if test="condition.qrcodeUrl!=null">
                 ${condition.groupOp}   qrcodeUrl  ${condition.qrcodeUrl.op}  #{condition.qrcodeUrl.data}
             </if>
             <if test="condition.agentLevel!=null">
                 ${condition.groupOp}   agentLevel  ${condition.agentLevel.op}  #{condition.agentLevel.data}
+            </if>
+            <if test="condition.fromType!=null">
+                ${condition.groupOp}   fromType  ${condition.fromType.op}  #{condition.fromType.data}
             </if>
             <if test="condition.createDate!=null">
                 ${condition.groupOp}   createDate  ${condition.createDate.op}  #{condition.createDate.data}
@@ -369,14 +417,20 @@ selectList
             <if test="accountId!=null">
                 AND accountId like CONCAT('%', #{accountId} , '%')
             </if>
-            <if test="parentId!=null">
-                AND parentId like CONCAT('%', #{parentId} , '%')
+            <if test="sharerId!=null">
+                AND sharerId like CONCAT('%', #{sharerId} , '%')
+            </if>
+            <if test="sharerType!=null">
+                AND sharerType like CONCAT('%', #{sharerType} , '%')
             </if>
             <if test="qrcodeUrl!=null">
                 AND qrcodeUrl like CONCAT('%', #{qrcodeUrl} , '%')
             </if>
             <if test="agentLevel!=null">
                 AND agentLevel like CONCAT('%', #{agentLevel} , '%')
+            </if>
+            <if test="fromType!=null">
+                AND fromType like CONCAT('%', #{fromType} , '%')
             </if>
             <if test="createDate!=null">
                 AND createDate like CONCAT('%', #{createDate} , '%')
@@ -408,14 +462,20 @@ selectList
             <if test="condition.accountId!=null">
                 AND accountId = #{condition.accountId}
             </if>
-            <if test="condition.parentId!=null">
-                AND parentId = #{condition.parentId}
+            <if test="condition.sharerId!=null">
+                AND sharerId = #{condition.sharerId}
+            </if>
+            <if test="condition.sharerType!=null">
+                AND sharerType = #{condition.sharerType}
             </if>
             <if test="condition.qrcodeUrl!=null">
                 AND qrcodeUrl = #{condition.qrcodeUrl}
             </if>
             <if test="condition.agentLevel!=null">
                 AND agentLevel = #{condition.agentLevel}
+            </if>
+            <if test="condition.fromType!=null">
+                AND fromType = #{condition.fromType}
             </if>
             <if test="condition.createDate!=null">
                 AND createDate = #{condition.createDate}
@@ -446,14 +506,20 @@ selectList
             <if test="condition.accountId!=null">
                 AND accountId = #{condition.accountId}
             </if>
-            <if test="condition.parentId!=null">
-                AND parentId = #{condition.parentId}
+            <if test="condition.sharerId!=null">
+                AND sharerId = #{condition.sharerId}
+            </if>
+            <if test="condition.sharerType!=null">
+                AND sharerType = #{condition.sharerType}
             </if>
             <if test="condition.qrcodeUrl!=null">
                 AND qrcodeUrl = #{condition.qrcodeUrl}
             </if>
             <if test="condition.agentLevel!=null">
                 AND agentLevel = #{condition.agentLevel}
+            </if>
+            <if test="condition.fromType!=null">
+                AND fromType = #{condition.fromType}
             </if>
             <if test="condition.createDate!=null">
                 AND createDate = #{condition.createDate}
@@ -480,14 +546,20 @@ selectList
            <if test="accountId!=null">
                ${groupOp} accountId ${accountId.op}  #{accountId.data}
            </if>
-           <if test="parentId!=null">
-               ${groupOp} parentId ${parentId.op}  #{parentId.data}
+           <if test="sharerId!=null">
+               ${groupOp} sharerId ${sharerId.op}  #{sharerId.data}
+           </if>
+           <if test="sharerType!=null">
+               ${groupOp} sharerType ${sharerType.op}  #{sharerType.data}
            </if>
            <if test="qrcodeUrl!=null">
                ${groupOp} qrcodeUrl ${qrcodeUrl.op}  #{qrcodeUrl.data}
            </if>
            <if test="agentLevel!=null">
                ${groupOp} agentLevel ${agentLevel.op}  #{agentLevel.data}
+           </if>
+           <if test="fromType!=null">
+               ${groupOp} fromType ${fromType.op}  #{fromType.data}
            </if>
            <if test="createDate!=null">
                ${groupOp} createDate ${createDate.op}  #{createDate.data}
@@ -508,7 +580,7 @@ selectList
     </if>
     </select>
 
-    <select id="selectMaxId" resultType="java.lang.Integer">
+    <select id="selectMaxId" resultType="java.lang.Long">
         SELECT
         MAX(id)
         FROM zgk_user_market
