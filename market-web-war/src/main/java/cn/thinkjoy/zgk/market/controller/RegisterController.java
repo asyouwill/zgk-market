@@ -59,13 +59,13 @@ public class RegisterController extends BaseController {
             if (StringUtils.isEmpty(password)) {
                 throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "请输入密码!");
             }
-            UserAccountPojo userAccountBean = userAccountExService.findUserAccountPojoByPhone(account,areaId);
-            if (userAccountBean!=null){
-                throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "该账号已被注册!");
-            }
-            if (!checkCaptcha(account,captcha)){
-                throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "验证码有误!");
-            }
+//            UserAccountPojo userAccountBean = userAccountExService.findUserAccountPojoByPhone(account,areaId);
+//            if (userAccountBean!=null){
+//                throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "该账号已被注册!");
+//            }
+//            if (!checkCaptcha(account,captcha)){
+//                throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "验证码有误!");
+//            }
 
             //保存用户
             UserAccount userAccount = new UserAccount();
