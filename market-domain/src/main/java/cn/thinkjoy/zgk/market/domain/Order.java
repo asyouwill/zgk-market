@@ -16,7 +16,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
 public class Order extends BaseDomain{
-    private Integer userId;
+    private Long userId;
     private Long productId;
     private String orderNo;
     private Integer channle;
@@ -30,11 +30,11 @@ public class Order extends BaseDomain{
 
 	public Order(){
 	}
-    public void setUserId(Integer value) {
+    public void setUserId(Long value) {
         this.userId = value;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return this.userId;
     }
     public void setProductId(Long value) {
