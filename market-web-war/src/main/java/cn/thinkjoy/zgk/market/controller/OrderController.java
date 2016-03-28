@@ -26,7 +26,7 @@ public class OrderController {
     @Autowired
     private IOrderService orderService;
     /**
-     * 提交订单
+     * 鎻愪氦璁㈠崟
      * @return
      */
     @RequestMapping(value = "/commitOrder",method = RequestMethod.POST)
@@ -34,7 +34,7 @@ public class OrderController {
     public Map<String,Object> commitOrder(@RequestBody Order order){
         Map<String,Object> resultMap=new HashMap<>();
 
-        //参数错误
+        //鍙傛暟閿欒
         if(order==null){
             throw new BizException(ERRORCODE.PARAM_ERROR.getCode(),ERRORCODE.PARAM_ERROR.getMessage());
         }
@@ -42,9 +42,9 @@ public class OrderController {
             order.setOrderNo(NumberGenUtil.genOrderNo());
             orderService.insert(order);
             resultMap.put("code",200);
-            resultMap.put("msg","下单成功");
+            resultMap.put("msg","涓嬪崟鎴愬姛");
         }catch (Exception e){
-            logger.info("用户"+order.getUserId()+",提交订单异常:"+e);
+            logger.info("鐢ㄦ埛"+order.getUserId()+",鎻愪氦璁㈠崟寮傚父:"+e);
             throw new BizException(ERRORCODE.FAIL.getCode(),ERRORCODE.FAIL.getMessage());
         }finally {
             return resultMap;
@@ -52,7 +52,7 @@ public class OrderController {
     }
 
     /**
-     *获取用户订单数据
+     *鑾峰彇鐢ㄦ埛璁㈠崟鏁版嵁
      * @param userId
      * @param pageNo
      * @param pageSize
@@ -69,7 +69,7 @@ public class OrderController {
 
 
     /**
-     * 获取订单详情
+     * 鑾峰彇璁㈠崟璇︽儏
      * @param orderNo
      * @return
      */

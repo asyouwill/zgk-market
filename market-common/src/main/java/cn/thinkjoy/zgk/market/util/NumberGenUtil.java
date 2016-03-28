@@ -7,12 +7,12 @@ package cn.thinkjoy.zgk.market.util;
 import java.util.UUID;
 
 /**
- * Á÷Ë®ºÅ£¬¶©µ¥ºÅÉú³É¹¤¾ßÀà
+ * æµæ°´å·ï¼Œè®¢å•å·ç”Ÿæˆå·¥å…·ç±»
  */
 public class NumberGenUtil {
 
     /**
-     * Éú³ÉÁ÷Ë®ºÅ 8-20Î»
+     * ç”Ÿæˆæµæ°´å· 8-20ä½
      * @return
      */
     public static String genStatementNo(){
@@ -23,7 +23,7 @@ public class NumberGenUtil {
 
 
     /**
-     * Éú³É¶©µ¥ºÅ 1-32Î»
+     * ç”Ÿæˆè®¢å•å· 1-32ä½
      */
     public static String genOrderNo(){
         UUID uuid= UUID.randomUUID();

@@ -36,14 +36,14 @@ public class PayController {
 
 
     /**
-     * Ö§¸¶¶©µ¥
+     * æ”¯ä»˜è®¢å•
      * @return
      */
     @RequestMapping(value = "/payOrder",method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> payOrder(@RequestParam("orderNo") String orderNo,@RequestParam("amount")String amount,@RequestParam("userId") long userId ){
         Map<String,Object> resultMap=new HashMap<>();
-            //²ÎÊı´íÎó
+            //å‚æ•°é”™è¯¯
             if("".equals(orderNo)||orderNo==null||"".equals(amount)||amount==null||userId==0){
                 throw  new BizException(ERRORCODE.PARAM_ERROR.getCode(),ERRORCODE.PARAM_ERROR.getMessage());
             }
@@ -53,7 +53,7 @@ public class PayController {
             orderstatement.setAmount(Double.valueOf(amount)*100);
             orderstatement.setCreateDate(System.currentTimeMillis());
             orderstatement.setOrderNo(orderNo);
-            //0:½»Ò×½øĞĞÖĞ  1£º½»Ò×³É¹¦  2£º½»Ò×Ê§°Ü
+            //0:äº¤æ˜“è¿›è¡Œä¸­  1ï¼šäº¤æ˜“æˆåŠŸ  2ï¼šäº¤æ˜“å¤±è´¥
             orderstatement.setStatus(0);
             orderstatement.setStatementNo(statemenstNo);
             orderStatementService.insert(orderstatement);
@@ -73,7 +73,7 @@ public class PayController {
 
 
             resultMap.put("code",200);
-            resultMap.put("msg","Ö§¸¶³É¹¦");
+            resultMap.put("msg","æ”¯ä»˜æˆåŠŸ");
             return resultMap;
         }catch (Exception e){
             throw new BizException(ERRORCODE.FAIL.getCode(),ERRORCODE.FAIL.getMessage());
