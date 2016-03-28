@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Excelæ–‡ä»¶æ“ä½œå·¥å…·ç±»
+ * ExcelÎÄ¼ş²Ù×÷¹¤¾ßÀà
  */
 public class ExcelUtil {
 	private final static Logger logger = LoggerFactory
@@ -41,7 +41,7 @@ public class ExcelUtil {
     }
 
     /**
-	 * è·å–å½“å‰æ“ä½œçš„å·¥ä½œç°¿
+	 * »ñÈ¡µ±Ç°²Ù×÷µÄ¹¤×÷²¾
 	 */
 	public Workbook getWorkbook() {
 		return workbook;
@@ -49,7 +49,7 @@ public class ExcelUtil {
 
 	/**
 	 * 
-	 * é€šè¿‡POIæ–¹å¼è¯»å–Excel,å…¼å®¹xlså’Œxlsx
+	 * Í¨¹ıPOI·½Ê½¶ÁÈ¡Excel,¼æÈİxlsºÍxlsx
 	 * 
 	 * @param exceFlFile
 	 * @throws Exception
@@ -71,7 +71,7 @@ public class ExcelUtil {
 	// }
 
 	/**
-	 * è¯»å–Excel2003çš„è¡¨å•
+	 * ¶ÁÈ¡Excel2003µÄ±íµ¥
 	 * 
 	 * @param excelFile
 	 * @return
@@ -116,8 +116,8 @@ public class ExcelUtil {
 	 * 
 	 * @param file
 	 * @param maxCell
-	 *            æœ€å¤§åˆ—æ•°,èµ·å§‹åˆ—ä¸º0ï¼Œä»¥æ­¤ç±»æ¨
-	 * @return keyç”±0å¼€å§‹åˆ°maxCell
+	 *            ×î´óÁĞÊı,ÆğÊ¼ÁĞÎª0£¬ÒÔ´ËÀàÍÆ
+	 * @return keyÓÉ0¿ªÊ¼µ½maxCell
 	 */
 	public static List<Map<Integer, String>> poiRead(MultipartFile file,
 			int maxCell) {
@@ -125,7 +125,7 @@ public class ExcelUtil {
 		try {
 			input = file.getInputStream();
 		} catch (IOException e) {
-			logger.warn("è¯»å–ä¸Šä¼ æ–‡ä»¶IOå¼‚å¸¸", e);
+			logger.warn("¶ÁÈ¡ÉÏ´«ÎÄ¼şIOÒì³£", e);
 		}
 		if (null == input) {
 			return Collections.emptyList();
@@ -142,7 +142,7 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * æ–‡ä»¶ä¸Šä¼ è¯»å–ï¼š[{title=value},{title=value}]
+	 * ÎÄ¼şÉÏ´«¶ÁÈ¡£º[{title=value},{title=value}]
 	 * 
 	 * @param file
 	 * @return
@@ -152,7 +152,7 @@ public class ExcelUtil {
 		try {
 			input = file.getInputStream();
 		} catch (IOException e) {
-			logger.warn("è¯»å–ä¸Šä¼ æ–‡ä»¶IOå¼‚å¸¸", e);
+			logger.warn("¶ÁÈ¡ÉÏ´«ÎÄ¼şIOÒì³£", e);
 		}
 		if (null == input) {
 			return Collections.emptyList();
@@ -169,7 +169,7 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * ç›´æ¥è¯»å–æ–‡ä»¶
+	 * Ö±½Ó¶ÁÈ¡ÎÄ¼ş
 	 * 
 	 * @param file
 	 * @return
@@ -179,7 +179,7 @@ public class ExcelUtil {
 		try {
 			input = FileUtils.openInputStream(file);
 		} catch (IOException e) {
-			logger.warn("è¯»å–ä¸Šä¼ æ–‡ä»¶IOå¼‚å¸¸", e);
+			logger.warn("¶ÁÈ¡ÉÏ´«ÎÄ¼şIOÒì³£", e);
 		}
 		if (null == input) {
 			return Collections.emptyList();
@@ -196,7 +196,7 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * æ ¹æ®æ–‡ä»¶è·¯å¾„è¯»å–
+	 * ¸ù¾İÎÄ¼şÂ·¾¶¶ÁÈ¡
 	 * 
 	 * @param fileName
 	 * @param maxCell
@@ -208,7 +208,7 @@ public class ExcelUtil {
 		try {
 			input = new FileInputStream(fileName);
 		} catch (IOException e) {
-			logger.warn("è¯»å–ä¸Šä¼ æ–‡ä»¶IOå¼‚å¸¸", e);
+			logger.warn("¶ÁÈ¡ÉÏ´«ÎÄ¼şIOÒì³£", e);
 		}
 		if (null == input) {
 			return Collections.emptyList();
@@ -224,11 +224,11 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * è¯»å–2003æ ¼å¼çš„excelæ–‡ä»¶
+	 * ¶ÁÈ¡2003¸ñÊ½µÄexcelÎÄ¼ş
 	 * 
 	 * @param input
-	 *            ä¸èƒ½ä¸ºnull,å†…éƒ¨å…³é—­æµ
-	 *            ä¸èƒ½ä¸ºnull
+	 *            ²»ÄÜÎªnull,ÄÚ²¿¹Ø±ÕÁ÷
+	 *            ²»ÄÜÎªnull
 	 * @return
 	 */
 	private static List<Map<Integer, String>> poiReadXls(InputStream input,
@@ -242,7 +242,7 @@ public class ExcelUtil {
 			}
 			return readSheet(sheet, maxCell);
 		} catch (IOException e) {
-			logger.error("è¯»å–excelæ–‡ä»¶IOå¼‚å¸¸", e);
+			logger.error("¶ÁÈ¡excelÎÄ¼şIOÒì³£", e);
 		} finally {
 			IOUtils.closeQuietly(input);
 		}
@@ -259,7 +259,7 @@ public class ExcelUtil {
 			}
 			return readSheet(sheet);
 		} catch (IOException e) {
-			logger.error("è¯»å–excelæ–‡ä»¶IOå¼‚å¸¸", e);
+			logger.error("¶ÁÈ¡excelÎÄ¼şIOÒì³£", e);
 		} finally {
 			IOUtils.closeQuietly(input);
 		}
@@ -267,10 +267,10 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * æ–°å»ºä¸€ä¸ªå¯ä»¥å†™çš„Excelå·¥ä½œç°¿
+	 * ĞÂ½¨Ò»¸ö¿ÉÒÔĞ´µÄExcel¹¤×÷²¾
 	 * 
 	 * @param isXls
-	 *            æ˜¯å¦ä¸º2003ç‰ˆ
+	 *            ÊÇ·ñÎª2003°æ
 	 * @return
 	 */
 	public ExcelUtil createBook(boolean isXls) {
@@ -285,7 +285,7 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * ç”±è¾“å…¥æµåˆ›å»ºå¯å†™Excel
+	 * ÓÉÊäÈëÁ÷´´½¨¿ÉĞ´Excel
 	 * 
 	 * @param isXls
 	 * @param input
@@ -306,7 +306,7 @@ public class ExcelUtil {
 		try {
 			workbook = new HSSFWorkbook(input);
 		} catch (IOException e) {
-			logger.warn("åˆ›å»º2003ç‰ˆæœ¬çš„Excelå¼‚å¸¸:" + e.getMessage(), e);
+			logger.warn("´´½¨2003°æ±¾µÄExcelÒì³£:" + e.getMessage(), e);
 		}
 		return this;
 	}
@@ -320,23 +320,23 @@ public class ExcelUtil {
 		try {
 			workbook = new XSSFWorkbook(input);
 		} catch (IOException e) {
-			logger.warn("åˆ›å»º2007ç‰ˆæœ¬çš„Excelå¼‚å¸¸:" + e.getMessage(), e);
+			logger.warn("´´½¨2007°æ±¾µÄExcelÒì³£:" + e.getMessage(), e);
 		}
 		return this;
 	}
 
 	/**
-	 * åˆ›å»ºå·¥ä½œè¡¨,å¯åˆ›å»ºå¤šä¸ª
+	 * ´´½¨¹¤×÷±í,¿É´´½¨¶à¸ö
 	 * 
 	 * @param sheetname
 	 * @return
 	 */
 	public ExcelUtil createSheet(String... sheetname) {
 		if (null == workbook) {
-			throw new IllegalArgumentException("workbook ä¸èƒ½ä¸ºnull.");
+			throw new IllegalArgumentException("workbook ²»ÄÜÎªnull.");
 		}
 		if (null == sheetname || sheetname.length < 1) {
-			this.sheet = workbook.createSheet("å·¥ä½œè¡¨");
+			this.sheet = workbook.createSheet("¹¤×÷±í");
 		} else {
 			this.sheet = workbook.createSheet(sheetname[0]);
 		}
@@ -344,12 +344,12 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * æ–°å»ºä¸€ä¸ªå¯ä»¥å†™çš„Excelå·¥ä½œç°¿
+	 * ĞÂ½¨Ò»¸ö¿ÉÒÔĞ´µÄExcel¹¤×÷²¾
 	 * 
 	 * @param isXls
-	 *            æ˜¯å¦ä¸º2003ç‰ˆ
+	 *            ÊÇ·ñÎª2003°æ
 	 * @param sheetname
-	 *            å·¥ä½œè¡¨åç§°
+	 *            ¹¤×÷±íÃû³Æ
 	 * @return
 	 */
 	public ExcelUtil createBookAndSheet(boolean isXls, String... sheetname) {
@@ -358,12 +358,12 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * å¾€å·¥ä½œè¡¨çš„å†™å…¥æ•°æ®,2003ã€2007é€šç”¨
+	 * Íù¹¤×÷±íµÄĞ´ÈëÊı¾İ,2003¡¢2007Í¨ÓÃ
 	 * 
 	 * @param rowNum
-	 *            è¡Œç¼–å·ï¼Œä»0å¼€å§‹
+	 *            ĞĞ±àºÅ£¬´Ó0¿ªÊ¼
 	 * @param contents
-	 *            å†…å®¹
+	 *            ÄÚÈİ
 	 * @return
 	 */
 	public boolean writeRow(int rowNum, Object... contents) {
@@ -371,12 +371,12 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * å¾€å·¥ä½œè¡¨çš„å†™å…¥æ•°æ®,2003ã€2007é€šç”¨
+	 * Íù¹¤×÷±íµÄĞ´ÈëÊı¾İ,2003¡¢2007Í¨ÓÃ
 	 * 
 	 * @param rowNum
-	 *            è¡Œç¼–å·ï¼Œä»0å¼€å§‹
+	 *            ĞĞ±àºÅ£¬´Ó0¿ªÊ¼
 	 * @param contents
-	 *            å†…å®¹
+	 *            ÄÚÈİ
 	 * @return
 	 */
 	public boolean writeRowList(int rowNum, List<String> contents) {
@@ -384,21 +384,21 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * å¾€å·¥ä½œè¡¨çš„å†™å…¥æ•°æ®,2003ã€2007é€šç”¨
+	 * Íù¹¤×÷±íµÄĞ´ÈëÊı¾İ,2003¡¢2007Í¨ÓÃ
 	 * 
 	 * @param rowNum
-	 *            è¡Œç¼–å·ï¼Œä»0å¼€å§‹
+	 *            ĞĞ±àºÅ£¬´Ó0¿ªÊ¼
 	 * @param rowStyle
-	 *            è¡Œæ ·å¼
+	 *            ĞĞÑùÊ½
 	 * @param contents
-	 *            å†…å®¹
+	 *            ÄÚÈİ
 	 * @return
 	 */
 	public boolean writeRow(int rowNum, CellStyle rowStyle, Object... contents) {
 		if (null == sheet) {
 			return false;
 		}
-		// åˆ›å»ºä¸€è¡Œ
+		// ´´½¨Ò»ĞĞ
 		Row row = sheet.createRow(rowNum);
 		int length = contents.length;
 		for (int column = 0; column < length; column++) {
@@ -417,14 +417,14 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * å¾€å·¥ä½œè¡¨çš„å†™å…¥æ•°æ®,2003ã€2007é€šç”¨
+	 * Íù¹¤×÷±íµÄĞ´ÈëÊı¾İ,2003¡¢2007Í¨ÓÃ
 	 * 
 	 * @param rowNum
-	 *            è¡Œç¼–å·ï¼Œä»0å¼€å§‹
+	 *            ĞĞ±àºÅ£¬´Ó0¿ªÊ¼
 	 * @param rowStyle
-	 *            è¡Œæ ·å¼
+	 *            ĞĞÑùÊ½
 	 * @param contents
-	 *            å†…å®¹
+	 *            ÄÚÈİ
 	 * @return
 	 */
 	public boolean writeRow2(int rowNum, CellStyle rowStyle,
@@ -432,7 +432,7 @@ public class ExcelUtil {
 		if (null == sheet) {
 			return false;
 		}
-		// åˆ›å»ºä¸€è¡Œ
+		// ´´½¨Ò»ĞĞ
 		Row row = sheet.createRow(rowNum);
 		if (null != rowStyle) {
 			row.setRowStyle(rowStyle);
@@ -446,17 +446,17 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * å†™å…¥è¾“å‡ºæµï¼Œå·²ç»flush();
+	 * Ğ´ÈëÊä³öÁ÷£¬ÒÑ¾­flush();
 	 * 
 	 * @param out
 	 * @return
 	 */
 	public boolean writeTo(OutputStream out) {
 		if (null == workbook) {
-			throw new IllegalArgumentException("workbook ä¸èƒ½ä¸ºnull.");
+			throw new IllegalArgumentException("workbook ²»ÄÜÎªnull.");
 		}
 		if (null == out) {
-			throw new IllegalArgumentException("out ä¸èƒ½ä¸ºnull.");
+			throw new IllegalArgumentException("out ²»ÄÜÎªnull.");
 		}
 		try {
 			workbook.write(out);
@@ -469,13 +469,13 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * è·å–è¾“å‡ºæµ
+	 * »ñÈ¡Êä³öÁ÷
 	 * 
 	 * @return
 	 */
 	public InputStream getInputStream() {
 		if (null == workbook) {
-			throw new IllegalArgumentException("workbook ä¸èƒ½ä¸ºnull.");
+			throw new IllegalArgumentException("workbook ²»ÄÜÎªnull.");
 		}
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ByteArrayInputStream swapStream = null;
@@ -489,12 +489,12 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * è¯»å–2007æ ¼å¼çš„excelæ–‡ä»¶
+	 * ¶ÁÈ¡2007¸ñÊ½µÄexcelÎÄ¼ş
 	 * 
 	 * @param input
-	 *            ä¸èƒ½ä¸ºnull,å†…éƒ¨å…³é—­æµ
+	 *            ²»ÄÜÎªnull,ÄÚ²¿¹Ø±ÕÁ÷
 	 * @param titles
-	 *            ä¸èƒ½ä¸ºnull
+	 *            ²»ÄÜÎªnull
 	 * @return
 	 */
 	private static List<Map<Integer, String>> poiReadXlsx(InputStream input,
@@ -508,7 +508,7 @@ public class ExcelUtil {
 			}
 			return readSheet(sheet, maxCell);
 		} catch (IOException e) {
-			logger.error("è¯»å–excelæ–‡ä»¶IOå¼‚å¸¸", e);
+			logger.error("¶ÁÈ¡excelÎÄ¼şIOÒì³£", e);
 		} finally {
 			IOUtils.closeQuietly(input);
 		}
@@ -525,7 +525,7 @@ public class ExcelUtil {
 			}
 			return readSheet(sheet);
 		} catch (IOException e) {
-			logger.error("è¯»å–excelæ–‡ä»¶IOå¼‚å¸¸", e);
+			logger.error("¶ÁÈ¡excelÎÄ¼şIOÒì³£", e);
 		} finally {
 			IOUtils.closeQuietly(input);
 		}
@@ -533,16 +533,16 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * è¯»å–ä¸€ä¸ªå·¥ä½œè¡¨çš„æ•°æ®ï¼Œæ³¨æ„ä¸ä¼šè¯»å–ç¬¬ä¸€è¡Œ
+	 * ¶ÁÈ¡Ò»¸ö¹¤×÷±íµÄÊı¾İ£¬×¢Òâ²»»á¶ÁÈ¡µÚÒ»ĞĞ
 	 * 
 	 * @param sheet
-	 *            ä¸èƒ½ä¸ºnull
+	 *            ²»ÄÜÎªnull
 	 * @param maxCell
-	 *            ç”±0å¼€å§‹è¯»å–1è¡Œ
+	 *            ÓÉ0¿ªÊ¼¶ÁÈ¡1ĞĞ
 	 * @return
 	 */
 	private static List<Map<Integer, String>> readSheet(Sheet sheet, int maxCell) {
-		// åˆ©ç”¨foreachå¾ªç¯ éå†sheetä¸­çš„æ‰€æœ‰è¡Œ
+		// ÀûÓÃforeachÑ­»· ±éÀúsheetÖĞµÄËùÓĞĞĞ
 		List<Map<Integer, String>> excelData = new LinkedList<Map<Integer, String>>();
 		int rowNum = 0;
 		Iterator<Row> rows = sheet.rowIterator();
@@ -550,36 +550,36 @@ public class ExcelUtil {
 			Row row = rows.next();
 			rowNum++;
 			if (rowNum == 1) {
-				// ä¸è¯»å–ç¬¬ä¸€è¡Œ
+				// ²»¶ÁÈ¡µÚÒ»ĞĞ
 				continue;
 			}
-			// éå†rowä¸­çš„æ‰€æœ‰æ–¹æ ¼
+			// ±éÀúrowÖĞµÄËùÓĞ·½¸ñ
 			Map<Integer, String> rowData = new LinkedHashMap<Integer, String>();
 			Iterator<Cell> cells = row.cellIterator();
 			while (cells.hasNext()) {
 				Cell cell = cells.next();
-				// åˆ—æ•°ç”±0å¼€å§‹
+				// ÁĞÊıÓÉ0¿ªÊ¼
 				int cellSize = cell.getColumnIndex();
 				if (cellSize > maxCell) {
 					break;
 				}
-				// ä¸€è¡Œçš„æ¯ä¸€åˆ—æ•°æ®
+				// Ò»ĞĞµÄÃ¿Ò»ÁĞÊı¾İ
 				rowData.put(cellSize, getCellText(cell));
 			}
-			// æ¯ä¸€è¡Œæ•°æ®
+			// Ã¿Ò»ĞĞÊı¾İ
 			excelData.add(rowData);
 		}
 		return excelData;
 	}
 
 	/**
-	 * keyä½¿ç”¨è¡¨å¤´æ–‡æœ¬æ–¹å¼è¯»å–
+	 * keyÊ¹ÓÃ±íÍ·ÎÄ±¾·½Ê½¶ÁÈ¡
 	 * 
 	 * @param sheet
 	 * @return
 	 */
 	private static List<Map<String, String>> readSheet(Sheet sheet) {
-		// åˆ©ç”¨foreachå¾ªç¯ éå†sheetä¸­çš„æ‰€æœ‰è¡Œ
+		// ÀûÓÃforeachÑ­»· ±éÀúsheetÖĞµÄËùÓĞĞĞ
 		List<Map<String, String>> excelData = new LinkedList<Map<String, String>>();
 		Iterator<Row> rows = sheet.rowIterator();
 		List<String> titleData = getRowText(sheet.getRow(0));
@@ -602,7 +602,7 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * è·å–ä¸€è¡Œæ•°æ®ï¼Œä¸­é—´æœ‰ç©ºåˆ™æ— æ³•è¯»å–ï¼Œé€‚åˆç”¨åœ¨è¯»å–è¡¨å¤´çš„åœ°æ–¹
+	 * »ñÈ¡Ò»ĞĞÊı¾İ£¬ÖĞ¼äÓĞ¿ÕÔòÎŞ·¨¶ÁÈ¡£¬ÊÊºÏÓÃÔÚ¶ÁÈ¡±íÍ·µÄµØ·½
 	 * 
 	 * @param row
 	 * @return
@@ -618,7 +618,7 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * ä»¥å­—ç¬¦ä¸²æ ¼å¼è¯»å–å•å…ƒæ ¼å†…å®¹
+	 * ÒÔ×Ö·û´®¸ñÊ½¶ÁÈ¡µ¥Ôª¸ñÄÚÈİ
 	 * 
 	 * @param cell
 	 * @return
@@ -644,7 +644,7 @@ public class ExcelUtil {
 	// ----------------------POI end--------------------------//
 	/**
 	 * 
-	 * è¯»å–Excel2007çš„è¡¨å•
+	 * ¶ÁÈ¡Excel2007µÄ±íµ¥
 	 * 
 	 * @param excelFile
 	 * @return

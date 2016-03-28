@@ -9,11 +9,11 @@ import java.util.Random;
 
 public class CaptchaUtil {
     /**
-     * ç»˜åˆ¶å­—ç¬¦ä¸²
+     * »æÖÆ×Ö·û´®
      */
     public static String getRandomString(BufferedImage image){
         Random random = new Random();
-        //äº§ç”ŸImageå¯¹è±¡çš„Graphicså¯¹è±¡,æ”¹å¯¹è±¡å¯ä»¥åœ¨å›¾åƒä¸Šè¿›è¡Œå„ç§ç»˜åˆ¶æ“ä½œ
+        //²úÉúImage¶ÔÏóµÄGraphics¶ÔÏó,¸Ä¶ÔÏó¿ÉÒÔÔÚÍ¼ÏñÉÏ½øĞĞ¸÷ÖÖ»æÖÆ²Ù×÷
         Graphics g = image.getGraphics();
         g.fillRect(0, 0, image.getWidth(),image.getHeight());
 //        g.setFont(CaptchaConst.FIXEDSYS);
@@ -22,17 +22,17 @@ public class CaptchaUtil {
 
         g.setColor(CaptchaConst.PURPLE_COLOR);
 
-        // ç”»è¾¹æ¡†
+        // »­±ß¿ò
 		g.drawRect(0, 0, CaptchaConst.PIC_WIDTH- 1, CaptchaConst.PIC_HEIGHT - 1);
         int red = 0, green = 0, blue = 0;
-        //ç»˜åˆ¶éšæœºå­—ç¬¦
+        //»æÖÆËæ»ú×Ö·û
         StringBuffer randomString = new StringBuffer("");
         String rand = null;
 //        int stringPoint = CaptchaConst.TRANSLATE_START*random.nextInt(3);
         for(int i=1;i<=CaptchaConst.RANDOM_STRING_NUM;i++){
             rand = String.valueOf(CaptchaConst.RAND_STRING.charAt(random.nextInt(CaptchaConst.RAND_STRING.length()-1)));
             randomString.append(rand);
-            // äº§ç”Ÿéšæœºçš„é¢œè‰²åˆ†é‡æ¥æ„é€ é¢œè‰²å€¼ï¼Œè¿™æ ·è¾“å‡ºçš„æ¯ä½æ•°å­—çš„é¢œè‰²å€¼éƒ½å°†ä¸åŒã€‚
+            // ²úÉúËæ»úµÄÑÕÉ«·ÖÁ¿À´¹¹ÔìÑÕÉ«Öµ£¬ÕâÑùÊä³öµÄÃ¿Î»Êı×ÖµÄÑÕÉ«Öµ¶¼½«²»Í¬¡£
             red = random.nextInt(255);
             green = random.nextInt(255);
             blue = random.nextInt(255);
@@ -50,7 +50,7 @@ public class CaptchaUtil {
         return randomString.toString();
     }
     /**
-     * ç”Ÿæˆéšæœºå­—ç¬¦ä¸²
+     * Éú³ÉËæ»ú×Ö·û´®
      */
     public static String getRandomString(){
         Random random = new Random();
@@ -64,7 +64,7 @@ public class CaptchaUtil {
     }
 
     /**
-     * ç”Ÿæˆéšæœºå­—ç¬¦ä¸²
+     * Éú³ÉËæ»ú×Ö·û´®
      */
     public static String getRandomString(int randomLength){
         Random random = new Random();
@@ -78,7 +78,7 @@ public class CaptchaUtil {
     }
 
     /**
-     * ç”Ÿæˆéšæœºæ•°å­—å­—ç¬¦ä¸²
+     * Éú³ÉËæ»úÊı×Ö×Ö·û´®
      */
     public static String getRandomNumString(int randomLength){
         Random random = new Random();

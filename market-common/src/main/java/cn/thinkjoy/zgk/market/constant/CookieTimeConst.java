@@ -1,19 +1,19 @@
 package cn.thinkjoy.zgk.market.constant;
 
 public class CookieTimeConst {
-	//cookitæ—¶é—´æŒ‰ç§’ç®—
+	//cookitÊ±¼ä°´ÃëËã
 	/**
-	 * æ¸…ç†
+	 * ÇåÀí
 	 */
 	public static final int CLEAN_COOKIE = 0;
 
 	/**
-	 * é»˜è®¤cookieæ—¶é—´4å°æ—¶
+	 * Ä¬ÈÏcookieÊ±¼ä4Ğ¡Ê±
 	 */
 	public static final int DEFAULT_COOKIE = 60 * 60 * 4;
 
 	/**
-	 * åŠå°æ—¶
+	 * °ëĞ¡Ê±
 	 */
 	public static final int HALF_HOUR = 60 * 30;
 	
