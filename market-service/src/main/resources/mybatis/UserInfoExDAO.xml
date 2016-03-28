@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.thinkjoy.zgk.market.dao.IUserInfoExDAO">
+
+    <sql id="Base_Column_List">
+        id as id ,
+        token as token ,
+        name as name ,
+        icon as icon ,
+        countyId as countyId ,
+        schoolName as schoolName ,
+        birthdayDate as birthdayDate ,
+        sex as sex ,
+        subjectType as subjectType ,
+        mail as mail ,
+        qq as qq
+    </sql>
+    <insert id="insertUserInfo" parameterType="UserInfo">
+        INSERT INTO gk_user_info (
+        id,
+        token,
+        name,
+        icon,
+        countyId,
+        schoolName,
+        birthdayDate,
+        sex,
+        subjectType,
+        mail,
+        qq
+        ) VALUES (
+        #{id},
+        #{token},
+        #{name},
+        #{icon},
+        #{countyId},
+        #{schoolName},
+        #{birthdayDate},
+        #{sex},
+        #{subjectType},
+        #{mail},
+        #{qq}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <select id="selectMaxId" resultType="java.lang.Long">
+        SELECT
+        MAX(id)
+        FROM gk_user_info
+    </select>
+
+</mapper>
+

@@ -2,24 +2,26 @@
  * Copyright (c) 2013-2014, thinkjoy Inc. All Rights Reserved.
  *
  * Project Name: market
- * $Id:  UserMarket.java 2016-03-26 13:36:19 $
+ * $Id:  UserMarket.java 2016-03-27 17:47:13 $
  */
 
 
 
 package cn.thinkjoy.zgk.market.domain;
 
+import cn.thinkjoy.common.domain.CreateBaseDomain;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import cn.thinkjoy.common.domain.CreateBaseDomain;
 
 public class UserMarket extends CreateBaseDomain{
     private Long accountId;
-    private Long parentId;
+    private Long sharerId;
+    private Integer sharerType;
     private String qrcodeUrl;
     private Integer agentLevel;
+    private Integer fromType;
     private Long updateDate;
     private Integer modifier;
 
@@ -32,12 +34,19 @@ public class UserMarket extends CreateBaseDomain{
     public Long getAccountId() {
         return this.accountId;
     }
-    public void setParentId(Long value) {
-        this.parentId = value;
+    public void setSharerId(Long value) {
+        this.sharerId = value;
     }
 
-    public Long getParentId() {
-        return this.parentId;
+    public Long getSharerId() {
+        return this.sharerId;
+    }
+    public void setSharerType(Integer value) {
+        this.sharerType = value;
+    }
+
+    public Integer getSharerType() {
+        return this.sharerType;
     }
     public void setQrcodeUrl(String value) {
         this.qrcodeUrl = value;
@@ -52,6 +61,13 @@ public class UserMarket extends CreateBaseDomain{
 
     public Integer getAgentLevel() {
         return this.agentLevel;
+    }
+    public void setFromType(Integer value) {
+        this.fromType = value;
+    }
+
+    public Integer getFromType() {
+        return this.fromType;
     }
     public void setUpdateDate(Long value) {
         this.updateDate = value;
@@ -72,9 +88,11 @@ public class UserMarket extends CreateBaseDomain{
 		return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
 			.append("Id",getId())
 			.append("AccountId",getAccountId())
-			.append("ParentId",getParentId())
+			.append("SharerId",getSharerId())
+			.append("SharerType",getSharerType())
 			.append("QrcodeUrl",getQrcodeUrl())
 			.append("AgentLevel",getAgentLevel())
+			.append("FromType",getFromType())
 			.append("CreateDate",getCreateDate())
 			.append("UpdateDate",getUpdateDate())
 			.append("Creator",getCreator())

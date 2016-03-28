@@ -6,10 +6,11 @@
  */
 package cn.thinkjoy.zgk.market.dao;
 
+
 import cn.thinkjoy.common.dao.IBaseDAO;
 import cn.thinkjoy.zgk.market.domain.UserMarket;
 
-public interface IUserMarketDAO extends IBaseDAO<UserMarket>{
+public interface IUserMarketDAO extends IBaseDAO<UserMarket> {
 	
 
 }
