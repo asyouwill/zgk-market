@@ -4,7 +4,7 @@ import cn.thinkjoy.cloudstack.dynconfig.DynConfigClientFactory;
 import cn.thinkjoy.common.exception.BizException;
 import cn.thinkjoy.push.domain.sms.SMSCheckCode;
 import cn.thinkjoy.push.service.sms.SMSService;
-import cn.thinkjoy.zgk.market.common.BaseController;
+import cn.thinkjoy.zgk.market.common.BaseCommonController;
 import cn.thinkjoy.zgk.market.common.ERRORCODE;
 import cn.thinkjoy.zgk.market.constant.CaptchaTimeConst;
 import cn.thinkjoy.zgk.market.constant.RedisConst;
@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("/captcha")
-public class CaptchaController extends BaseController {
+public class CaptchaController extends BaseCommonController {
 
     private static final Logger LOGGER= LoggerFactory.getLogger(CaptchaController.class);
 
@@ -36,11 +35,11 @@ public class CaptchaController extends BaseController {
     @Autowired
     private IUserAccountExService userAccountExService;
 
-    @RequestMapping(value = "/captcha",method = RequestMethod.POST)
+    @RequestMapping(value = "/captcha")
     @ResponseBody
     public String captcha(@RequestParam(value="account",required=false) String account,@RequestParam(value="type",required=false) Integer type) throws Exception {
 
-        long areaId=getAreaCookieValue();
+        long areaId= getAreaId();
         JSONObject result = new JSONObject();
         try{
             if(StringUtils.isEmpty(account)){
@@ -74,6 +73,8 @@ public class CaptchaController extends BaseController {
 
                 String randomString = CaptchaUtil.getRandomNumString(6);
 
+                System.out.println(account);
+                System.out.println(randomString);
                 SMSCheckCode smsCheckCode=new SMSCheckCode();
                 smsCheckCode.setPhone(account);
                 smsCheckCode.setBizTarget(bizTarget);
@@ -81,13 +82,14 @@ public class CaptchaController extends BaseController {
 
                 boolean smsResult =smsService.sendSMS(smsCheckCode,false);
 
-                if(smsResult) {
-                    String userCaptchaKey = RedisConst.USER_CAPTCHA_KEY+account;
-                    RedisUtil.getInstance().set(userCaptchaKey,randomString);
-                    RedisUtil.getInstance().expire(userCaptchaKey, 600, TimeUnit.SECONDS);
-                    RedisUtil.getInstance().set(timeKey, String.valueOf(System.currentTimeMillis()));
-                    RedisUtil.getInstance().expire(timeKey, 60, TimeUnit.SECONDS);
+                while(!smsResult) {
+                    smsResult = smsService.sendSMS(smsCheckCode,false);
                 }
+                String userCaptchaKey = RedisConst.USER_CAPTCHA_KEY+account;
+                RedisUtil.getInstance().set(userCaptchaKey,randomString);
+                RedisUtil.getInstance().expire(userCaptchaKey, 600, TimeUnit.SECONDS);
+                RedisUtil.getInstance().set(timeKey, String.valueOf(System.currentTimeMillis()));
+                RedisUtil.getInstance().expire(timeKey, 60, TimeUnit.SECONDS);
             }else{
                 time = time - ((System.currentTimeMillis() - Long.valueOf(RedisUtil.getInstance().get(timeKey).toString()))/1000);
             }

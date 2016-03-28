@@ -22,25 +22,29 @@
         token,
         name,
         icon,
-        countyId,
         schoolName,
         birthdayDate,
         sex,
         subjectType,
         mail,
-        qq
+        qq,
+        provinceId,
+        cityId,
+        countyId
         ) VALUES (
         #{id},
         #{token},
         #{name},
         #{icon},
-        #{countyId},
         #{schoolName},
         #{birthdayDate},
         #{sex},
         #{subjectType},
         #{mail},
-        #{qq}
+        #{qq},
+        #{provinceId},
+        #{cityId},
+        #{countyId}
         )
         <selectKey resultType="java.lang.Long" keyProperty="id">
             SELECT LAST_INSERT_ID() AS ID
@@ -53,5 +57,16 @@
         FROM zgk_user_info
     </select>
 
+    <!--admin和service这里有差异-->
+    <update id="updateUserCanTargetByUid">
+        UPDATE zgk_user_account SET canTargetSchool=FALSE WHERE id=#{uid}
+    </update>
+
+    <select id="isPredictByUid" resultType="java.lang.Boolean">
+        SELECT
+        canTargetSchool
+        FROM zgk_user_account WHERE id=#{uid}
+    </select>
+    <!--end-->
 </mapper>
 

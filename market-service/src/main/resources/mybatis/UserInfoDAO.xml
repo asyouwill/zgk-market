@@ -2,41 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.thinkjoy.zgk.market.dao.IUserInfoDAO">
-<!--
-insert
-update
-updateNull
-deleteById
-deleteByCondition
-deleteByProperty
-fetch
-findOne
-findList
-findAll
-queryPage
-like
-queryList
-queryOne
-count
-selectMaxId
-updateOrSave
-selectOne
-selectList
--->
+    <!--
+    insert
+    update
+    updateNull
+    deleteById
+    deleteByCondition
+    deleteByProperty
+    fetch
+    findOne
+    findList
+    findAll
+    queryPage
+    like
+    queryList
+    queryOne
+    count
+    selectMaxId
+    updateOrSave
+    selectOne
+    selectList
+    -->
+
     <sql id="Base_Column_List">
-        id,
-        token,
-        name,
-        icon,
-        provinceId,
-        cityId,
-        countyId,
-        schoolName,
-        birthdayDate,
-        sex,
-        subjectType,
-        mail,
-        qq
+        id as id ,
+        token as token ,
+        name as name ,
+        icon as icon ,
+        provinceId as provinceId ,
+        cityId as cityId ,
+        countyId as countyId ,
+        schoolName as schoolName ,
+        birthdayDate as birthdayDate ,
+        sex as sex ,
+        subjectType as subjectType ,
+        mail as mail ,
+        qq as qq
     </sql>
     <insert id="insert" parameterType="UserInfo">
         INSERT INTO zgk_user_info (
@@ -67,7 +68,7 @@ selectList
         #{qq}
         )
         <selectKey resultType="java.lang.Long" keyProperty="id">
-        SELECT LAST_INSERT_ID() AS ID
+            SELECT LAST_INSERT_ID() AS ID
         </selectKey>
     </insert>
 
@@ -246,31 +247,31 @@ selectList
 
     <insert id="insertMap" >
         INSERT INTO zgk_user_info (
-                token,
-                name,
-                icon,
-                provinceId,
-                cityId,
-                countyId,
-                schoolName,
-                birthdayDate,
-                sex,
-                subjectType,
-                mail,
-                qq
+        token,
+        name,
+        icon,
+        provinceId,
+        cityId,
+        countyId,
+        schoolName,
+        birthdayDate,
+        sex,
+        subjectType,
+        mail,
+        qq
         ) VALUES (
-                    #{map.token},
-                    #{map.name},
-                    #{map.icon},
-                    #{map.provinceId},
-                    #{map.cityId},
-                    #{map.countyId},
-                    #{map.schoolName},
-                    #{map.birthdayDate},
-                    #{map.sex},
-                    #{map.subjectType},
-                    #{map.mail},
-                    #{map.qq}
+        #{map.token},
+        #{map.name},
+        #{map.icon},
+        #{map.provinceId},
+        #{map.cityId},
+        #{map.countyId},
+        #{map.schoolName},
+        #{map.birthdayDate},
+        #{map.sex},
+        #{map.subjectType},
+        #{map.mail},
+        #{map.qq}
         )
     </insert>
 
@@ -292,7 +293,7 @@ selectList
             qq = #{qq},
         </trim>
         WHERE
-        id = #{id} 
+        id = #{id}
     </update>
 
     <!-- 按Id删除 -->
@@ -361,9 +362,6 @@ selectList
         <trim prefix="WHERE" prefixOverrides="AND | OR">
             AND id = #{id}
         </trim>
-        <if test="orderBy!=null">
-        ORDER BY ${orderBy} ${sortBy}
-        </if>
     </select>
 
     <select id="findOne" parameterType="java.util.Map" resultType="UserInfo">
@@ -371,6 +369,9 @@ selectList
         <include refid="Base_Column_List" />
         FROM zgk_user_info WHERE
         ${property} = #{value}
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
         LIMIT 0,1
     </select>
 
@@ -404,50 +405,49 @@ selectList
             </if>
 
             <if test="condition.id!=null">
-                ${condition.groupOp}   id  ${condition.id.op}  #{condition.id.data}
+                ${condition.groupOp}   ${condition.id.field}  ${condition.id.op}  #{condition.id.data}
             </if>
             <if test="condition.token!=null">
-                ${condition.groupOp}   token  ${condition.token.op}  #{condition.token.data}
+                ${condition.groupOp}   ${condition.token.field}  ${condition.token.op}  #{condition.token.data}
             </if>
             <if test="condition.name!=null">
-                ${condition.groupOp}   name  ${condition.name.op}  #{condition.name.data}
+                ${condition.groupOp}   ${condition.name.field}  ${condition.name.op}  #{condition.name.data}
             </if>
             <if test="condition.icon!=null">
-                ${condition.groupOp}   icon  ${condition.icon.op}  #{condition.icon.data}
+                ${condition.groupOp}   ${condition.icon.field}  ${condition.icon.op}  #{condition.icon.data}
             </if>
             <if test="condition.provinceId!=null">
-                ${condition.groupOp}   provinceId  ${condition.provinceId.op}  #{condition.provinceId.data}
+                ${condition.groupOp}   ${condition.provinceId.field}  ${condition.provinceId.op}  #{condition.provinceId.data}
             </if>
             <if test="condition.cityId!=null">
-                ${condition.groupOp}   cityId  ${condition.cityId.op}  #{condition.cityId.data}
+                ${condition.groupOp}   ${condition.cityId.field}  ${condition.cityId.op}  #{condition.cityId.data}
             </if>
             <if test="condition.countyId!=null">
-                ${condition.groupOp}   countyId  ${condition.countyId.op}  #{condition.countyId.data}
+                ${condition.groupOp}   ${condition.countyId.field}  ${condition.countyId.op}  #{condition.countyId.data}
             </if>
             <if test="condition.schoolName!=null">
-                ${condition.groupOp}   schoolName  ${condition.schoolName.op}  #{condition.schoolName.data}
+                ${condition.groupOp}   ${condition.schoolName.field}  ${condition.schoolName.op}  #{condition.schoolName.data}
             </if>
             <if test="condition.birthdayDate!=null">
-                ${condition.groupOp}   birthdayDate  ${condition.birthdayDate.op}  #{condition.birthdayDate.data}
+                ${condition.groupOp}   ${condition.birthdayDate.field}  ${condition.birthdayDate.op}  #{condition.birthdayDate.data}
             </if>
             <if test="condition.sex!=null">
-                ${condition.groupOp}   sex  ${condition.sex.op}  #{condition.sex.data}
+                ${condition.groupOp}   ${condition.sex.field}  ${condition.sex.op}  #{condition.sex.data}
             </if>
             <if test="condition.subjectType!=null">
-                ${condition.groupOp}   subjectType  ${condition.subjectType.op}  #{condition.subjectType.data}
+                ${condition.groupOp}   ${condition.subjectType.field}  ${condition.subjectType.op}  #{condition.subjectType.data}
             </if>
             <if test="condition.mail!=null">
-                ${condition.groupOp}   mail  ${condition.mail.op}  #{condition.mail.data}
+                ${condition.groupOp}   ${condition.mail.field}  ${condition.mail.op}  #{condition.mail.data}
             </if>
             <if test="condition.qq!=null">
-                ${condition.groupOp}   qq  ${condition.qq.op}  #{condition.qq.data}
+                ${condition.groupOp}   ${condition.qq.field}  ${condition.qq.op}  #{condition.qq.data}
             </if>
 
 
-    </where>
-
+        </where>
         <if test="orderBy!=null">
-        ORDER BY ${orderBy} ${sortBy}
+            ORDER BY ${orderBy} ${sortBy}
         </if>
         <if test="offset != null">
             limit ${offset}, ${rows}
@@ -459,48 +459,48 @@ selectList
         <include refid="Base_Column_List" />
         FROM zgk_user_info
         <trim prefix="WHERE" prefixOverrides="AND | OR">
-            <if test="id!=null">
-                AND id like CONCAT('%', #{id} , '%')
+            <if test="condition.id!=null">
+                AND id like CONCAT('%', #{condition.id} , '%')
             </if>
-            <if test="token!=null">
-                AND token like CONCAT('%', #{token} , '%')
+            <if test="condition.token!=null">
+                AND token like CONCAT('%', #{condition.token} , '%')
             </if>
-            <if test="name!=null">
-                AND name like CONCAT('%', #{name} , '%')
+            <if test="condition.name!=null">
+                AND name like CONCAT('%', #{condition.name} , '%')
             </if>
-            <if test="icon!=null">
-                AND icon like CONCAT('%', #{icon} , '%')
+            <if test="condition.icon!=null">
+                AND icon like CONCAT('%', #{condition.icon} , '%')
             </if>
-            <if test="provinceId!=null">
-                AND provinceId like CONCAT('%', #{provinceId} , '%')
+            <if test="condition.provinceId!=null">
+                AND provinceId like CONCAT('%', #{condition.provinceId} , '%')
             </if>
-            <if test="cityId!=null">
-                AND cityId like CONCAT('%', #{cityId} , '%')
+            <if test="condition.cityId!=null">
+                AND cityId like CONCAT('%', #{condition.cityId} , '%')
             </if>
-            <if test="countyId!=null">
-                AND countyId like CONCAT('%', #{countyId} , '%')
+            <if test="condition.countyId!=null">
+                AND countyId like CONCAT('%', #{condition.countyId} , '%')
             </if>
-            <if test="schoolName!=null">
-                AND schoolName like CONCAT('%', #{schoolName} , '%')
+            <if test="condition.schoolName!=null">
+                AND schoolName like CONCAT('%', #{condition.schoolName} , '%')
             </if>
-            <if test="birthdayDate!=null">
-                AND birthdayDate like CONCAT('%', #{birthdayDate} , '%')
+            <if test="condition.birthdayDate!=null">
+                AND birthdayDate like CONCAT('%', #{condition.birthdayDate} , '%')
             </if>
-            <if test="sex!=null">
-                AND sex like CONCAT('%', #{sex} , '%')
+            <if test="condition.sex!=null">
+                AND sex like CONCAT('%', #{condition.sex} , '%')
             </if>
-            <if test="subjectType!=null">
-                AND subjectType like CONCAT('%', #{subjectType} , '%')
+            <if test="condition.subjectType!=null">
+                AND subjectType like CONCAT('%', #{condition.subjectType} , '%')
             </if>
-            <if test="mail!=null">
-                AND mail like CONCAT('%', #{mail} , '%')
+            <if test="condition.mail!=null">
+                AND mail like CONCAT('%', #{condition.mail} , '%')
             </if>
-            <if test="qq!=null">
-                AND qq like CONCAT('%', #{qq} , '%')
+            <if test="condition.qq!=null">
+                AND qq like CONCAT('%', #{condition.qq} , '%')
             </if>
         </trim>
         <if test="orderBy!=null">
-        ORDER BY ${orderBy} ${sortBy}
+            ORDER BY ${orderBy} ${sortBy}
         </if>
     </select>
 
@@ -551,7 +551,7 @@ selectList
             </if>
         </trim>
         <if test="orderBy!=null">
-        ORDER BY ${orderBy} ${sortBy}
+            ORDER BY ${orderBy} ${sortBy}
         </if>
     </select>
 
@@ -600,56 +600,56 @@ selectList
                 AND qq = #{condition.qq}
             </if>
         </trim>
+        <if test="orderBy!=null">
+            ORDER BY ${orderBy} ${sortBy}
+        </if>
         limit 0,1
     </select>
 
     <select id="count" resultType="java.lang.Integer">
         SELECT count(id) FROM zgk_user_info
-       <where>
-           <if test="id!=null">
-               ${groupOp} id ${id.op}  #{id.data}
-           </if>
-           <if test="token!=null">
-               ${groupOp} token ${token.op}  #{token.data}
-           </if>
-           <if test="name!=null">
-               ${groupOp} name ${name.op}  #{name.data}
-           </if>
-           <if test="icon!=null">
-               ${groupOp} icon ${icon.op}  #{icon.data}
-           </if>
-           <if test="provinceId!=null">
-               ${groupOp} provinceId ${provinceId.op}  #{provinceId.data}
-           </if>
-           <if test="cityId!=null">
-               ${groupOp} cityId ${cityId.op}  #{cityId.data}
-           </if>
-           <if test="countyId!=null">
-               ${groupOp} countyId ${countyId.op}  #{countyId.data}
-           </if>
-           <if test="schoolName!=null">
-               ${groupOp} schoolName ${schoolName.op}  #{schoolName.data}
-           </if>
-           <if test="birthdayDate!=null">
-               ${groupOp} birthdayDate ${birthdayDate.op}  #{birthdayDate.data}
-           </if>
-           <if test="sex!=null">
-               ${groupOp} sex ${sex.op}  #{sex.data}
-           </if>
-           <if test="subjectType!=null">
-               ${groupOp} subjectType ${subjectType.op}  #{subjectType.data}
-           </if>
-           <if test="mail!=null">
-               ${groupOp} mail ${mail.op}  #{mail.data}
-           </if>
-           <if test="qq!=null">
-               ${groupOp} qq ${qq.op}  #{qq.data}
-           </if>
+        <where>
+            <if test="id!=null">
+                ${groupOp} ${id.field} ${id.op}  #{id.data}
+            </if>
+            <if test="token!=null">
+                ${groupOp} ${token.field} ${token.op}  #{token.data}
+            </if>
+            <if test="name!=null">
+                ${groupOp} ${name.field} ${name.op}  #{name.data}
+            </if>
+            <if test="icon!=null">
+                ${groupOp} ${icon.field} ${icon.op}  #{icon.data}
+            </if>
+            <if test="provinceId!=null">
+                ${groupOp} ${provinceId.field} ${provinceId.op}  #{provinceId.data}
+            </if>
+            <if test="cityId!=null">
+                ${groupOp} ${cityId.field} ${cityId.op}  #{cityId.data}
+            </if>
+            <if test="countyId!=null">
+                ${groupOp} ${countyId.field} ${countyId.op}  #{countyId.data}
+            </if>
+            <if test="schoolName!=null">
+                ${groupOp} ${schoolName.field} ${schoolName.op}  #{schoolName.data}
+            </if>
+            <if test="birthdayDate!=null">
+                ${groupOp} ${birthdayDate.field} ${birthdayDate.op}  #{birthdayDate.data}
+            </if>
+            <if test="sex!=null">
+                ${groupOp} ${sex.field} ${sex.op}  #{sex.data}
+            </if>
+            <if test="subjectType!=null">
+                ${groupOp} ${subjectType.field} ${subjectType.op}  #{subjectType.data}
+            </if>
+            <if test="mail!=null">
+                ${groupOp} ${mail.field} ${mail.op}  #{mail.data}
+            </if>
+            <if test="qq!=null">
+                ${groupOp} ${qq.field} ${qq.op}  #{qq.data}
+            </if>
 
-       </where>
-    <if test="orderBy!=null">
-        ORDER BY ${orderBy} ${sortBy}
-    </if>
+        </where>
     </select>
 
     <select id="selectMaxId" resultType="java.lang.Long">

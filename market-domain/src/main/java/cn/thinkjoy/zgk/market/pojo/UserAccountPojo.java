@@ -5,7 +5,7 @@ import cn.thinkjoy.common.domain.BaseDomain;
 /**
  * Created by clei on 15/9/21.
  */
-public class UserAccountPojo extends BaseDomain {
+public class UserAccountPojo extends BaseDomain<Long> {
     private Integer status;
     private String name;
     private String icon;
@@ -16,8 +16,26 @@ public class UserAccountPojo extends BaseDomain {
     private Integer vipStatus;
     private Integer isReported;
     private Integer isSurvey;
-
+    private String userKey;
+    private String vipActiveDate;
+    private String vipEndDate;
     public UserAccountPojo(){
+    }
+
+    public String getVipActiveDate() {
+        return vipActiveDate;
+    }
+
+    public void setVipActiveDate(String vipActiveDate) {
+        this.vipActiveDate = vipActiveDate;
+    }
+
+    public String getVipEndDate() {
+        return vipEndDate;
+    }
+
+    public void setVipEndDate(String vipEndDate) {
+        this.vipEndDate = vipEndDate;
     }
 
     public String getAccount() {
@@ -98,5 +116,13 @@ public class UserAccountPojo extends BaseDomain {
 
     public void setIsSurvey(Integer isSurvey) {
         this.isSurvey = isSurvey;
+    }
+
+    public String getUserKey() {
+        return userKey;
+    }
+
+    public void setUserKey(String userKey) {
+        this.userKey = userKey;
     }
 }

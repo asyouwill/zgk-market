@@ -3,22 +3,31 @@
 
 <mapper namespace="cn.thinkjoy.zgk.market.dao.IUserAccountExDAO">
 
-    <select id="findUserAccountPojo" resultType="UserAccountPojo">
+    <select id="getUserInfoPojoById" resultType="UserInfoPojo">
         SELECT
-          acc.id,
-          info.name,
-          info.icon,
-          acc.account,
-          acc.password,
-          acc.status,
-          acc.userType,
-          exam.isReported,
-          exam.isSurvey,
-          vip.status as vipStatus
+        acc.id as id,
+        acc.account as account,
+        acc.password as password,
+        info.icon as icon,
+        exam.isReported as isReported,
+        exam.isSurvey as isSurvey,
+        info.name as name,
+        acc.status as status,
+        vip.status as vipStatus,
+        info.subjectType as subjectType,
+        info.sex as sex,
+        info.schoolName as schoolName,
+        info.provinceId as province,
+        info.cityId as city,
+        info.countyId as county,
+        pro.code as userKey,
+        vip.endDate,
+        vip.activeDate
         FROM zgk_user_account acc
         left join zgk_user_vip vip on acc.id = vip.id
         left join zgk_user_info info on acc.id = info.id
         left join zgk_user_exam exam on acc.id = exam.id
+        left join zgk_province pro on pro.id = info.provinceId
         <where>
             acc.userType = 0
             <if test="token!=null">
@@ -34,6 +43,44 @@
                 and acc.areaId = #{areaId}
             </if>
         </where>
+    </select>
+
+    <select id="findUserAccountPojo" resultType="UserAccountPojo">
+        SELECT
+          acc.id,
+          info.name,
+          info.icon,
+          acc.account,
+          acc.password,
+          acc.status,
+          acc.userType,
+          exam.isReported,
+          exam.isSurvey,
+          vip.status as vipStatus,
+          pro.code as userKey,
+          vip.endDate,
+          vip.activeDate
+        FROM zgk_user_account acc
+        left join zgk_user_vip vip on acc.id = vip.id
+        left join zgk_user_info info on acc.id = info.id
+        left join zgk_user_exam exam on acc.id = exam.id
+        left join zgk_province pro on pro.id = info.provinceId
+        <where>
+            acc.userType = 0
+            <if test="token!=null">
+                and info.token = #{token}
+            </if>
+            <if test="id!=null">
+                and acc.id = #{id}
+            </if>
+            <if test="account!=null">
+                and acc.account = #{account}
+            </if>
+            <if test="areaId!=null">
+                and acc.areaId = #{areaId}
+            </if>
+        </where>
+        limit 1
     </select>
 
     <select id="findUserAccountCount" resultType="int">
@@ -59,5 +106,18 @@
         </where>
     </select>
 
+    <select id="findOldUserAccountPojo" resultType="UserInfoPojo">
+
+        SELECT  user_id as id,phone as account,password,name,0 as vipStatus FROM zgk_user
+        <where>
+            1=1
+            <if test="id!=null">
+                and user_id = #{id}
+            </if>
+            <if test="account!=null">
+                and phone = #{account}
+            </if>
+        </where>
+    </select>
 </mapper>
 
