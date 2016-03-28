@@ -15,10 +15,10 @@
           exam.isReported,
           exam.isSurvey,
           vip.status as vipStatus
-        FROM gk_user_account acc
-        left join gk_user_vip vip on acc.id = vip.id
-        left join gk_user_info info on acc.id = info.id
-        left join gk_user_exam exam on acc.id = exam.id
+        FROM zgk_user_account acc
+        left join zgk_user_vip vip on acc.id = vip.id
+        left join zgk_user_info info on acc.id = info.id
+        left join zgk_user_exam exam on acc.id = exam.id
         <where>
             acc.userType = 0
             <if test="token!=null">
@@ -39,9 +39,9 @@
     <select id="findUserAccountCount" resultType="int">
         SELECT
           COUNT(acc.id)
-        FROM gk_user_account acc
-        left join gk_user_vip vip on acc.id = vip.id
-        left join gk_user_info info on acc.id = info.id
+        FROM zgk_user_account acc
+        left join zgk_user_vip vip on acc.id = vip.id
+        left join zgk_user_info info on acc.id = info.id
         <where>
             acc.userType = 0
             <if test="token!=null">

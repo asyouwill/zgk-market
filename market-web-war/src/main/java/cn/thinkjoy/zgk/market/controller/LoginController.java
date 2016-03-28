@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@Scope("prototype")
 @RequestMapping("/login")
 public class LoginController extends BaseController {
 
