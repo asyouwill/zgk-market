@@ -17,7 +17,7 @@
         qq as qq
     </sql>
     <insert id="insertUserInfo" parameterType="UserInfo">
-        INSERT INTO gk_user_info (
+        INSERT INTO zgk_user_info (
         id,
         token,
         name,
@@ -50,7 +50,7 @@
     <select id="selectMaxId" resultType="java.lang.Long">
         SELECT
         MAX(id)
-        FROM gk_user_info
+        FROM zgk_user_info
     </select>
 
 </mapper>
