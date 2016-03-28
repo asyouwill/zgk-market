@@ -31,15 +31,15 @@ import java.util.Map;
  */
 public class HttpRequestUtil {
 
-    //è¿æ¥è¶…æ—¶æ—¶é—´(å•ä½æ¯«ç§’)
+    //Á¬½Ó³¬Ê±Ê±¼ä(µ¥Î»ºÁÃë)
     private static Integer HTTP_TIME_OUT=4000;
-    //è¯»æ•°æ®è¶…æ—¶æ—¶é—´(å•ä½æ¯«ç§’)
+    //¶ÁÊı¾İ³¬Ê±Ê±¼ä(µ¥Î»ºÁÃë)
     private static Integer HTTP_SO_TIME_OUT=20000;
 
     /**
-     * æ‰§è¡Œä¸€ä¸ªHTTP GETè¯·æ±‚
+     * Ö´ĞĞÒ»¸öHTTP GETÇëÇó
      * @param url
-     * @return HTTPçŠ¶æ€
+     * @return HTTP×´Ì¬
      */
     public static void doHttpGet(String url) throws Exception {
         DefaultHttpClient client = new DefaultHttpClient();
@@ -51,20 +51,20 @@ public class HttpRequestUtil {
     }
 
     /**
-     * postè¯·æ±‚
-     * @param url         urlåœ°å€
-     * @param jsonParam     å‚æ•°
-     * @param noNeedResponse    ä¸éœ€è¦è¿”å›ç»“æœ
+     * postÇëÇó
+     * @param url         urlµØÖ·
+     * @param jsonParam     ²ÎÊı
+     * @param noNeedResponse    ²»ĞèÒª·µ»Ø½á¹û
      * @return
      */
     public static String httpPost(String url,String jsonParam, boolean noNeedResponse) throws Exception{
-        //postè¯·æ±‚è¿”å›ç»“æœ
+        //postÇëÇó·µ»Ø½á¹û
         DefaultHttpClient httpClient = new DefaultHttpClient();
         String jsonResult = null;
         HttpPost method = new HttpPost(url);
         try {
             if (null != jsonParam) {
-                //è§£å†³ä¸­æ–‡ä¹±ç é—®é¢˜
+                //½â¾öÖĞÎÄÂÒÂëÎÊÌâ
                 StringEntity entity = new StringEntity(jsonParam, "utf-8");
                 entity.setContentEncoding("UTF-8");
                 entity.setContentType("application/json");
@@ -72,15 +72,15 @@ public class HttpRequestUtil {
             }
             HttpResponse result = httpClient.execute(method);
             url = URLDecoder.decode(url, "UTF-8");
-            /**è¯·æ±‚å‘é€æˆåŠŸï¼Œå¹¶å¾—åˆ°å“åº”**/
+            /**ÇëÇó·¢ËÍ³É¹¦£¬²¢µÃµ½ÏìÓ¦**/
             if (result.getStatusLine().getStatusCode() == 200) {
                 try {
-                    /**è¯»å–æœåŠ¡å™¨è¿”å›è¿‡æ¥çš„jsonå­—ç¬¦ä¸²æ•°æ®**/
+                    /**¶ÁÈ¡·şÎñÆ÷·µ»Ø¹ıÀ´µÄjson×Ö·û´®Êı¾İ**/
                     jsonResult = EntityUtils.toString(result.getEntity());
                     if (noNeedResponse) {
                         return null;
                     }
-                    /**æŠŠjsonå­—ç¬¦ä¸²è½¬æ¢æˆjsonå¯¹è±¡**/
+                    /**°Ñjson×Ö·û´®×ª»»³Éjson¶ÔÏó**/
 //                    jsonResult = JSONObject.fromObject(str);
                 } catch (Exception e) {
                     throw e;
@@ -93,18 +93,18 @@ public class HttpRequestUtil {
     }
 
     /**
-     * æ‰§è¡Œä¸€ä¸ªHTTP GETè¯·æ±‚ï¼Œè¿”å›è¯·æ±‚å“åº”çš„HTML
+     * Ö´ĞĞÒ»¸öHTTP GETÇëÇó£¬·µ»ØÇëÇóÏìÓ¦µÄHTML
      *
      * @param url
-     *            è¯·æ±‚çš„URLåœ°å€
+     *            ÇëÇóµÄURLµØÖ·
      * @param queryString
-     *            è¯·æ±‚çš„æŸ¥è¯¢å‚æ•°,å¯ä»¥ä¸ºnull
-     * @return è¿”å›è¯·æ±‚å“åº”çš„HTML
+     *            ÇëÇóµÄ²éÑ¯²ÎÊı,¿ÉÒÔÎªnull
+     * @return ·µ»ØÇëÇóÏìÓ¦µÄHTML
      */
     @SuppressWarnings("deprecation")
     public static String doHttpGet(String url,String queryString) throws Exception {
         String strResult = "";
-        /*try {//è½¬ç 
+        /*try {//×ªÂë
             queryString = URLEncoder.encode(queryString, "UTF-8");
         } catch (UnsupportedEncodingException e){
             e.printStackTrace();
@@ -121,17 +121,17 @@ public class HttpRequestUtil {
     }
 
     /**
-     * æ‰§è¡Œä¸€ä¸ªHTTP GETè¯·æ±‚ï¼Œè¿”å›è¯·æ±‚å“åº”çš„HTML
+     * Ö´ĞĞÒ»¸öHTTP GETÇëÇó£¬·µ»ØÇëÇóÏìÓ¦µÄHTML
      *
      * @param url
-     *            è¯·æ±‚çš„URLåœ°å€
-     *            è¯·æ±‚çš„æŸ¥è¯¢å‚æ•°,å¯ä»¥ä¸ºnull
-     * @return è¿”å›è¯·æ±‚å“åº”çš„HTML
+     *            ÇëÇóµÄURLµØÖ·
+     *            ÇëÇóµÄ²éÑ¯²ÎÊı,¿ÉÒÔÎªnull
+     * @return ·µ»ØÇëÇóÏìÓ¦µÄHTML
      */
     @SuppressWarnings("deprecation")
     public static String doGet(String url) throws Exception {
         String strResult = "";
-        /*try {//è½¬ç 
+        /*try {//×ªÂë
             queryString = URLEncoder.encode(queryString, "UTF-8");
         } catch (UnsupportedEncodingException e){
             e.printStackTrace();
@@ -148,13 +148,13 @@ public class HttpRequestUtil {
 
 
     /**
-     * æ‰§è¡Œä¸€ä¸ªHTTP POSTè¯·æ±‚ï¼Œè¿”å›è¯·æ±‚å“åº”çš„HTML
+     * Ö´ĞĞÒ»¸öHTTP POSTÇëÇó£¬·µ»ØÇëÇóÏìÓ¦µÄHTML
      *
      * @param url
-     *            è¯·æ±‚çš„URLåœ°å€
+     *            ÇëÇóµÄURLµØÖ·
      * @param params
-     *            è¯·æ±‚çš„æŸ¥è¯¢å‚æ•°,å¯ä»¥ä¸ºnull
-     * @return è¿”å›è¯·æ±‚å“åº”çš„HTML
+     *            ÇëÇóµÄ²éÑ¯²ÎÊı,¿ÉÒÔÎªnull
+     * @return ·µ»ØÇëÇóÏìÓ¦µÄHTML
      * @throws IOException
      * @throws IllegalStateException
      */
@@ -172,9 +172,9 @@ public class HttpRequestUtil {
         UrlEncodedFormEntity entity = new UrlEncodedFormEntity(postData, HTTP.UTF_8);
         post.setEntity(entity);
         HttpResponse response = httpClient.execute(post);
-        // è‹¥çŠ¶æ€ç ä¸º200 ok
+        // Èô×´Ì¬ÂëÎª200 ok
         if (response.getStatusLine().getStatusCode() == 200) {
-            // å–å‡ºå›åº”å­—ä¸²
+            // È¡³ö»ØÓ¦×Ö´®
             strResult = EntityUtils.toString(response.getEntity(), HTTP.UTF_8);
         }
         return strResult;
@@ -241,7 +241,7 @@ public class HttpRequestUtil {
     }
 
     public static String doHttpGet(String url,Map<String, String> params) throws Exception {
-        /*try {//è½¬ç 
+        /*try {//×ªÂë
             queryString = URLEncoder.encode(queryString, "UTF-8");
         } catch (UnsupportedEncodingException e){
             e.printStackTrace();
@@ -268,7 +268,7 @@ public class HttpRequestUtil {
         return strResult;
     }
     /**
-     * å…¶ä¸­éƒ¨åˆ†ç‰¹æ®Šå­—ç¬¦å·²ç»å¤„ç†
+     * ÆäÖĞ²¿·ÖÌØÊâ×Ö·ûÒÑ¾­´¦Àí
      */
     public static String doGet(String linkUrl,Map<String, String> params) throws Exception{
         HttpURLConnection connection = null;
@@ -287,8 +287,8 @@ public class HttpRequestUtil {
         try {
             URL url = new URL(urlApi.toString());
             connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(HTTP_TIME_OUT);// è®¾ç½®è¿æ¥è¶…æ—¶æ—¶é—´ï¼Œå•ä½æ¯«ç§’
-            connection.setReadTimeout(HTTP_SO_TIME_OUT);// è®¾ç½®è¯»å–æ•°æ®è¶…æ—¶æ—¶é—´ï¼Œå•ä½æ¯«ç§’
+            connection.setConnectTimeout(HTTP_TIME_OUT);// ÉèÖÃÁ¬½Ó³¬Ê±Ê±¼ä£¬µ¥Î»ºÁÃë
+            connection.setReadTimeout(HTTP_SO_TIME_OUT);// ÉèÖÃ¶ÁÈ¡Êı¾İ³¬Ê±Ê±¼ä£¬µ¥Î»ºÁÃë
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
             StringBuffer buffer = new StringBuffer();
             String line = "";

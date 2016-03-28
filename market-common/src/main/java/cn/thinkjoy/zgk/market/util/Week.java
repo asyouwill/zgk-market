@@ -1,13 +1,13 @@
 package cn.thinkjoy.zgk.market.util;
 
 public enum Week {
-	MONDAY("æ˜ŸæœŸä¸€", "Monday", "Mon.", 1),  
-    TUESDAY("æ˜ŸæœŸäºŒ", "Tuesday", "Tues.", 2),  
-    WEDNESDAY("æ˜ŸæœŸä¸‰", "Wednesday", "Wed.", 3),  
-    THURSDAY("æ˜ŸæœŸå››", "Thursday", "Thur.", 4),  
-    FRIDAY("æ˜ŸæœŸäº”", "Friday", "Fri.", 5),  
-    SATURDAY("æ˜ŸæœŸå…­", "Saturday", "Sat.", 6),  
-    SUNDAY("æ˜ŸæœŸæ—¥", "Sunday", "Sun.", 7);  
+	MONDAY("ÐÇÆÚÒ»", "Monday", "Mon.", 1),  
+    TUESDAY("ÐÇÆÚ¶þ", "Tuesday", "Tues.", 2),  
+    WEDNESDAY("ÐÇÆÚÈý", "Wednesday", "Wed.", 3),  
+    THURSDAY("ÐÇÆÚËÄ", "Thursday", "Thur.", 4),  
+    FRIDAY("ÐÇÆÚÎå", "Friday", "Fri.", 5),  
+    SATURDAY("ÐÇÆÚÁù", "Saturday", "Sat.", 6),  
+    SUNDAY("ÐÇÆÚÈÕ", "Sunday", "Sun.", 7);  
       
     String name_cn;  
     String name_en;  
