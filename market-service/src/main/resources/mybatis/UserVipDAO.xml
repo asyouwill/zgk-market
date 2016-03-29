@@ -2,27 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.thinkjoy.zgk.market.dao.IUserVipDAO">
-<!--
-insert
-update
-updateNull
-deleteById
-deleteByCondition
-deleteByProperty
-fetch
-findOne
-findList
-findAll
-queryPage
-like
-queryList
-queryOne
-count
-selectMaxId
-updateOrSave
-selectOne
-selectList
--->
+
     <sql id="Base_Column_List">
         id,
         status,
@@ -30,30 +10,27 @@ selectList
         createDate,
         lastModifier,
         lastModDate,
-        endDate,
-        activeDate
+        endDate
     </sql>
     <insert id="insert" parameterType="UserVip">
         INSERT INTO zgk_user_vip (
+        id,
         status,
         creator,
         createDate,
         lastModifier,
         lastModDate,
-        endDate,
-        activeDate
+        endDate
         ) VALUES (
+        #{id},
         #{status},
         #{creator},
         #{createDate},
         #{lastModifier},
         #{lastModDate},
-        #{endDate},
-        #{activeDate}
+        #{endDate}
         )
-        <selectKey resultType="java.lang.Long" keyProperty="id">
-        SELECT LAST_INSERT_ID() AS ID
-        </selectKey>
+
     </insert>
 
     <!-- 更新 -->
@@ -107,9 +84,6 @@ selectList
             <if test="map.endDate!=null">
                 endDate = #{map.endDate},
             </if>
-            <if test="map.activeDate!=null">
-                activeDate = #{map.activeDate},
-            </if>
         </trim>
         WHERE
         id = #{map.id}
@@ -136,9 +110,6 @@ selectList
             <if test="update.endDate!=null">
                 endDate = #{update.endDate},
             </if>
-            <if test="update.activeDate!=null">
-                activeDate = #{update.activeDate},
-            </if>
         </trim>
 
         <trim prefix="WHERE" prefixOverrides="AND | OR">
@@ -163,9 +134,6 @@ selectList
             <if test="condition.endDate!=null">
                 AND endDate = #{condition.endDate}
             </if>
-            <if test="condition.activeDate!=null">
-                AND activeDate = #{condition.activeDate}
-            </if>
         </trim>
     </update>
 
@@ -176,16 +144,14 @@ selectList
                 createDate,
                 lastModifier,
                 lastModDate,
-                endDate,
-                activeDate
+                endDate
         ) VALUES (
                     #{map.status},
                     #{map.creator},
                     #{map.createDate},
                     #{map.lastModifier},
                     #{map.lastModDate},
-                    #{map.endDate},
-                    #{map.activeDate}
+                    #{map.endDate}
         )
     </insert>
 
@@ -199,7 +165,6 @@ selectList
             lastModifier = #{lastModifier},
             lastModDate = #{lastModDate},
             endDate = #{endDate},
-            activeDate = #{activeDate},
         </trim>
         WHERE
         id = #{id} 
@@ -237,9 +202,6 @@ selectList
             </if>
             <if test="endDate!=null">
                 AND endDate = #{endDate}
-            </if>
-            <if test="activeDate!=null">
-                AND activeDate = #{activeDate}
             </if>
         </trim>
     </delete>
@@ -319,9 +281,6 @@ selectList
             <if test="condition.endDate!=null">
                 ${condition.groupOp}   endDate  ${condition.endDate.op}  #{condition.endDate.data}
             </if>
-            <if test="condition.activeDate!=null">
-                ${condition.groupOp}   activeDate  ${condition.activeDate.op}  #{condition.activeDate.data}
-            </if>
 
 
     </where>
@@ -360,9 +319,6 @@ selectList
             <if test="endDate!=null">
                 AND endDate like CONCAT('%', #{endDate} , '%')
             </if>
-            <if test="activeDate!=null">
-                AND activeDate like CONCAT('%', #{activeDate} , '%')
-            </if>
         </trim>
         <if test="orderBy!=null">
         ORDER BY ${orderBy} ${sortBy}
@@ -396,9 +352,6 @@ selectList
             <if test="condition.endDate!=null">
                 AND endDate = #{condition.endDate}
             </if>
-            <if test="condition.activeDate!=null">
-                AND activeDate = #{condition.activeDate}
-            </if>
         </trim>
         <if test="orderBy!=null">
         ORDER BY ${orderBy} ${sortBy}
@@ -410,29 +363,26 @@ selectList
         <include refid="Base_Column_List" />
         FROM zgk_user_vip
         <trim prefix="WHERE" prefixOverrides="AND | OR">
-            <if test="condition.id!=null">
-                AND id = #{condition.id}
+            <if test="id!=null">
+                AND id = #{id}
             </if>
-            <if test="condition.status!=null">
-                AND status = #{condition.status}
+            <if test="status!=null">
+                AND status = #{status}
             </if>
-            <if test="condition.creator!=null">
-                AND creator = #{condition.creator}
+            <if test="creator!=null">
+                AND creator = #{creator}
             </if>
-            <if test="condition.createDate!=null">
-                AND createDate = #{condition.createDate}
+            <if test="createDate!=null">
+                AND createDate = #{createDate}
             </if>
-            <if test="condition.lastModifier!=null">
-                AND lastModifier = #{condition.lastModifier}
+            <if test="lastModifier!=null">
+                AND lastModifier = #{lastModifier}
             </if>
-            <if test="condition.lastModDate!=null">
-                AND lastModDate = #{condition.lastModDate}
+            <if test="lastModDate!=null">
+                AND lastModDate = #{lastModDate}
             </if>
-            <if test="condition.endDate!=null">
-                AND endDate = #{condition.endDate}
-            </if>
-            <if test="condition.activeDate!=null">
-                AND activeDate = #{condition.activeDate}
+            <if test="endDate!=null">
+                AND endDate = #{endDate}
             </if>
         </trim>
         limit 0,1
@@ -461,9 +411,6 @@ selectList
            </if>
            <if test="endDate!=null">
                ${groupOp} endDate ${endDate.op}  #{endDate.data}
-           </if>
-           <if test="activeDate!=null">
-               ${groupOp} activeDate ${activeDate.op}  #{activeDate.data}
            </if>
 
        </where>

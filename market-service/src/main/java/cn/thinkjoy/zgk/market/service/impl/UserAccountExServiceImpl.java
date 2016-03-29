@@ -120,6 +120,7 @@ public class UserAccountExServiceImpl implements IUserAccountExService {
                 agentLevel = userMarket1.getAgentLevel()+1;
             }
         }
+        userMarket.setSharerType(sharerType);
         userMarket.setAgentLevel(agentLevel);
         userMarket.setCreateDate(System.currentTimeMillis());
         userMarket.setCreator(id);

@@ -32,11 +32,13 @@ selectList
     </sql>
     <insert id="insert" parameterType="UserExam">
         INSERT INTO zgk_user_exam (
+        id,
         scores,
         ranking,
         isSurvey,
         isReported
         ) VALUES (
+        #{id},
         #{scores},
         #{ranking},
         #{isSurvey},
@@ -252,11 +254,7 @@ selectList
             </if>
 
 
-    </where>
-
-        <if test="orderBy!=null">
-        ORDER BY ${orderBy} ${sortBy}
-        </if>
+        </where>
         <if test="offset != null">
             limit ${offset}, ${rows}
         </if>
@@ -320,20 +318,20 @@ selectList
         <include refid="Base_Column_List" />
         FROM zgk_user_exam
         <trim prefix="WHERE" prefixOverrides="AND | OR">
-            <if test="condition.id!=null">
-                AND id = #{condition.id}
+            <if test="id!=null">
+                AND id = #{id}
             </if>
-            <if test="condition.scores!=null">
-                AND scores = #{condition.scores}
+            <if test="scores!=null">
+                AND scores = #{scores}
             </if>
-            <if test="condition.ranking!=null">
-                AND ranking = #{condition.ranking}
+            <if test="ranking!=null">
+                AND ranking = #{ranking}
             </if>
-            <if test="condition.isSurvey!=null">
-                AND isSurvey = #{condition.isSurvey}
+            <if test="isSurvey!=null">
+                AND isSurvey = #{isSurvey}
             </if>
-            <if test="condition.isReported!=null">
-                AND isReported = #{condition.isReported}
+            <if test="isReported!=null">
+                AND isReported = #{isReported}
             </if>
         </trim>
         limit 0,1

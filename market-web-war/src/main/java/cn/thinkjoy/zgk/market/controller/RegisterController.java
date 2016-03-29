@@ -82,9 +82,9 @@ public class RegisterController extends BaseCommonController {
             if (userAccountBean!=null){
                 throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "该账号已被注册!");
             }
-            if (!checkCaptcha(account,captcha)){
-                throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "验证码有误!");
-            }
+//            if (!checkCaptcha(account,captcha)){
+//                throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "验证码有误!");
+//            }
 
             //保存用户
         UserAccount userAccount = new UserAccount();
