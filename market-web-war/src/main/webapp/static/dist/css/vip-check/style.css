@@ -1,0 +1,52 @@
+header {
+  position: relative;
+  overflow: hidden;
+}
+header .header-title {
+  padding-left: 46px;
+}
+header .header-btn {
+  position: absolute;
+  height: 25px;
+  top: 6px;
+  left: 9px;
+}
+header .location {
+  font-size: 12px;
+  vertical-align: 2px;
+  margin-left: 1px;
+}
+header .location.location-icon:before {
+  vertical-align: -6px;
+  margin-right: 4px;
+}
+
+.banner {
+  height: 155px;
+  background-color: #fff;
+  text-align: center;
+}
+.banner img {
+  height: 100%;
+}
+
+.vip-check-info {
+  text-align: center;
+  margin-top: 57px;
+  position: relative;
+}
+.vip-check-info img {
+  width: 168px;
+}
+.vip-check-info .text {
+  color: #D0021B;
+  position: absolute;
+  top: 18px;
+  font-size: 14px;
+  left: 50%;
+  margin-left: -120px;
+}
+.vip-check-info .text div:first-child {
+  font-size: 15px;
+  margin-bottom: 5px;
+}

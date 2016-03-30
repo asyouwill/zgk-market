@@ -1,0 +1,89 @@
+header {
+  position: relative;
+  overflow: hidden;
+}
+header .header-title {
+  padding-left: 46px;
+}
+header .header-btn {
+  position: absolute;
+  height: 25px;
+  top: 6px;
+  left: 9px;
+}
+header .location {
+  font-size: 12px;
+  vertical-align: 2px;
+  margin-left: 1px;
+}
+header .location.location-icon:before {
+  vertical-align: -6px;
+  margin-right: 4px;
+}
+
+.container {
+  color: #707070;
+}
+
+.user-info {
+  height: 137px;
+  background-color: #F6F6F6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.user-info .info-center {
+  width: 140px;
+  margin: 0 auto;
+  font-size: 12px;
+  text-align: center;
+}
+.user-info .info-center img {
+  width: 60px;
+}
+.user-info .info-center .name {
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+.user-info .info-center .account {
+  color: #4A4A4A;
+}
+.user-info .modify-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 12px;
+  border: 1px solid #D80C18;
+  color: #D80C18;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.detail-list li {
+  height: 43px;
+  line-height: 43px;
+  padding: 0 15px;
+  font-size: 14px;
+  border-bottom: 1px solid #E9E4E4;
+}
+.detail-list li span:last-child {
+  float: right;
+}
+.detail-list li img {
+  width: 33px;
+  margin-top: 5px;
+}
+
+.change-password-btn {
+  height: 39px;
+  line-height: 39px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  background-color: #B61F28;
+  border: none;
+  border-radius: 2px;
+  width: 270px;
+  margin: 50px auto;
+}
