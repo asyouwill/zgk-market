@@ -1,10 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="../../../dist/css/register/style.css"/>
+    <%@ include file="../common/meta.jsp"%>
+    <title>登录页</title>
+    <link rel="stylesheet" href="<%=ctx%>/static/dist/css/register/style.css"/>
     <style>
         /*header,*/
         /*.container {*/
@@ -90,13 +90,12 @@
         </div>
     </form>
 </div>
-<script src="../../../assets/js/jquery-2.2.2.min.js"></script>
+<script src="<%=ctx%>/static/assets/js/jquery-2.2.2.min.js"></script>
 <script>
     $(function(){
         $('.tab-list .tab').on('click', function(){
             $('.tab-list .tab').removeClass('active');
             $(this).addClass('active');
-
             $('form').addClass('hidden');
             $('form').eq($(this).index()).removeClass('hidden');
         })

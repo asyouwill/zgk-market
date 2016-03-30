@@ -18,6 +18,6 @@ public class WebCotroller {
     @RequestMapping("/login")
     public ModelAndView test()
     {
-        return new ModelAndView("/test");
+        return new ModelAndView("/register/register");
     }
 }
