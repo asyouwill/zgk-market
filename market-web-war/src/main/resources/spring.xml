@@ -27,7 +27,8 @@
             </props>
         </property>
     </bean>
-    <import resource="classpath:/setting/applicationContext-cache.xml" />
-    <import resource="classpath:/setting/applicationContext-security.xml" />
-    <import resource="classpath*:oauth-dubbo-consumer.xml" />
+    <import resource="classpath:springme.xml"/>
+    <!--<import resource="classpath:/setting/applicationContext-cache.xml" />-->
+    <!--<import resource="classpath:/setting/applicationContext-security.xml" />-->
+    <!--<import resource="classpath*:oauth-dubbo-consumer.xml" />-->
 </beans>
