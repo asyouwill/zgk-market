@@ -14,3 +14,12 @@ run:
 1.npm install
 2.gulp
 3.
+
+
+
+
+
+页面view url
+
+
+register :  login

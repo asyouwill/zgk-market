@@ -5,18 +5,8 @@
     <%@ include file="../common/meta.jsp"%>
     <title>登录页</title>
     <link rel="stylesheet" href="<%=ctx%>/static/dist/css/register/style.css"/>
-    <style>
-        /*header,*/
-        /*.container {*/
-            /*position: relative;*/
-            /*z-index: 9;*/
-            /*opacity: 0.6;*/
-        /*}*/
-    </style>
 </head>
 <body>
-<!--<img src="register.png" style="position: absolute;width: 100%;top: -51px;"/>-->
-<!--<img src="login.png" style="position: absolute;width: 100%;top: -51px;"/>-->
 <%@ include file="../common/header.jsp"%>
 <div class="container">
     <div class="tab-list">
@@ -81,6 +71,7 @@
 </div>
 <script>
     $(function(){
+        $('#header-title').text('注册');
         $('.tab-list .tab').on('click', function(){
             $('.tab-list .tab').removeClass('active');
             $(this).addClass('active');

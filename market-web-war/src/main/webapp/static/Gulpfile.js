@@ -4,6 +4,7 @@ var gulpSequence = require('gulp-sequence');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var cssmin = require('gulp-cssmin');
+var uglify = require('gulp-uglify');
 
 var fs = require('fs');
 var scssDependenceJson = JSON.parse(fs.readFileSync('scss-concat-config.json'));
@@ -28,6 +29,19 @@ for(var i=0; i<taskArrLen; i++){
 }
 
 gulp.task('scss', gulpSequence(taskArr))
+
+
+gulp.task('minifyjs', function() {
+    return gulp.src('src/*.js')
+        .pipe(concat('main.js'))    //合并所有js到main.js
+        .pipe(gulp.dest('minified/js'))    //输出main.js到文件夹
+        .pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
+        .pipe(uglify())    //压缩
+        .pipe(gulp.dest('minified/js'));  //输出
+});
+
+
+
 
 gulp.task('watch', function(){
     gulp.watch(['assets/**/*.scss'], watchTaskArr)
