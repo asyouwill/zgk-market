@@ -1,8 +1,7 @@
 <component name="libraryTable">
   <library name="Gradle: cn.thinkjoy.ucm:ucm-api:1.0.0-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/wrapper/caches/modules-2/files-2.1/cn.thinkjoy.ucm/ucm-api/1.0.0-SNAPSHOT/e878b7c3a1591e1c85893b626515b4cb5a63a02c/ucm-api-1.0.0-SNAPSHOT.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.thinkjoy.ucm/ucm-api/1.0.0-SNAPSHOT/e878b7c3a1591e1c85893b626515b4cb5a63a02c/ucm-api-1.0.0-SNAPSHOT.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/soft/gradle-1.11/caches/modules-2/files-2.1/cn.thinkjoy.ucm/ucm-api/1.0.0-SNAPSHOT/e878b7c3a1591e1c85893b626515b4cb5a63a02c/ucm-api-1.0.0-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

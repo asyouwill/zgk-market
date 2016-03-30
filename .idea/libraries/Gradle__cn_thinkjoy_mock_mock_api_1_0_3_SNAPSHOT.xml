@@ -1,8 +1,7 @@
 <component name="libraryTable">
   <library name="Gradle: cn.thinkjoy.mock:mock-api:1.0.3-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/wrapper/caches/modules-2/files-2.1/cn.thinkjoy.mock/mock-api/1.0.3-SNAPSHOT/5432a329a02b2e1e4bce977e25c7599c2dc28472/mock-api-1.0.3-SNAPSHOT.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.thinkjoy.mock/mock-api/1.0.3-SNAPSHOT/5432a329a02b2e1e4bce977e25c7599c2dc28472/mock-api-1.0.3-SNAPSHOT.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/soft/gradle-1.11/caches/modules-2/files-2.1/cn.thinkjoy.mock/mock-api/1.0.3-SNAPSHOT/5432a329a02b2e1e4bce977e25c7599c2dc28472/mock-api-1.0.3-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

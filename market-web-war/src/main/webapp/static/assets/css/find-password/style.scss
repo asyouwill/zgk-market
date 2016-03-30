@@ -1,0 +1,121 @@
+html {
+  height: 100%;
+  background-color: #F6F6F6;
+}
+
+//header bar
+header {
+  position: relative;
+  overflow: hidden;
+
+  .header-title {
+    padding-left: 46px;
+  }
+  .header-btn {
+    position: absolute;
+    &:first-child {
+      height: 25px;
+      top: 6px;
+      left: 9px;
+    }
+    &:last-child {
+      height: 25px;
+      top: 7px;
+      right: 13px;
+    }
+  }
+  .location {
+    font-size: 12px;
+    vertical-align: 2px;
+    margin-left: 1px;
+    &.location-icon:before {
+      vertical-align: -6px;
+      margin-right: 4px;
+    }
+  }
+}
+
+//main content
+.container {
+  background-color: #F6F6F6;
+  padding: 48px 25px 0;
+
+  .form-group {
+    margin-bottom: 12px;
+    .input-group {
+      i {
+        position: absolute;
+        left: 9px;
+        top: 6px;
+      }
+    }
+    .title {
+      color: #575757;
+      font-size: 12px;
+      margin: 3px 0;
+    }
+    .check-code {
+      width: calc(100% - 130px);
+    }
+    .location-list {
+      display: flex;
+      margin-bottom: 12px;
+      .location-option-list {
+        background-color: #fff;
+        border: 1px solid #E8E8E8;
+        border-radius: 2px;
+        flex: 1;
+        margin-right: 7px;
+        height: 39px;
+        line-height: 39px;
+        position: relative;
+
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          border-top: none;
+          border-right: 5px solid transparent;
+          border-left: 5px solid transparent;
+          border-bottom: 10px solid #9B9B9B;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+        span {
+          margin-left: 14px;
+          font-size: 13px;
+        }
+      }
+    }
+    &:nth-of-type(2) {
+      margin-bottom: 0;
+      input[type=button] {
+        float: right;
+        background-color: #D80C18;
+        border: 1px solid #D80C18;
+        width: 100px;
+        height: 41px;
+        color: #fff;
+      }
+    }
+    &:nth-child(3) {
+      margin-top: 8px;
+    }
+    &:last-child {
+      margin-top: 61px;
+    }
+    .submit-btn {
+      height: 39px;
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+      background-color: #B61F28;
+      width: 100%;
+      border: none;
+      border-radius: 2px;
+    }
+  }
+}

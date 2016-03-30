@@ -85,3 +85,6 @@
 ##idea##
 .idea/*
 *.iml
+
+
+market-web-war/src/main/webapp/static/node_modules

@@ -1,0 +1,100 @@
+/*reset css*/
+html,
+body,
+ul,
+li,
+div,
+input {
+  padding: 0;
+  margin: 0; }
+
+ul,
+li {
+  list-style: none; }
+
+body {
+  font-family: arial, helvetica, sans-serif; }
+
+input,
+button {
+  outline: none; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both; }
+
+.hidden {
+  display: none; }
+
+header {
+  height: 39px;
+  line-height: 39px;
+  background-color: #D51323;
+  color: white; }
+  header .header-title {
+    text-align: center; }
+
+.menu-icon:before {
+  content: "";
+  background: url(../../../img/menu/menu.png);
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  display: inline-block; }
+
+.location-icon:before {
+  content: "";
+  background: url(../../../img/location.png);
+  width: 14px;
+  height: 21px;
+  background-size: cover;
+  display: inline-block; }
+
+header {
+  position: relative;
+  overflow: hidden; }
+  header .header-title {
+    padding-left: 46px; }
+  header .header-btn {
+    position: absolute;
+    height: 25px;
+    top: 6px;
+    left: 9px; }
+  header .location {
+    font-size: 12px;
+    vertical-align: 2px;
+    margin-left: 1px; }
+    header .location.location-icon:before {
+      vertical-align: -6px;
+      margin-right: 4px; }
+
+.banner {
+  height: 155px;
+  background-color: #fff;
+  text-align: center; }
+  .banner img {
+    height: 100%; }
+
+.vip-check-info {
+  text-align: center;
+  margin-top: 57px;
+  position: relative; }
+  .vip-check-info img {
+    width: 168px; }
+  .vip-check-info .text {
+    color: #D0021B;
+    position: absolute;
+    top: 18px;
+    font-size: 14px;
+    left: 50%;
+    margin-left: -120px; }
+    .vip-check-info .text div:first-child {
+      font-size: 15px;
+      margin-bottom: 5px; }

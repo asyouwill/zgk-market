@@ -1,0 +1,56 @@
+//header bar
+header {
+  position: relative;
+  overflow: hidden;
+
+  .header-title {
+    padding-left: 46px;
+  }
+  .header-btn {
+    position: absolute;
+    height: 25px;
+    top: 6px;
+    left: 9px;
+  }
+  .location {
+    font-size: 12px;
+    vertical-align: 2px;
+    margin-left: 1px;
+    &.location-icon:before {
+      vertical-align: -6px;
+      margin-right: 4px;
+    }
+  }
+}
+.avatar {
+  width: 60px;
+  margin: 0 auto;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 20px;
+  img {
+    width: 100%;
+  }
+  .upload-btn {
+    color: #D80C18;
+    border: 1px solid #D80C18;
+    padding: 3px 0;
+    border-radius: 2px;
+  }
+}
+.form-group {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 17px;
+  font-size: 13px;
+  &:nth-child(2) {
+    margin-top: 15px;
+  }
+  .label {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .clear {
+    display: inline-block;
+  }
+}
