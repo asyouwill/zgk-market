@@ -8,6 +8,7 @@
 <meta name="description" content="智高考专注高考志愿填报咨询指导，针对不同地区的考生提供特殊的填报技巧，为高考考生提供智能填报系统。">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="shortcut icon" href="http://cdn.gaokao360.net/static/global/common/images/icon.ico"/>
-<script src="<%=ctx%>/static/assets/js/jquery-2.2.2.min.js"></script>
+<link rel="stylesheet" href="<%=ctx%>/static/dist/css/common.css"/>
+<script src="<%=ctx%>/static/src/lib/jquery/jquery-2.2.2.min.js"></script>
 
 
