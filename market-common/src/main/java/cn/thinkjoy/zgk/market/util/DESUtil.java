@@ -13,18 +13,18 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
 public class DESUtil {
-    //ç®—æ³•åç§° 
+    //Ëã·¨Ãû³Æ 
     private static final String KEY_ALGORITHM = "DES";
-    //ç®—æ³•åç§°/åŠ å¯†æ¨¡å¼/å¡«å……æ–¹å¼ 
-    //DESå…±æœ‰å››ç§å·¥ä½œæ¨¡å¼-->>ECBï¼šç”µå­å¯†ç æœ¬æ¨¡å¼ã€CBCï¼šåŠ å¯†åˆ†ç»„é“¾æ¥æ¨¡å¼ã€CFBï¼šåŠ å¯†åé¦ˆæ¨¡å¼ã€OFBï¼šè¾“å‡ºåé¦ˆæ¨¡å¼
+    //Ëã·¨Ãû³Æ/¼ÓÃÜÄ£Ê½/Ìî³ä·½Ê½ 
+    //DES¹²ÓĞËÄÖÖ¹¤×÷Ä£Ê½-->>ECB£ºµç×ÓÃÜÂë±¾Ä£Ê½¡¢CBC£º¼ÓÃÜ·Ö×éÁ´½ÓÄ£Ê½¡¢CFB£º¼ÓÃÜ·´À¡Ä£Ê½¡¢OFB£ºÊä³ö·´À¡Ä£Ê½
     private static final String CIPHER_ALGORITHM = "DES/ECB/NoPadding";
-    //DES keyé•¿åº¦å¿…é¡»ä¸º8çš„æ•´æ•°å€
+    //DES key³¤¶È±ØĞëÎª8µÄÕûÊı±¶
     public static final String key = "zgk@2016fighting";
     /**
      *   
-     * ç”Ÿæˆå¯†é’¥keyå¯¹è±¡
-     * @param keyStr å¯†é’¥å­—ç¬¦ä¸²
-     * @return å¯†é’¥å¯¹è±¡ 
+     * Éú³ÉÃÜÔ¿key¶ÔÏó
+     * @param keyStr ÃÜÔ¿×Ö·û´®
+     * @return ÃÜÔ¿¶ÔÏó 
      * @throws InvalidKeyException   
      * @throws NoSuchAlgorithmException   
      * @throws InvalidKeySpecException   
@@ -33,7 +33,7 @@ public class DESUtil {
     private static SecretKey keyGenerator(String keyStr) throws Exception {
         byte input[] = HexString2Bytes(keyStr);
         DESKeySpec desKey = new DESKeySpec(input);
-        //åˆ›å»ºä¸€ä¸ªå¯†åŒ™å·¥å‚ï¼Œç„¶åç”¨å®ƒæŠŠDESKeySpecè½¬æ¢æˆ
+        //´´½¨Ò»¸öÃÜ³×¹¤³§£¬È»ºóÓÃËü°ÑDESKeySpec×ª»»³É
         SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
         SecretKey securekey = keyFactory.generateSecret(desKey);
         return securekey;
@@ -45,7 +45,7 @@ public class DESUtil {
         return (c - '0') & 0x0f;
     }
 
-    // ä»åå…­è¿›åˆ¶å­—ç¬¦ä¸²åˆ°å­—èŠ‚æ•°ç»„è½¬æ¢ 
+    // ´ÓÊ®Áù½øÖÆ×Ö·û´®µ½×Ö½ÚÊı×é×ª»» 
     private static byte[] HexString2Bytes(String hexstr) {
         byte[] b = new byte[hexstr.length() / 2];
         int j = 0;
@@ -58,35 +58,35 @@ public class DESUtil {
     }
 
     /** 
-     * åŠ å¯†æ•°æ®
-     * @param data å¾…åŠ å¯†æ•°æ®
-     * @param key å¯†é’¥
-     * @return åŠ å¯†åçš„æ•°æ® 
+     * ¼ÓÃÜÊı¾İ
+     * @param data ´ı¼ÓÃÜÊı¾İ
+     * @param key ÃÜÔ¿
+     * @return ¼ÓÃÜºóµÄÊı¾İ 
      */
     public static String encrypt(String data, String key) throws Exception {
         Key deskey = keyGenerator(key);
-        // å®ä¾‹åŒ–Cipherå¯¹è±¡ï¼Œå®ƒç”¨äºå®Œæˆå®é™…çš„åŠ å¯†æ“ä½œ
+        // ÊµÀı»¯Cipher¶ÔÏó£¬ËüÓÃÓÚÍê³ÉÊµ¼ÊµÄ¼ÓÃÜ²Ù×÷
         Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
         SecureRandom random = new SecureRandom();
-        // åˆå§‹åŒ–Cipherå¯¹è±¡ï¼Œè®¾ç½®ä¸ºåŠ å¯†æ¨¡å¼
+        // ³õÊ¼»¯Cipher¶ÔÏó£¬ÉèÖÃÎª¼ÓÃÜÄ£Ê½
         cipher.init(Cipher.ENCRYPT_MODE, deskey, random);
         byte[] results = cipher.doFinal(data.getBytes());
-        // æ‰§è¡ŒåŠ å¯†æ“ä½œã€‚åŠ å¯†åçš„ç»“æœé€šå¸¸éƒ½ä¼šç”¨Base64ç¼–ç è¿›è¡Œä¼ è¾“ 
+        // Ö´ĞĞ¼ÓÃÜ²Ù×÷¡£¼ÓÃÜºóµÄ½á¹ûÍ¨³£¶¼»áÓÃBase64±àÂë½øĞĞ´«Êä 
         return Base64.encodeBase64String(results);
     }
 
     /** 
-     * è§£å¯†æ•°æ® 
-     * @param data å¾…è§£å¯†æ•°æ® 
-     * @param key å¯†é’¥ 
-     * @return è§£å¯†åçš„æ•°æ® 
+     * ½âÃÜÊı¾İ 
+     * @param data ´ı½âÃÜÊı¾İ 
+     * @param key ÃÜÔ¿ 
+     * @return ½âÃÜºóµÄÊı¾İ 
      */
     public static String decrypt(String data, String key) throws Exception {
         Key deskey = keyGenerator(key);
         Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
-        //åˆå§‹åŒ–Cipherå¯¹è±¡ï¼Œè®¾ç½®ä¸ºè§£å¯†æ¨¡å¼
+        //³õÊ¼»¯Cipher¶ÔÏó£¬ÉèÖÃÎª½âÃÜÄ£Ê½
         cipher.init(Cipher.DECRYPT_MODE, deskey);
-        // æ‰§è¡Œè§£å¯†æ“ä½œ
+        // Ö´ĞĞ½âÃÜ²Ù×÷
         return new String(cipher.doFinal(Base64.decodeBase64(data)));
     }
 
@@ -94,11 +94,11 @@ public class DESUtil {
 //    	String uname= "userName";
 //    	String password = "password";
 //        String source = getEightByteMultypleStr("123456",uname);
-//        System.out.println("åŸæ–‡: " + source);
+//        System.out.println("Ô­ÎÄ: " + source);
 //        String encryptData = encrypt(source, key);
-//        System.out.println("åŠ å¯†å: " + encryptData);
+//        System.out.println("¼ÓÃÜºó: " + encryptData);
 //        String decryptData = decrypt(encryptData, key);
-//        System.out.println("è§£å¯†å: " + decryptData);
+//        System.out.println("½âÃÜºó: " + decryptData);
 //        String[] ss = getUserInfo(decryptData);
 //        System.out.println(ss[0]);
 //    }

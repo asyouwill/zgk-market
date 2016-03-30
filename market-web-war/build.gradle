@@ -9,7 +9,7 @@ dependencies {
 
 
     compile group: "cn.thinkjoy.common", name: "thinkjoy-web-common", version: "$thinkjoyCommonVersion", changing: true
-    compile "cn.thinkjoy.jx.protocol:jx-protocol-common:$jxProtocolCommonVersion"
+//    compile "cn.thinkjoy.jx.protocol:jx-protocol-common:$jxProtocolCommonVersion"
 
     compile "cn.thinkjoy.jx:jx-auth-common:$jxCommonVersion"
     compile ("cn.thinkjoy.mock:mock-scan:$mockVersion"){
