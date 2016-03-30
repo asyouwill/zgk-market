@@ -1,16 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dengshaofei
-  Date: 16/3/30
-  Time: 19:29
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<%@ page language="java" pageEncoding="UTF-8" %>
+<header>
+    <div class="header-btn">
+        <i class="menu-icon"></i>
+    </div>
+    <div class="header-title">
+        <span>注册</span>
+        <span class="location location-icon">陕西</span>
+    </div>
+    <div class="header-btn">
+        <i class="search-icon"></i>
+    </div>
+</header>

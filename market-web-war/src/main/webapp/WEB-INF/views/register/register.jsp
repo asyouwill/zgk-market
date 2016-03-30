@@ -17,18 +17,7 @@
 <body>
 <!--<img src="register.png" style="position: absolute;width: 100%;top: -51px;"/>-->
 <!--<img src="login.png" style="position: absolute;width: 100%;top: -51px;"/>-->
-<header>
-    <div class="header-btn">
-        <i class="menu-icon"></i>
-    </div>
-    <div class="header-title">
-        <span>注册</span>
-        <span class="location location-icon">陕西</span>
-    </div>
-    <div class="header-btn">
-        <i class="search-icon"></i>
-    </div>
-</header>
+<%@ include file="../common/header.jsp"%>
 <div class="container">
     <div class="tab-list">
         <div class="tab tab-login">登录</div>
@@ -90,7 +79,6 @@
         </div>
     </form>
 </div>
-<script src="<%=ctx%>/static/assets/js/jquery-2.2.2.min.js"></script>
 <script>
     $(function(){
         $('.tab-list .tab').on('click', function(){
