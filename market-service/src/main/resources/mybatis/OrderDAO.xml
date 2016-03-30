@@ -622,5 +622,14 @@ selectList
         FROM zgk_order
     </select>
 
+    <select id="queryOrderListByUserId" resultType="java.util.Map">
+        select * from zgk_order where user_id=#{userId} limit ${pageNo},${pageSize} order by create_date desc;
+    </select>
+
+
+    <select id="queryOrderByNo" resultType="java.util.Map">
+        select * from zgk_order where order_no=#{orderNo};
+    </select>
+
 </mapper>
 

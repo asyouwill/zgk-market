@@ -15,6 +15,9 @@ import cn.thinkjoy.zgk.market.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 
 @Service("OrderServiceImpl")
 public class OrderServiceImpl extends AbstractPageService<IBaseDAO<Order>, Order> implements IOrderService<IBaseDAO<Order>,Order> {
@@ -24,6 +27,17 @@ public class OrderServiceImpl extends AbstractPageService<IBaseDAO<Order>, Order
     @Override
     public IBaseDAO<Order> getDao() {
         return orderDAO;
+    }
+
+    @Override
+    public List<Map<String, Object>> queryOrderListByUserId(long userId, int pageNo, int pageSize) {
+
+        return orderDAO.queryOrderListByUserId(userId, pageNo, pageSize);
+    }
+
+    @Override
+    public Map<String, Object> queryOrderByNo(String orderNo) {
+        return orderDAO.queryOrderByNo(orderNo);
     }
 
 //    @Override

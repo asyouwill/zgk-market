@@ -44,7 +44,7 @@ public class OrderController {
             resultMap.put("code",200);
             resultMap.put("msg","下单成功");
         }catch (Exception e){
-            logger.info("用户"+order.getUserId()+",提交订单异常:"+e);
+            logger.error("用户" + order.getUserId() + ",提交订单异常:" + e);
             throw new BizException(ERRORCODE.FAIL.getCode(),ERRORCODE.FAIL.getMessage());
         }finally {
             return resultMap;
@@ -60,10 +60,11 @@ public class OrderController {
      */
     @RequestMapping(value = "/getUserOrderList",method = RequestMethod.GET)
     @ResponseBody
-    public List<Map<String,Object>> getUserOrderList(@RequestParam("userId")long userId,@RequestParam("pageNo")int pageNo,@RequestParam("pageSize")int pageSize){
+    public List<Map<String,Object>> getUserOrderList(@RequestParam("userId")long userId,
+                                                     @RequestParam("pageNo")int pageNo,
+                                                     @RequestParam("pageSize")int pageSize){
         List<Map<String,Object>> result=new ArrayList<>();
-
-
+        result=orderService.queryOrderListByUserId(userId, pageNo, pageSize);
         return  result;
     }
 
@@ -76,7 +77,7 @@ public class OrderController {
     public Map<String,Object> getOrderInfo(@RequestParam("orderNo")String orderNo){
 
         Map<String,Object> resultMap=new HashMap<>();
-
+        resultMap=orderService.queryOrderByNo(orderNo);
         return  resultMap;
     }
 
