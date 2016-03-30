@@ -4,7 +4,7 @@
         <i class="menu-icon"></i>
     </div>
     <div class="header-title">
-        <span>注册</span>
+        <span id="header-title"></span>
         <span class="location location-icon">陕西</span>
     </div>
     <div class="header-btn">

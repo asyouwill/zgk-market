@@ -1,0 +1,125 @@
+@charset "utf-8";
+//bootstrap|样式重置|布局|工具类|
+@import "variables";
+@import "prefixer";
+@import "mixins";
+
+[class^="i-"],
+[class^="icon-"] {
+  @include inline-block(middle);
+}
+@import "sprites";
+// common
+
+@import "reset";
+/*header*/
+header {
+  height: 39px;
+  line-height: 39px;
+  background-color: #D51323;
+  color: white;
+
+  .header-title {
+    text-align: center;
+  }
+}
+
+/*icons*/
+.back-icon:before {
+  content: "";
+  background: url(../img/icons/back.png);
+  width: 16px;
+  height: 26px;
+  background-size: cover;
+  display: inline-block;
+}
+
+.card-icon:before {
+  content: "";
+  background: url(../img/icons/card.png);
+  width: 24px;
+  height: 26px;
+  background-size: cover;
+  display: inline-block;
+}
+
+
+.location-icon:before {
+  content: "";
+  background: url(../img/icons/location.png);
+  width: 14px;
+  height: 21px;
+  background-size: cover;
+  display: inline-block;
+}
+
+.menu-icon:before {
+  content: "";
+  background: url(../img/icons/menu.png);
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  display: inline-block;
+}
+
+.mobile-icon:before {
+  content: "";
+  background: url(../img/icons/mobile.png);
+  width: 28px;
+  height: 28px;
+  background-size: cover;
+  display: inline-block;
+}
+
+
+.password-icon:before {
+  content: "";
+  background: url(../img/icons/password.png);
+  width: 27px;
+  height: 27px;
+  background-size: cover;
+  display: inline-block;
+}
+
+.search-icon:before {
+  content: "";
+  background: url(../img/icons/search.png);
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  display: inline-block;
+}
+
+/*from*/
+.input-group {
+  height: 39px;
+  line-height: 39px;
+  background-color: #fff;
+  position: relative;
+  border: 1px solid #E8E8E8;
+  border-radius: 2px;
+
+  i {
+    display: inline-block;
+    width: 35px;
+    height: 30px;
+  }
+  input {
+    vertical-align: top;
+    width: calc(100% - 40px);
+    height: 100%;
+    margin-left: 40px;
+    font-size: 14px;
+    padding: 0;
+    border: none;
+  }
+}
+
+input {
+  height: 39px;
+  padding: 0 10px;
+  font-size: 14px;
+  outline: none;
+  border: 1px solid #E8E8E8;
+  border-radius: 2px;
+}
