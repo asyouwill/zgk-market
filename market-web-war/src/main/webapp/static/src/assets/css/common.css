@@ -355,3 +355,29 @@ input {
   border: 1px solid #E8E8E8;
   border-radius: 2px;
 }
+
+.disn {
+  display: none;
+}
+
+.disb {
+  display: block;
+}
+
+#toast {
+  position: fixed;
+  top: 200px;
+  left: 50%;
+  border-radius: 10px;
+  min-width: 200px;
+  margin-left: -100px;
+  border: 1px solid #f1f1f1;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  opacity: .9;
+  -webkit-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
+  font-size: 14px;
+}

@@ -3,7 +3,8 @@ var path = require('path');
 var webpack = require('webpack');
 module.exports = {
     entry: {
-        vipBuy: "./src/assets/js/vip-buy/vip-buy"
+        vipBuy: "./src/assets/js/vip-buy/vip-buy",
+        modifyUserDetail: './src/assets/js/modify-user-detail/modify-user-detail'
     },
     output: {
         path: path.join(__dirname, "./dist/js"),
