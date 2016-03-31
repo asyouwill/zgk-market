@@ -27,8 +27,8 @@ var paths = {
 //压缩css
 gulp.task('minifycss', function() {
     return gulp.src(paths.srcCss)      //压缩的文件
-        .pipe(gulp.dest(paths.distCss))   //输出文件夹
-        .pipe(minifycss());   //执行压缩
+        .pipe(minifycss())   //执行压缩
+    .pipe(gulp.dest(paths.distCss))   //输出文件夹
 });
 
 gulp.task('minifyimg', function(){
