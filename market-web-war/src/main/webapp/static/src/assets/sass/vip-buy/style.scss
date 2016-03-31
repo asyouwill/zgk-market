@@ -1,0 +1,94 @@
+//header bar
+header {
+  position: relative;
+  overflow: hidden;
+
+  .header-title {
+    padding-left: 46px;
+  }
+  .header-btn {
+    position: absolute;
+    height: 25px;
+    top: 6px;
+    left: 9px;
+  }
+  .location {
+    font-size: 12px;
+    vertical-align: 2px;
+    margin-left: 1px;
+    &.location-icon:before {
+      vertical-align: -6px;
+      margin-right: 4px;
+    }
+  }
+}
+.description {
+  padding: 22px 15px;
+  font-size: 14px;
+  color: #575757;
+  .title {
+    text-align: center;
+    font-size: 12px;
+  }
+  .content {
+    margin-top: 18px;
+    font-size: 12px;
+    line-height: 19px;
+  }
+}
+.vip-check-info {
+  text-align: center;
+  position: relative;
+  img {
+    width: 168px;
+  }
+  .text {
+    position: absolute;
+    top: 2px;
+    left: 19px;
+    font-size: 12px;
+    color: #D80C18;
+  }
+}
+.vip-buy-btn {
+  height: 39px;
+  line-height: 39px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  background-color: #D80C18;
+  border: none;
+  border-radius: 2px;
+  width: 270px;
+  margin: 78px auto 0;
+}
+//modal
+.order-info {
+  color: #707070;
+  padding: 12px;
+  line-height: 28px;
+}
+.confirm-btn {
+  height: 39px;
+  line-height: 39px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  background-color: #D80C18;
+  border: none;
+  border-radius: 2px;
+  width: 270px;
+  margin: 20px auto;
+}
+
+//override pgwmodal.min.scss
+.pgwModal .pm-title {
+  background: #D80C18;
+  color: #fff;
+  font-size: 14px;
+  line-height: 25px;
+}
+.pgwModal .pm-close span.pm-icon,
+.pgwModal .pm-close {
+  display: none;
+}
