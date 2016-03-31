@@ -27,6 +27,9 @@
             </props>
         </property>
     </bean>
+    <bean id="redisUtil" class="cn.thinkjoy.zgk.market.util.RedisUtil">
+        <property name="redisRepository" ref="redisRepository"/>
+    </bean>
     <import resource="classpath:springme.xml"/>
     <!--<import resource="classpath:/setting/applicationContext-cache.xml" />-->
     <!--<import resource="classpath:/setting/applicationContext-security.xml" />-->

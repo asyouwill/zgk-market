@@ -35,8 +35,8 @@ public class LoginController extends BaseCommonController {
 	 */
 	@RequestMapping(value = "/login")
 	@ResponseBody
-	public Map<String, Object> login(@RequestParam(value="account",required=false) String account,
-					  @RequestParam(value="password",required=false) String password) throws Exception {
+	public Map<String, Object> login(	@RequestParam(value="account",required=false) String account,
+					  					@RequestParam(value="password",required=false) String password) throws Exception {
 		long id = 0l;
 		UserInfoPojo userInfoPojo=null;
 		UserInfoPojo old=null;

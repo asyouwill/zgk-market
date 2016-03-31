@@ -10,7 +10,7 @@
 <%@ include file="../common/header.jsp"%>
 <div class="container">
     <div class="banner">
-        <img src="<%=ctx%>/static/img/vip/banner.png" alt=""/>
+        <img src="<%=ctx%>static/dist/img/icons/banner.png" alt=""/>
     </div>
     <form action="">
         <div class="form-group">
@@ -39,5 +39,6 @@
         </div>
     </form>
 </div>
+<script type="text/javascript" src=""></script>
 </body>
 </html>

@@ -5,8 +5,11 @@ import cn.thinkjoy.push.domain.sms.SMSCheckCode;
 import cn.thinkjoy.push.service.sms.SMSService;
 import cn.thinkjoy.zgk.market.common.BaseCommonController;
 import cn.thinkjoy.zgk.market.common.ERRORCODE;
+import cn.thinkjoy.zgk.market.constant.CaptchaTimeConst;
+import cn.thinkjoy.zgk.market.constant.RedisConst;
 import cn.thinkjoy.zgk.market.service.IUserAccountExService;
 import cn.thinkjoy.zgk.market.util.CaptchaUtil;
+import cn.thinkjoy.zgk.market.util.RedisUtil;
 import cn.thinkjoy.zgk.market.util.StaticSource;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
@@ -17,6 +20,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("/captcha")
@@ -60,11 +65,11 @@ public class CaptchaController extends BaseCommonController {
                 throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "类型错误!");
             }
 
-//            long time = CaptchaTimeConst.CAPTCHA_TIME;
-//            String timeKey  = RedisConst.CAPTCHA_AUTH_TIME_KEY+account;
-//            if(!RedisUtil.getInstance().exists(timeKey)){
+            long time = CaptchaTimeConst.CAPTCHA_TIME;
+            String timeKey  = RedisConst.CAPTCHA_AUTH_TIME_KEY+account;
+            if(!RedisUtil.getInstance().exists(timeKey)){
 
-                String bizTarget = StaticSource.getSource("smsbizTarget");;
+                String bizTarget = StaticSource.getSource("smsbizTarget");
 
                 String randomString = CaptchaUtil.getRandomNumString(6);
 
@@ -80,16 +85,16 @@ public class CaptchaController extends BaseCommonController {
                 while(!smsResult) {
                     smsResult = smsService.sendSMS(smsCheckCode,false);
                 }
-//                String userCaptchaKey = RedisConst.USER_CAPTCHA_KEY+account;
-//                RedisUtil.getInstance().set(userCaptchaKey,randomString);
-//                RedisUtil.getInstance().expire(userCaptchaKey, 600, TimeUnit.SECONDS);
-//                RedisUtil.getInstance().set(timeKey, String.valueOf(System.currentTimeMillis()));
-//                RedisUtil.getInstance().expire(timeKey, 60, TimeUnit.SECONDS);
-//            }else{
-//                time = time - ((System.currentTimeMillis() - Long.valueOf(RedisUtil.getInstance().get(timeKey).toString()))/1000);
-//            }
-//
-//            result.put("time", time);
+                String userCaptchaKey = RedisConst.USER_CAPTCHA_KEY+account;
+                RedisUtil.getInstance().set(userCaptchaKey,randomString);
+                RedisUtil.getInstance().expire(userCaptchaKey, 600, TimeUnit.SECONDS);
+                RedisUtil.getInstance().set(timeKey, String.valueOf(System.currentTimeMillis()));
+                RedisUtil.getInstance().expire(timeKey, 60, TimeUnit.SECONDS);
+            }else{
+                time = time - ((System.currentTimeMillis() - Long.valueOf(RedisUtil.getInstance().get(timeKey).toString()))/1000);
+            }
+
+            result.put("time", time);
         } catch(Exception e){
             throw e;
         }

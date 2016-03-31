@@ -34,6 +34,6 @@
         <div class="confirm-btn">确认支付</div>
     </div>
 </div>
-<script src="<%=ctx%>/static/dist/js/vipBuy.js"></script>
+<script src="<%=ctx%>/static/dist/js/vip.js"></script>
 </body>
 </html>
