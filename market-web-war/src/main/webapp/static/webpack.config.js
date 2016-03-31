@@ -12,7 +12,10 @@ module.exports = {
     },
     resolve: {
         alias: {
-            pgwmodal: path.join(__dirname, "./src/lib/PgwModa/pgwmodal.min")
+            pgwmodal: path.join(__dirname, "./src/lib/PgwModa/pgwmodal.min"),
+            util: path.join(__dirname, "./src/lib/baseComponents/common"),
+            cookie: path.join(__dirname, "./src/lib/baseComponents/cookie"),
+            interfaceUrl: path.join(__dirname, "./src/lib/baseComponents/url-config")
         }
     },
     plugins: [
