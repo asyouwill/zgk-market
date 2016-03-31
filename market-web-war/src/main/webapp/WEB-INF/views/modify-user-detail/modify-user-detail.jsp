@@ -8,11 +8,13 @@
 </head>
 <body>
 <%@ include file="../common/header.jsp"%>
+<input type="hidden" id="user-birthday" value="">
+<input type="hidden" id="user-qq" value="">
 <div class="container">
     <form action="">
         <div class="avatar">
             <div>
-                <img src="<%=ctx%>static/dist/img/icons/avatar.png" alt=""/>
+                <img id="avatar-img" src="<%=ctx%>static/dist/img/icons/avatar.png" alt=""/>
             </div>
             <div class="upload-btn">上传头像</div>
         </div>
@@ -26,8 +28,8 @@
         <div class="form-group">
             <div class="label">性别选择：</div>
             <div class="options right">
-                <span data-value="" class="sex active">女</span>
-                <span data-value="" class="sex">男</span>
+                <span data-value="0" class="sex">女</span>
+                <span data-value="1" class="sex">男</span>
             </div>
         </div>
         <div class="form-group">
@@ -40,8 +42,8 @@
         <div class="form-group">
             <div class="label">科目选择：</div>
             <div class="options right">
-                <span data-value="" class="subject">文科</span>
-                <span data-value="" class="subject active">理科</span>
+                <span data-value="0" class="subject">文科</span>
+                <span data-value="1" class="subject">理科</span>
             </div>
         </div>
         <div class="form-group">
