@@ -1,11 +1,18 @@
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
+var path = require('path');
+var webpack = require('webpack');
 module.exports = {
     entry: {
         vipBuy: "./src/assets/js/vip-buy/vip-buy"
     },
     output: {
-        publicPath: "./dist/js/",
+        path: path.join(__dirname, "./dist/js"),
         filename: "[name].js"
+    },
+    resolve: {
+        alias: {
+            pgwmodal: path.join(__dirname, "./src/lib/PgwModa/pgwmodal.min")
+        }
     },
     plugins: [
         //new CommonsChunkPlugin("admin-commons.js", ["ap1", "ap2"]),
