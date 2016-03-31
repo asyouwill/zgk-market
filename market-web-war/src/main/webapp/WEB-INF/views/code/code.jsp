@@ -25,5 +25,6 @@
         分享二维码
     </div>
 </div>
+<script src="<%=ctx%>/static/dist/js/code.js"></script>
 </body>
 </html>
