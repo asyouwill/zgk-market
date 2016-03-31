@@ -22,6 +22,8 @@ var paths = {
     distJs: './dist/js'
 };
 
+
+
 //压缩css
 gulp.task('minifycss', function() {
     return gulp.src(paths.srcCss)      //压缩的文件
@@ -75,9 +77,10 @@ gulp.task("build-js", function(callback) {
     });
 });
 
-gulp.task('watch',['build-js'],function() {
+gulp.task('watch',function() {
     gulp.watch(paths.srcCss, ['minifycss']);
     gulp.watch(paths.srcImg, ['minifyimg']);
+    gulp.watch(paths.srcJs, ['build-js']);
     //gulp.watch(paths.srcJs, ['minifyjs']);
 });
 

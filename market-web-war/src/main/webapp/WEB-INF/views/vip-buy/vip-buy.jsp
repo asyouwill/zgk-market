@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="vip-check-info">
-        <img src="<%=ctx%>/static/dist/img/vip-check/vip.png" alt=""/>
+        <img src="<%=ctx%>/static/dist/img/icons/vip.png" alt=""/>
         <div class="text">
             <div>价格：511元</div>
         </div>
