@@ -8,8 +8,6 @@ var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant'); // $ npm i -D imagemin-pngquant
 
 
-
-
 var paths = {
     srcCss: './src/assets/css/**/*.css',
     srcImg: './src/assets/img/**/*.png',
