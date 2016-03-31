@@ -4,6 +4,7 @@ var webpack = require('webpack');
 module.exports = {
     entry: {
         vipBuy: "./src/assets/js/vip-buy/vip-buy",
+        regLogin: "./src/assets/js/reglogin/reglogin",
         modifyUserDetail: './src/assets/js/modify-user-detail/modify-user-detail'
     },
     output: {
@@ -13,8 +14,12 @@ module.exports = {
     resolve: {
         alias: {
             pgwmodal: path.join(__dirname, "./src/lib/PgwModa/pgwmodal.min"),
+            commonjs: path.join(__dirname, "./src/assets/js/common/common"),
+            urlConfig: path.join(__dirname, "./src/assets/js/common/url-config"),
+            cookie: path.join(__dirname, "./src/assets/js/common/cookie"),
+            md5: path.join(__dirname, "./src/lib/md5/jQuery.md5"),
+            timeFormat: path.join(__dirname, "./src/assets/js/common/timeFormat"),
             util: path.join(__dirname, "./src/lib/baseComponents/common"),
-            cookie: path.join(__dirname, "./src/lib/baseComponents/cookie"),
             interfaceUrl: path.join(__dirname, "./src/lib/baseComponents/url-config")
         }
     },
