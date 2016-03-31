@@ -83,7 +83,7 @@
 
 
 ##idea##
-/.idea/
+*/.idea/*
 *.iml
 
 
