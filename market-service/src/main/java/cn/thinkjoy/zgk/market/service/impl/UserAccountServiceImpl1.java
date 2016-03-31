@@ -15,8 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-@Service("UserAccountServiceImpl")
-public class UserAccountServiceImpl extends AbstractPageService<IBaseDAO<UserAccount>, UserAccount> implements IUserAccountService<IBaseDAO<UserAccount>,UserAccount>{
+@Service("UserAccountServiceImpl1")
+public class UserAccountServiceImpl1 extends AbstractPageService<IBaseDAO<UserAccount>, UserAccount> implements IUserAccountService<IBaseDAO<UserAccount>,UserAccount>{
     @Autowired
     private IUserAccountDAO userAccountDAO;
 
