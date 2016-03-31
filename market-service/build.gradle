@@ -16,10 +16,11 @@ dependencies {
     }
 
     compile project(':market-api')
-
-    compile "cn.thinkjoy.zgk.zgksystem:menuAuthority-service:0.0.4-SNAPSHOT"
-    compile "cn.thinkjoy.zgk.zgksystem:menuAuthority-domain:0.0.4-SNAPSHOT"
-    compile "cn.thinkjoy.zgk.zgksystem:zgksystem-service:0.0.4-SNAPSHOT"
-    compile "cn.thinkjoy.zgk.zgksystem:zgksystem-domain:0.0.4-SNAPSHOT"
-    compile "cn.thinkjoy.zgk.zgksystem:zgksystem-api:0.0.4-SNAPSHOT"
+//
+//    compile "cn.thinkjoy.zgk.zgksystem:menuAuthority-service:0.0.4-SNAPSHOT"
+//    compile "cn.thinkjoy.zgk.zgksystem:menuAuthority-domain:0.0.4-SNAPSHOT"
+//    compile "cn.thinkjoy.zgk.zgksystem:zgksystem-service:0.0.4-SNAPSHOT"
+//    compile "cn.thinkjoy.zgk.zgksystem:zgksystem-domain:0.0.4-SNAPSHOT"
+//    compile "cn.thinkjoy.zgk.zgksystem:zgksystem-api:0.0.4-SNAPSHOT"
+    compile group:"cn.thinkjoy.zgk.zgksystem",name:"zgksystem-api",version:"0.0.4-SNAPSHOT", changing: true
 }

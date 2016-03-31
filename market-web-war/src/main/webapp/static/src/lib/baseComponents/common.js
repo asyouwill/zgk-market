@@ -268,6 +268,28 @@ define(['commonCss', '.'], function () {
     }
 
 
+    var toast = function() {
+        var intervalCounter = null;
+
+        function drawToast(message) {
+            var alert = document.getElementById("toast");
+            if (!alert) {
+                var toastHTML = '<div id="toast">' + message + '</div>';
+                document.body.insertAdjacentHTML('beforeEnd', toastHTML);
+            } else {
+                alert.style.opacity = .9;
+            }
+            intervalCounter = setInterval(function () {
+                var alert = $("#toast");
+                alert.css('opacity', 0).remove();
+                clearInterval(intervalCounter);
+            }, 1000);
+        }
+
+        drawToast(str);
+    }
+
+
 
 
 
@@ -282,7 +304,8 @@ define(['commonCss', '.'], function () {
         INTERFACE_URL: INTERFACE_URL,
         cookie: cookie,
         domain: domainStr,
-        provinceKey: provinceKey
+        provinceKey: provinceKey,
+        toast: toast
     };
 
 
