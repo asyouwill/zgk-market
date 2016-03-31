@@ -80,5 +80,4 @@ public class OrderController {
         resultMap=orderService.queryOrderByNo(orderNo);
         return  resultMap;
     }
-
 }

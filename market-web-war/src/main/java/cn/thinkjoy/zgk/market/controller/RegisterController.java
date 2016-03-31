@@ -82,9 +82,9 @@ public class RegisterController extends BaseCommonController {
             if (userAccountBean!=null){
                 throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "该账号已被注册!");
             }
-//            if (!checkCaptcha(account,captcha)){
-//                throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "验证码有误!");
-//            }
+            if (!checkCaptcha(account,captcha)){
+                throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "验证码有误!");
+            }
 
             //保存用户
         UserAccount userAccount = new UserAccount();
@@ -114,7 +114,11 @@ public class RegisterController extends BaseCommonController {
         Map<String, Object> resultMap = new HashMap<>();
         String token = DESUtil.getEightByteMultypleStr(String.valueOf(id), account);
         try {
+            /**
+             * 将用户信息保存到redis中
+             */
             setUserAccountPojo(userAccountBean, DESUtil.encrypt(token, DESUtil.key));
+
             resultMap.put("token", DESUtil.encrypt(token, DESUtil.key));
         }catch (Exception e){
             e.printStackTrace();
@@ -192,7 +196,6 @@ public class RegisterController extends BaseCommonController {
             if (StringUtils.isEmpty(account)) {
                 throw new BizException(ERRORCODE.PARAM_ERROR.getCode(), "请输入账号!");
             }
-            Long  areaId= getAreaId();
             UserAccountPojo userAccountBean = userAccountExService.findUserAccountPojoByPhone(account);
             if (type==0){
                 if (userAccountBean!=null){
